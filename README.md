@@ -4,7 +4,9 @@ This repository will contain a series of lessons about Reinforcement Learning an
 
 ## Part I: Introduction
 
-### Lesson 1: Introduction to Decision-Making
+### 1. Introduction to Decision-Making
+
+#### 1.1 Decision-Making
 
 Decision-making has captivated human intelligence for many years. Humans have always 
 wondered what makes us the most intelligent animal in this planet. The fact is that 
@@ -41,29 +43,130 @@ environments, discrete and continuous states, discrete and continuous actions, o
 and partially observable states, single and multiple agents, cooperative and adversarial
 agents, and finally, we will put everything in the perspective of human intelligence.
 
+#### 1.2 Rational Decisions
+
+At the very basic level decision-making combines probability theory with utility theory. These
+two together form a complete framework for decision-making under uncertainty known as Decision
+Theory. 
+
+
+#### 1.3 Modeling Problems
+
+#### 1.4 Exercises
+
+* Implement Bayes Network
+
 ## Part II: Reinforcement Learning and Decision-Making
 
-### Lesson 2: Single Decisions and Sequential Decisions
+### 2. Single and Sequential Decisions
 
-### Lesson 3: Deterministic and Stochastic Actions
+#### 2.1 Single Decision
 
-### Lesson 4: Known and Unknown Environments
+#### 2.2 Utility Theory
+
+#### 2.3 Value of Information
+
+#### 2.4 Game Theory
+
+#### 2.5 Sequential Decision-Making
+
+As we saw in the previous lesson, Decision Theory allows us to make rational
+decisions under uncertainty. However, we saw the process of gathering information
+in other to take the single best decision. How would things change if we had multiple 
+opportunities for making decisions. For example, if you knew that this was your
+last day alive, you would probably make different decisions than any regular day. Perhaps,
+you would take decisions that would otherwise bring bad consequences if you had other days,
+or preferably, you could also take decisions that would maximize the value of today.
+The reason for this is the nature of sequential problems. Sure it would feel so good to
+yell at that coworker that keeps annoying you, but as you are a rational individual, or
+at least you try, you rather not do it in hopes of a higher end goal. 
+
+Understanding the notion of the sequential nature of life is one of the most important 
+aspects of intelligence. Think about it, if you give your dog 10 pounds of beef he will
+probably eat the entire thing even if that makes his stomach sick. We humans know better than
+that. In fact, Stanford ran an experiment around the 1970's in which they found that children
+who were able to wait longer for the preferred rewards tended to have better life outcomes,
+as measured by SAT scores, educational attainment, body mass index, and other life measures.
+
+#### 2.6 Modeling Sequential Problems
+
+* MDP
+* Rewards
+* transitions
+* policies
+
+#### 2.7 Evaluating solutions
+
+* Policy Evaluation
+
+#### 2.8 Methods for obtaining solutions
+* recursion
+* memoization
+* dynamic programming
+
+* Policy Improvement
+* Value Iteration
+* Policy Search
+
+#### 2.9 Exercises
+
+* Implement Policy Iteration
+
+### 3. Deterministic and Stochastic Actions
+
+#### 3.xx Exercises
+
+* Implement Value Iteration
+
+### 4. Known and Unknown Environments
+
+#### 4.xx Exercises
+
+* Implement Q-Learning
+* Implement SARSA
+* Implement "Learning Model" (Guided Policy Search??)
 
 ## Part III: Decision-Making in Hard Problems
 
-### Lesson 5: Discrete and Continuous States
+### 5. Discrete and Continuous States
 
-### Lesson 6: Discrete Actions and Continuous Actions
+#### 5.xx Exercises
 
-### Lesson 7: Observable and Partially-Observable States
+* Implement DQN
+
+### 6. Discrete Actions and Continuous Actions
+
+#### 6.xx Exercises
+
+* Implement Policy Search
+
+### 7. Observable and Partially-Observable States
+
+#### 7.xx Exercises
+
+* Implement Kalman Filters
+* Implement Monte-Carlo POMDP
 
 ## Part IV: Multiple Decision-Making Agents
 
-### Lesson 8: Single and Multiple Agents
+### 8. Single and Multiple Agents
 
-### Lesson 9: Cooperative and Adversarial Agents
+#### 8.xx Exercises
 
-## Part V: Human Decision-Making
+* Implement Dec-MDP Algorithm
+* Implement Dec-POMDP Algorithm
 
-### Lesson 10:. Decision-Making and Humans
+### 9. Cooperative and Adversarial Agents
+
+#### 9.xx Exercises
+
+* Solve robo-soccer environment
+
+## Part V: Human Decision-Making and Beyond
+
+### 10. Decision-Making and Humans
+
+### 11. Conclusion
+
+### 12. References
 
