@@ -4,7 +4,7 @@ This repository will contain a series of lessons about Reinforcement Learning an
 
 ## Part I: Introduction
 
-1. Introduction to Decision-Making:
+### Lesson 1: Introduction to Decision-Making:
 
 Decision-making has captivated human intelligence for many years. Humans have always 
 wondered what makes us the most intelligent animal in this planet. The fact is that 
@@ -43,27 +43,27 @@ agents, and finally, we will put everything in the perspective of human intellig
 
 ## Part II: Reinforcement Learning and Decision-Making
 
-2. Single Decisions and Sequential Decisions
+### Lesson 2: Single Decisions and Sequential Decisions
 
-3. Deterministic and Stochastic Actions
+### Lesson 3: Deterministic and Stochastic Actions
 
-4. Known and Unknown Environments
+### Lesson 4: Known and Unknown Environments
 
 ## Part III: Decision-Making in Hard Problems
 
-5. Discrete and Continuous States
+### Lesson 5: Discrete and Continuous States
 
-6. Discrete Actions and Continuous Actions
+### Lesson 6: Discrete Actions and Continuous Actions
 
-7. Observable and Partially-Observable States
+### Lesson 7: Observable and Partially-Observable States
 
 ## Part IV: Multiple Decision-Making Agents
 
-8. Single and Multiple Agents
+### Lesson 8: Single and Multiple Agents
 
-9. Cooperative and Adversarial Agents
+### Lesson 9: Cooperative and Adversarial Agents
 
 ## Part V: Human Decision-Making
 
-10. Decision-Making and Humans
+### Lesson 10:. Decision-Making and Humans
 
