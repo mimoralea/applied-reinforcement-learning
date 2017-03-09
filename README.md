@@ -4,7 +4,7 @@ This repository will contain a series of lessons about Reinforcement Learning an
 
 ## Part I: Introduction
 
-### Lesson 1: Introduction to Decision-Making:
+### Lesson 1: Introduction to Decision-Making
 
 Decision-making has captivated human intelligence for many years. Humans have always 
 wondered what makes us the most intelligent animal in this planet. The fact is that 
