@@ -6,7 +6,7 @@ This repository will contain a series of lessons about Reinforcement Learning an
 
 ### 1. Introduction to Decision-Making
 
-#### &nbsp;&nbsp;&nbsp;&nbsp; 1.1 Decision-Making
+#### 1.1 Decision-Making
 
 Decision-making has captivated human intelligence for many years. Humans have always 
 wondered what makes us the most intelligent animal in this planet. The fact is that 
@@ -43,7 +43,7 @@ environments, discrete and continuous states, discrete and continuous actions, o
 and partially observable states, single and multiple agents, cooperative and adversarial
 agents, and finally, we will put everything in the perspective of human intelligence.
 
-#### &nbsp;&nbsp;&nbsp;&nbsp; 1.2 Rational Decisions
+#### 1.2 Rational Decisions
 
 At the very basic level decision-making combines probability theory with utility theory. These
 two together form a complete framework for decision-making under uncertainty known as Decision
