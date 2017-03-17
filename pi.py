@@ -29,7 +29,7 @@ def policy_evaluation(policy, env, discount_factor=.75, theta=0.000001):
 
 def policy_improvement(env, policy_eval_fn=policy_evaluation, discount_factor=0.75):
     # Start with a random policy
-    policy = np.ones([env.nS, env.nA]) / env.nA
+    policy = np.random.random([env.nS, env.nA])
 
     iterations = 0
     while True:
