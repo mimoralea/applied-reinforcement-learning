@@ -45,6 +45,8 @@ observable and partially observable states, single and multiple agents, cooperat
 adversarial agents, and finally, we will put everything in the perspective of human 
 intelligence. I hope you enjoy this work.
 
+
+
 ## Part II: Reinforcement Learning and Decision-Making
 
 ### 2. Sequential Decisions
