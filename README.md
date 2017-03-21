@@ -123,7 +123,7 @@ contingencies that may arise. However, if we expand this a bit further we can th
 that takes into account every single possible contingency, even those we haven't thought of. This is call universal
 plan or better yet, a policy. In Reinforcement Learning, a policy is a function mapping states to actions which
 represent a solution to an MDP. The algorithms that we will be discussing later will directly or indirectly produce
-a policy. This is important to understand and remember.
+the best possible policy, also called optimal policy. This is important to understand and remember.
 
 #### 2.2 Simple Sequential Problem
 
@@ -138,7 +138,7 @@ future rewards?
 
 The difficulty of this problem, also known as the k-Armed Bandit, in this case k=2, is that you need to 
 simultaneously be able to acquire knowledge of the environment and at the same time harness the knowledge you 
-have already acquire. This fundamental trade-off between exploration versus exploitation is what makes 
+have already acquired. This fundamental trade-off between exploration versus exploitation is what makes 
 decision-making problems hard. You might believe that a particular arm has a fairly high payoff probability; 
 should you then choose it every time? Should you choose one that you know well in order to gain information
 about it's payoff? How about choosing one that you might have good information already but perhaps getting more
@@ -146,36 +146,113 @@ would improve your knowledge of the environment?
 
 All of the answers to the questions posed above depend on several factors. For example, if instead of allowing you
 100 trials I give you 3, how would your strategy change. Moreover, if I give you an infinite number of trials,
-then you really want to put time learning the environment even if doing so gives you sub-optimal results. The
-knowledge that you gain from the initial exploration will ensure you maximize the expected future rewards.
+then you really want to put time learning the environment even if doing so gives you sub-optimal results early on. 
+The knowledge that you gain from the initial exploration will ensure you maximize the expected future rewards long 
+term.
 
-#### 2.3 Evaluating solutions
 
-code:
-* Policy Evaluation
+#### 2.3 Slightly more complex problems
 
-#### 2.8 Methods for obtaining solutions
+When explaining reinforcement learning, it is very common to show a very basic world to illustrate fundamental
+concepts. Let's think of a grid world as in figure below:
 
-* recursion
-* memoization
-* dynamic programming
+_____________________
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+---------------------
 
-code:
-* Policy Improvement
-* Policy Iteration
-mention:
-* Value Iteration
-* Policy Search
+In this world, the agent starts at 'S'. Reaching the space marked with a 'G' ends the game and gives the agent
+a reward of 1. Reaching the space with an 'F' ends the game and gives the agent a reward of -1. The agent is able
+to select 4 actions every time, (N, S, E, W). The actions selected has exactly the effect we expect. For example, 
+N would move the agent one cell up, E to the cell on the right. Unless the agent is attempting to enter a space
+marked with an 'X' which is a wall and cannot be entered, and unless the agent is in the left most cell trying to 
+move left, etc. Which will just bounce the agent back to the cell it took the action from.
 
-#### 2.9 Exercises
 
-* Apply Policy Iteration to a problem
+#### 2.4 Evaluating solutions
+
+Before we being exploring how to get the best solution to this problem. I'd like us to detour into how do we
+know how good is a solution. For example, imagine I give you a policy:
+
+_____________________
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+|    |    |    |    |
+---------------------
+
+Is there a way we can put a number to this policy so we can later rank it?
+
+If we need to use a single number, I think we could all agree that the value of the policy can be defined
+as the sum of all rewards that we would get starting on state 'S' and following the policy. This algorithm is
+called policy evaluation.
+
+One thing you might be thinking after reading the previous paragraph is, but what happens if a policy gives 
+lots of rewards early on, a nothing later. And another policy gives no rewards early on but lots of reward later.
+Is there a way we can account for our preference to early rewards? The answer is yes. So, instead of using the
+sum of all rewards as we mentioned before, we will use the sum of discounted rewards in which each reward at time
+`t` will be discounted by a factor, let's call it gamma, `t` times. And so we get that policy evaluation basically
+calculates the following equation for all states:
+
+```
+Vpi(s) = Epi{r_{t+1} + g*r_{t+2} + g**2*r_{t+3} + ... | St = s}
+```
+
+So, we are basically finding the value we would get from each of the states if we followed this policy. 
+Fair enough.
+
+#### 2.5 Improving on solutions
+
+Now that we know how to come up with a single value for a given policy. The natural question we get is how 
+to we improve on a policy? If we can devise a way to improve and we know how to evaluate, we should be able
+to iterate between evaluation and improvement and get the best policy starting from any random policy. And that
+would be very useful.
+
+The core of the question is whether there is an action different than the action we are being suggested by the 
+policy that would make the value calculate above larger? How about we temporarily select a different action than 
+that suggested by the policy and then follow the policy as originally suggested. This way we would isolate the 
+effect of the action on the entire policy. This is actually the basis for an algorithm called policy improvement.
+
+#### 2.6 Finding Optimal solutions
+
+One of the powerful facts about policy improvement is that this way of finding better policies from
+a given policy actually guarantees that at least a policy of the same exact quality will be returned or better.
+This allows us to think of an algorithm that uses policy evaluation to get the value of a policy and then 
+policy improvement to try to improve this policy and if the improvement just returns any better policy, just
+stop. This algorithm is called policy iteration.
+
+#### 2.7 Improving on Policy Iteration
+
+Policy iteration is great because it guarantees that we will get the very best policy available for a given
+MDP. However, sometimes it can take unnecessarily large computation before it comes up with that best policy.
+Another way of thinking about this is, would there be a small number delta (E.g. 0.0001) that we would be OK with 
+accepting as a measure of change on any given state. If there is, then we could just cut the policy evaluation
+algorithm short and use the value of states to guide our decision-making. This algorithm is called value iteration.
+
+#### 2.8 Exercises
+
+In this lesson we reviewed ways to solve sequential problems. The following Notebook goes into a little more
+detail about the Dynamic Programming way of solving problems. We will look into the Fibonacci sequence problem
+and devise few ways for solving it. Recursion, Memoization and Dynamic Programming.
+
+Lesson 2 Notebook.
 
 ### 3. Deterministic and Stochastic Actions
 
 #### 3.xx Exercises
 
-* Apply Value Iteration
+In this lesson we looked into how the environment can get more complex than we discussed in previous lessons. 
+However, the same algorithms we presented earlier can help us plan when we have a model of the environment. On
+the Notebook below we will implement the algorithms discussed in previous chapter in worlds with deterministic
+and stochastic transitions.
+
+Lesson 3 Notebook.
 
 ### 4. Known and Unknown Environments
 
@@ -187,10 +264,16 @@ mention:
 
 #### 4.xx Exercises
 
-* Apply TD(Lambda)
-* Apply Q-Learning
-* Apply SARSA
-* Apply "Learning Model" (Guided Policy Search??)
+In this lesson we learned the difference between planning and reinforcement learning. We compared two styles
+of doing reinforcement learning, one in which we learn to behave without trying to understand the dynamics
+of the environment. And in the other hand, we learn to behave by simultaneously trying to learn the environment
+so that our learning could become more and more accurate each time.
+
+For this, we will look into a couple of algorithms for model-free reinforcement learning and we will also look 
+at an algorithm that tries to learn the model with each observation and become much more efficient with every
+iteration.
+
+Lesson 4 Notebook.
 
 ## Part III: Decision-Making in Hard Problems
 
@@ -198,20 +281,35 @@ mention:
 
 #### 5.xx Exercises
 
-* Apply DQN
+In this lesson we got a step closer to what we could call 'real-world' reinforcement learning. In specific,
+we look at a kind of environment in which there are so many states that we can no longer represent a table
+of all of them. Either because the state space is too large or flat out continuous.
+
+In order to get a sense for this type of problem we will look a basic Cart Pole pole, and we will solve it by
+discretizing the state space in a way to making a manual function approximation of this problem.
+
+Lesson 5 Notebook.
 
 ### 6. Discrete Actions and Continuous Actions
 
 #### 6.xx Exercises
 
-* Apply Policy Search
+In this lesson we looked for the first time at the a problem in which the both the number of states and the number
+of actions available to the agent are very large or continuous. We introduced a series of methods based on policy 
+search. So, for this lesson's Notebook we will look into a problem with continuous state and actions and we
+will apply function approximation to come up with the best solution to it.
+
+Lesson 6 Notebook.
 
 ### 7. Observable and Partially-Observable States
 
 #### 7.xx Exercises
 
-* Apply Kalman Filters
-* Apply Monte-Carlo POMDP
+In this lesson we learned that what we see is not always what it is happening in the world. Our perceptions might be
+biased, we might not have a 20/20 vision and more importantly we might think we have 20/20 but we might not. For this
+reason is important to know that there are other ways of estimating states. In the following Notebook we will look
+at a very popular method for state estimation called the Kalman Filter for a very basic problem partially-observable
+states problem.
 
 ## Part IV: Multiple Decision-Making Agents
 
@@ -219,14 +317,23 @@ mention:
 
 #### 8.xx Exercises
 
-* Apply Dec-MDP Algorithm
-* Apply Dec-POMDP Algorithm
+In this lesson we opened up ourselves to the world of multiple agents. This lesson concentrated on 
+contrasting single and multiple agents, however, there is more than just that, we know that
+multiple agents can be helping our objective or getting us away from our goal. For now, the next Notebook
+will try to help us understand the fundamentals of game theory necessary to take optimal decision in a world
+or many. Later we will look at specific environments of multi-agent reinforcement learning.
+
+Lesson 8 Notebook.
 
 ### 9. Cooperative and Adversarial Agents
 
 #### 9.xx Exercises
 
-* Apply to robo-soccer environment
+In this lesson we looked into how things change when we interact with other agents, and these agents can be
+cooperative, or adversarial or perhaps a combination of both if we think adversarial teams. For this lesson,
+and to close up on the series of Notebooks well, we will look into the world of gym-soccer environments.
+
+Lesson 9 Notebook.
 
 ## Part V: Human Decision-Making and Beyond
 

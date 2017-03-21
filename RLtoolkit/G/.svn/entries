@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2005-01-27T03:32:29.819237Z"
+   url="http://rlai.cs.ualberta.ca:8080/RLtoolkit/G"
+   last-author="root"
+   kind="dir"
+   uuid="bbcd0721-a0ee-0310-933b-e55960500d3f"
+   revision="4"/>
+<entry
+   committed-rev="1"
+   name="gtests.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="56bce2fb96562e044e4525efe6d6d08d"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gtests1.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="e1be5c48c0fa483a2818674698b52ae9"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gtests2.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="ed4b869413325681f822f8639be1d11c"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="InheritencePython.gif"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="e726e6de2f7a5f5204d5d11e93680ca1"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="__init__.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="f380e8e925c4f7a478274d62fee55583"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="line-and-rect.GIF"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="1ebab8be66f4afaeb11e89d67ddf5717"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="g.html"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="d347cc5ca64fdffd6d64394b4f26e443"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="windows-and-views.GIF"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="834e29b83a128d2989a5a3437db1abf0"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="readme.txt"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="e9dda0b801657f93bbdce927595100f8"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="g.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="523dac782c950df635934327c312ae0b"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="hierarchy.jpg"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="c58c00495230e17a0d85d090ae102610"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+</wc-entries>

@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>3d graphing tools</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<table style="width: 100%;" border="0" cellpadding="3" cellspacing="0">
+  <tbody>
+    <tr>
+      <td rowspan="2" bgcolor="#ffffff" valign="top" width="1%"> <a
+ href="http://rlai.cs.ualberta.ca"><img
+ src="http://rlai.cs.ualberta.ca/openpageinfrastructure/rl-logo.jpg"
+ alt="RLAI" border="0"></a></td>
+      <td style="vertical-align: top;"><span
+ style="color: rgb(102, 102, 102);">Reinforcement Learning and
+Artificial
+Intelligence (RLAI)</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: bottom;"> <span
+ style="font-family: sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 24px; line-height: normal; font-size-adjust: none;">3D
+Graphing Tools - graph3d</span><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+The <span style="font-weight: bold;">ambition</span> of this web
+page is to provide documentation on using the graph3d package. This
+package will take a 2 dimensional array of data and display it as a 3
+dimensional surface.<br>
+<hr><br>
+<p><a name="graphSurface"></a>
+</p>
+<div align="right">[<a href="graph.py.html#graphSurface">function</a>]</div>
+<tt><b>graphSurface</b>(<i>window</i>, <i>data</i><big>[</big>, <i>view,
+color, bounds</i><big>]</big>)</tt>
+<p>Draws a 3D surface showing the contents of a 2d data array.<br>
+<i>view, color</i> and <i>bounds</i> are optional<br>
+if <i>window</i> is None, a window will be created<br>
+&nbsp;&nbsp;&nbsp; graphSurface(window, \<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; [[i*j for i in
+range(30)] for j in range(30)], \<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;view =(.5 .4 .8),&nbsp;&nbsp;&nbsp; #view from
+point given by these fractions of each axis \<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; &nbsp;color='white',&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; # color to draw surface in \<br>
+&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp; window= ((xmin, xmax),(ymin, ymax),(0,
+10))&nbsp;&nbsp; #min and max of each axis.<br>
+Examples of use:<br>
+&nbsp;&nbsp; w = Gwindow(windowTitle="3d",gdViewport=(20,20,550,250))<br>
+&nbsp;&nbsp; graphSurface(w, [[i*j for i in range(30)] for j in
+range(30)])<br>
+&nbsp;&nbsp; or graphSurface(w, func1(30))<br>
+Note: if you want your graph to automatically redraw when resized, call
+graphSurface<br>
+&nbsp;&nbsp; in your gDrawView routine for that window<br>
+Doesn't work for arrays less than 5x5 <br>
+</p>
+<p><br>
+</p>
+<p>Graph3d can be obtained by downloading quickgraph from the <a
+ href="RLtoolkit1.0.html">RLtoolkit page</a>.<br>
+</p>
+
+
+
+<!-- Beginning of: /cgi-bin/lastmodified.pl -->
+
+<hr><font size='-1'>
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/extendform.html?previousPage='+path;
+newWindow=window.open(pageName,'','width=630,height=690,resizable=yes,scrollbars=yes');}">
+Extend</a>
+&nbsp;
+<a href="/openpageinfrastructure/howtoauthor.html">How to edit</a>
+&nbsp;
+<a href="/openpageinfrastructure/styleguide.html">Style guide</a>
+&nbsp;
+<a href="javascript:;"; onClick="window.open('/cgi-bin/viewpublishlog.py','simple',config='resizable=yes,scrollbar=yes,width=500,height=200')";>Troubleshooting</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/subscribe.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=320,resizable=yes,scrollbars=yes');}">
+Subscribe</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/notify.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=470,resizable=yes,scrollbars=yes');}">
+Notify</a>
+&nbsp;
+<a href="/openpageinfrastructure/suggestions.html"> Suggestions</a>
+&nbsp;
+<a href="/openpageinfrastructure/help.html"> Help</a>
+<br/>This <a href="/openpageinfrastructure/openpageidea.html">open web page</a> is hosted by the <a href="http://www.rlai.net"> RLAI
+group</a> at the <a href = "http://www.cs.ualberta.ca">University of Alberta</a>.
+&nbsp;
+<a href="/openpageinfrastructure/termsofuse.html">Terms of use</a></font>
+<br>
+<a name="refreshhere"></a><!--Auto content-->
+<!--LastModified1098287367LastModified-->
+
+
+<!-- End of: /cgi-bin/lastmodified.pl -->
+
+</body>
+</html>

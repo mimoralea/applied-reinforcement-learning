@@ -1,0 +1,537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>RLAI open web page</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<table style="width: 100%;" border="0" cellpadding="3" cellspacing="0">
+  <tbody>
+    <tr>
+      <td rowspan="2" bgcolor="#ffffff" valign="top" width="1%"> <a
+ href="http://rlai.cs.ualberta.ca"><img
+ src="http://rlai.cs.ualberta.ca/openpageinfrastructure/rl-logo.jpg"
+ alt="RLAI" border="0"></a></td>
+      <td style="vertical-align: top;"><span
+ style="color: rgb(102, 102, 102);">Reinforcement Learning and
+Artificial
+Intelligence (RLAI)</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: bottom;"> <span
+ style="font-family: sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 24px; line-height: normal; font-size-adjust: none;">Tile
+Coding Software</span><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+The <span style="font-weight: bold;">ambition</span> of this web
+page is to provide information on the usage of the tile coding software
+of the RL toolkit.<br>
+<hr>
+<h1>Tile Coding Software, Version 2.0</h1>
+<p> by <a href="http://richsutton.com/">Richard S. Sutton</a> </p>
+<hr>
+<ul>
+  <li><a href="#Introduction">Introduction</a> </li>
+  <li><a href="#GetTiles">GetTiles (the main routine)</a> </li>
+  <li><a href="#Example">Example: 32 4x4 Rectangular Grid-Tilings</a> </li>
+  <li><a href="#Shortcuts">Shortcuts for 1 or 2 Floating-Point Variables</a>
+  </li>
+  <li><a href="#Simple%20Variations">Simple (Single-Call) Variations</a>
+  </li>
+  <li><a href="#Complex%20Variations">Complex (Multiple-Call) Variations</a>
+  </li>
+  <li><a href="#Consistent%20Hashing">Getting Consistent Hashing</a> </li>
+  <li><a href="#Lisp%20Versions">Lisp Versions</a> </li>
+  <li><a href="#Python%20Versions">Python Versions</a> (alpha test) </li>
+  <li><a href="#Safe%20Versions">Safe Versions</a> </li>
+  <li><a href="#Wrap-around%20Versions">Wrap-around Versions</a> </li>
+  <li><a href="#Source">Source</a> </li>
+  <li>
+    <h2> Introduction </h2>
+Here we describe code in C++ and LISP implementing the core part of the
+idea of <a
+ href="http://richsutton.com/book/8/node6.html#SECTION00132000000000000000">
+tile coding with hashing</a>. Tile coding is a way of representing the
+values of
+a vector of continuous variables as a large binary vector with few 1s
+and many 0s.
+The binary vector is not represented explicitly of course, but as a
+list of the components that are 1s. The main step is to partition, or
+tile, the continuous space multiple times and select one tile from each
+tiling, that corresponding the the vector's value.
+Each tile is converted (hashed down to) an element in the big binary
+vector, and the list of
+the tile (element) numbers is returned as the representation of the
+vector's value. Information and examples of tile coding and its use in
+function
+approximation and reinforcement learning are given in <a
+ href="http://richsutton.com/book/8/node6.html#SECTION00132000000000000000">
+Section 8.3.2</a> of our <a
+ href="http://richsutton.com/book/the-book.html">RL
+book</a>.
+    <p>Tile coding is the key distinguishing computational idea behind
+CMACs. Implementations of complete CMACs are available from the folks
+at the University New Hampshire <a
+ href="http://www.ece.unh.edu/robots/cmac.htm">here</a>.
+Their package is more suited to straight, bundled CMAC use. Here we
+separate tile coding from full CMACs, which allows it to be more
+flexibly used, e.g., with eligibility traces. The current software is
+also simplified
+and streamlined consistent with its use in reinforcement learning
+applications.
+For example, our code is only a few pages in length and there is just
+one routine to call. In its normal use that routine has no memory and
+requires no special setup or data types. </p>
+    <p>This version 2.0 of the tiling software provides an alternate
+version of the main routine that is "safe" in that
+it corrects for all hashing collisions, so as to exactly simulate
+infinite tillings
+(until it runs out of memory). This version can also be used to gather
+statistics on hashing collisions even if they are be ignored (as in the
+standard version).
+The alternate version requires that an additional hashing table be
+passed in, and there is greater computational expense. </p>
+    <p>Next we describe the use of the tile coding routine. This
+description applies to both the C and LISP implementations except that
+some of the data handling is a little
+simpler in LISP. Mostly we assume we are talking about C; the
+simplifications for
+LISP users are summarized <a href="#Lisp%20Versions">here</a>.
+The C++ code assumes the existence of a function "rand()" that produces
+successive psuedorandom integers, of which only the low-order bytes are
+used. </p>
+    <hr><a name="GetTiles"></a>
+    <h2><nop>GetTiles </nop></h2>
+    <p>The tile coding software provides a single routine, "<code>GetTiles</code>":
+    </p>
+    <pre><code><br>void GetTiles(<br>    int tiles[],           // provided array will contain the returned tile indices<br>    int num_tilings,       // number of tile indices to be returned<br>    int memory_size,       // total number of possible tiles<br>    float floats[],        // array of floating-point vars to be converted to tiles<br>    int num_floats,        // number of floating-point variables<br>    int ints[],            // array of integer variables to be converted to tiles<br>    int num_ints)          // number of integer variables<br></code></pre>
+    <p>The overall idea here is as follows. The first argument (<code>tiles</code>)
+is the output of the routine. This array is provided by the caller and
+filled up by <code>GetTiles</code> with tile indices (integers in [0,<code>memory_size</code>)).
+The second argument is the number of tile indices returned, so the
+provided
+array had better be of at least this length. It is recommended by
+the folks at UNH (who designed the key algorithm here) that <code>num_tilings</code>
+be a power of two. </p>
+    <p>Next, <code>memory_size</code> specifies the largest permitted
+tile
+index.
+The next two arguments are the primary
+inputs to <code>GetTiles</code>. They specify the floating-point
+variables which are to be tiled, in an array with an accompanying
+integer argument to indicate how many of them are in the array.
+The routine will overlay grid-tilings on these variables, generalizing
+across values that differ by less than 1.0. </p>
+    <p>The last two arguments are optional. For each different
+value of the <code>num_ints</code> integers in <code>ints</code> the
+tiles will be hashed totally differently, such that there
+is no generalization to any other value of the integers. These
+inputs are often used to ensure different hashings for
+different groups of tilings, e.g., for different actions in
+reinforcement learning.
+There are some illustrative examples below.
+Alternatively, if there are three such integers or less, they can be
+provided as simple integer arguments to <code>GetTiles</code> (in
+place of the
+last two arguments as described above). These cases will be intercepted
+by a specialized version of <code>GetTiles</code>, the integers packed
+into an
+array automatically, and finally the base version of <code>GetTiles</code>,
+as described above, will be called. There is a similar shortcut for the
+case
+with one or two floating-point variables, described <a
+ href="#Shortcuts">below</a>. </p>
+    <p>Next we describe examples, gradually increasing in complexity,
+of
+the use of the tiles routine. </p>
+    <hr><a name="Example"></a>
+    <h2>Example: 32 4x4 Rectangular Grid-Tilings </h2>
+In the simplest case, we form simple grid-like tilings. Suppose we are
+interested
+in the unit square over two real variables <i>x</i> and <i>y</i>. We
+wish to tile it into 4x4 tilings (i.e.,
+each
+tile
+is .25 by .25). This will create the possibility of generalization
+between any two input vectors in which both components are within .25
+of each other. <code>GetTiles</code>
+assumes unit generalization in its inputs, so we arrange for .25
+generalization by scaling <i>x</i> and <i>y</i> and stuffing the
+results into a float array <code>float_array</code>
+to be input to tiles:
+    <pre><code><br>float float_array[2];<br><br>float_array[0] = x / 0.25;<br>float_array[1] = y / 0.25;<br></code></pre>
+    <p>Despite this fairly
+broad generalization, we would like the ability to make fine
+distinctions if required.
+For this we need many tilings, say 32 (a power of two is good here).
+This will give us an ultimate resolution of .25/32=.0078, or better
+than 1%.
+To arrange for this we pass the tiles routine an integer array, <code>tiles_array</code>,
+of at least 32 elements, to hold the returned
+results, and pass 32 as the <code>num_tilings</code> argument. </p>
+    <pre><code><br>int tiles_array[32];<br></code></pre>
+    <p>Finally, we have to select <code>memory_size</code>, the range
+of tile indices that will be hashed down into. First we consider the
+"natural" memory size, as if we were doing no hashing. This is simply
+the total number of tiles in all the tilings,
+or 4*4*32=512 in our case. This is not a large number and might be used
+directly as the <code>memory_size</code>.
+Note, however, that this does not mean there will be no hashing or hash
+collisions.
+This routine always hashes and so collisions are possible. You could
+make them very unlikely
+by using a large memory size, say 5120, or even 512000 if you have
+enough memory for
+how the tiles are to be used. More often the natural memory size is too
+large, say 10^10, and we must hash into a smaller memory size. </p>
+    <p>Thus, our final call to <code>GetTiles</code> routine might be </p>
+    <pre><code><br>GetTiles(tiles_array,32,512,float_array,2);<br></code></pre>
+    <p>The returned tiles can be used in many ways, as is discussed <a
+ href="http://richsutton.com/book/8/node1.html">elsewhere</a>. But let
+us complete this simple example by showing one use. To do simple linear
+function approximation
+one uses an array of weights of number equal to the total number of
+possible tiles
+(<code>memory_size</code>).
+The approximate function value for the input vector of real values is
+obtained
+simply by summing the weights of the corresponding returned tiles: </p>
+    <pre><code><br>float weights[512];<br><br>float result=0.0;<br>for (i=0;i&lt;32;i++) result += weights[tiles_array[i]];<br></code></pre>
+Finally, for learning, assume we have a value <code>target</code> that
+we wish to adjust the approximation result towards:
+    <pre><code><br>float target;<br>float alpha=0.1;  // step-size parameter<br><br>for (i=0;i&lt;32;i++) weight[tiles_array[i]] += alpha/32 * (target - result);<br></code></pre>
+    <hr>
+    <h2><a name="Shortcuts"></a> Shortcuts for 1 or 2 Floating-Point
+Variables </h2>
+    <p>For simple uses of <code>GetTiles</code>, packing into arrays
+is
+tiresome,
+so we provide routines to do the packing for you for the cases
+with 1 or 2 floating-point state variables, called <code>GetTiles1</code>
+and <code>GetTiles2</code>.
+For example, the 4x4 grid case described above could be done without
+explicitly
+packing into the <code>float_array</code> by calling </p>
+    <pre><code><br>GetTiles2(tiles_array,32,512,x/.25,y/.25);<br></code></pre>
+    <hr>
+    <h2><a name="Simple Variations"></a> Simple (Single-Call)
+Variations </h2>
+    <p>There are a number of useful simple variations on the example
+described
+above.
+Obviously, one could scale the two dimensions differently to get
+rectangular
+rather than square tiles. One could also stretch and distort the
+dimensions, for example,
+making one logarithmic. Or one could obtain a rotated grid by linear
+transformations
+on the original <i>x</i> and <i>y</i> variables. For example, to get
+a grid oriented along the diagonals, we construct the <code>float_array</code>
+like this: </p>
+    <pre><code><br>float_array[0] = (x+y) / 0.25;<br>float_array[1] = (x-y) / 0.25;<br></code></pre>
+    <p>Note that the tiling produced in all these cases is not
+restricted to
+any region of
+the space. It extends in all directions to infinity; it is a tiling of
+the infinite
+plane. These infinite number of tiles are reduced to <code>memory_size</code>
+in number
+by the hashing. </p>
+    <p>If you want to restrict the input vector to a limited region,
+then
+you must do so
+yourself before calling <code>GetTiles</code>. If you want to achieve
+a wrap-around
+effect, then you should cause wrap-around when you construct the <code>float_array</code>,
+e.g., by dividing by the width of the region and filling <code>float_array</code>
+with the remainder. </p>
+    <hr><a name="Complex Variations"></a>
+    <h2>Complex (Multiple-Call) Variations </h2>
+    <p>Sometimes one can get by with a single kind of tiling, as
+produced by a
+single call
+to <code>GetTiles</code> (note that a single call creates multiple
+tillings, but these are
+all simple offset copies of each other). But for many other cases one
+needs to be a little more sophisticated.
+A great deal can be done to control the generalization and to limit the
+memory requirements
+by using multiple tilings through multiple calls to <code>GetTiles</code>.
+We consider some of
+these below. </p>
+    <p>Suppose as previously you have input vectors in the unit square,
+but
+you want to generalize
+between input vectors that are similar along the <i>x</i> dimension OR
+similar along the <i>y</i>
+dimension. To do this you need <i>two</i> kinds of tilings, one
+producing stripes horizontally and one vertically. Suppose you want to
+make 32 tilings of each type, and combine the results
+in one 64-element <code>tiles_array</code>: </p>
+    <pre><code><br>int tiles_array[64];<br><br>GetTiles1(tiles_array,32,4*32*2,x/0.25,0);<br>GetTiles1(&amp;tiles_array[32],32,4*32*2,y/0.25,1);<br></code></pre>
+The second call to <code>GetTiles</code> passes in, in effect, the
+second half of the full <code>tiles_array</code>. The tiles from the
+second group of tilings will go there. Notice that the <code>memory_size</code>
+input
+is the same for both calls and set roughly equal to the memory
+requirements for <i>both</i>
+sets of tiles: 4 (stripes over the unit interval) * 32 (number of
+tilings within a stripe) * 2
+(because there are two sets of tilings over this memory space). As
+always, the <code>memory_size</code> can be chosen within wide limits,
+but it makes sense to chose it the same for all the groups of
+tilings. Finally, notice that we change the final
+integer input from 0 to 1 in the second call. Whenever using multiple
+calls like this, it is a good idea to give them each a different
+setting for the integer arguments.
+    <p>There are a lot of possibilities here. One could use two groups
+of
+tilings, one for each single dimension, as illustrated above, PLUS an
+additional group of tilings that depends on both dimensions. This would
+create a system that generalizes partly along each dimension
+separately, but also on the two dimensions conjunctively, so that it
+could if needed
+learn to give a special response to a particular <i>pair</i> of <i>x,y</i>
+values.
+Another possibility would be to choose some groups of tilings with
+coarse generalization and
+some with fine. </p>
+    <p>One can control the tendency to generalize in the different ways
+given by each group of tilings by controlling the number of tilings in
+each group. For example, if you wanted
+discrimination to be stronger along <i>x</i> rather than <i>y</i>,
+then you would ask for more <i>x</i> tillings
+(more than 32) in the above example, or fewer <i>y</i> tilings. </p>
+    <hr><a name="Consistent Hashing"></a>
+    <h2>Getting Consistent Hashing </h2>
+    <p>In many applications one wants to make sure hashing, a random
+process,
+is done
+in a consistent way. The hashing done by the routines described here is
+determined
+by some tables filled with random numbers the first time the routine is
+called. To get consistent hashing you need only ensure that the random
+number generator is in a consistent state for the first call. A
+convenient way to do this is
+to make a dummy first call during an initialization portion of your
+program. For example, an early portion of your C++ code could include: </p>
+    <pre><code><br>int dummy_tiles[1];<br>float dummy_vars[1];<br><br>srand(0);<br>GetTiles(dummy_tiles,1,1,dummy_vars,0);<br></code></pre>
+In lisp, you would use an implementation-dependent procedure to set <code>*random-state*</code>
+in
+a reproducable manner, then call <code>(get-tiles nil 1 1)</code>.
+    <hr><a name="Lisp Versions"></a>
+    <h2>Lisp Versions </h2>
+    <p>The LISP function "<code>get-tiles</code>" returns a list of
+tile
+indices. It is called as follows: </p>
+    <pre><code><br>(get-tiles                   <br>   num-tilings             ; the number of tilings desired<br>   memory-size             ; the number of possible tile indices<br>   floats                  ; a list of real values making up the input vector<br>   ints)                   ; optional list of integers to get different hashings<br></code></pre>
+All the inputs have the same meanings and uses as described above.
+Multiple calls
+are combined by appending (or nconcing) the resultant lists into one
+list.
+    <p>The function "<code>load-tiles</code>" is also available as a
+maximally efficient interface.
+It loads a portion of a provided array with the returned tile indices.
+It is called as follows: </p>
+    <pre><code><br>(load-tiles<br>   tiles                   ; a provided array for the tile indices to go into<br>   starting-element        ; first element of "tiles" to be changed (typically 0)<br>   num-tilings             ; the number of tilings desired<br>   memory-size             ; the number of possible tile indices<br>   floats                  ; a list of real values making up the input vector<br>   ints)                   ; list of optional inputs to get different hashings<br></code></pre>
+    <hr> <a name="Python Versions"></a>
+    <h2>Python Versions </h2>
+Python versions exist but are still experimental. The following is
+provisional documentation, based on the lisp model.
+    <p>The Python function "<code>getTiles</code>" returns a tuple of
+tile
+indices. It is called as follows: </p>
+    <pre><code><br>getTiles(numTilings, memorySize, floats, ints)<br></code></pre>
+All the inputs have the same meanings and uses as described above.
+Multiple calls
+are combined by concatenating the resultant tuples into one.
+    <p>The function "<code>loadTiles</code>" is also available as a
+maximally efficient interface.
+It loads a portion of a provided array with the returned tile indices.
+It is called as follows: </p>
+    <pre><code><br>loadTiles(tiles, startingElement, numTilings, memorySize, floats, ints)<br></code></pre>
+with meanings as in the lisp calls.
+    <hr><a name="Safe Versions"></a>
+    <h2>Safe Versions </h2>
+    <p>With the code described so far, there is a small probability
+that
+unrelated inputs
+will hash into some of the same tiles. In a group of tilings, usually
+there will be no
+more than one such "collision", so that it is not a big problem; the
+learning
+process will sort it out. There will not be a big effect on performance
+unless
+the memory is too small or the hash functions are poorly designed.
+Nevertheless, the possibility of such a problem is annoying. When one's
+program doesn't work, there is a tendency, deserved or not, to suspect
+a failure of the hashing function. </p>
+    <p>To alleviate this kind of concern, we provide another "safe"
+version
+of the routine that
+does the additional work to prevent hashing collisions -- or rather to
+detect them and
+take the necessary corrective steps. The result is a guaranteed exact
+emulation
+of the infinite tilings. Every different tile used will have a
+different index. If more tiles are used than there is space within the <code>memory_size</code>,
+then an error
+is signaled. Of course there is also a cost in terms of additional
+memory and computation. </p>
+    <p>The additional memory is contained in an additional data
+structure,
+called a "collision
+table". To create and use a collision table in the original 4x4
+example: </p>
+    <pre><code><br>collision_table ct(512,1);<br>float float_array[2];<br>int tiles_array[32];<br><br>float_array[0] = x / 0.25;<br>float_array[1] = y / 0.25;<br>GetTiles(tiles_array,32,&amp;ct,float_array,2);<br></code></pre>
+In the declaration of the collision table, the 512 is the size of the
+table. The size must be a power of two. The 1 in the declaration
+indicates that this is to be a "safe" table; provide a 0 here if you
+just
+want to collect statistics on a regular table. Notice that the
+collision
+table is then used in place of the <code>memory_size</code> in calls
+to <code>GetTiles</code>.
+This is possible because of course the collision table has the <code>memory_size</code>
+stored within it.
+    <p>You can call <code>ct.usage()</code> to determine how many
+entries
+in the table
+are currently in use. You can also examine <code>ct.calls</code>, <code>ct.clearhits</code>,
+and <code>ct.collisions</code> to determine the number of times this
+collision
+table has been used (calls), has returned a result without a collision
+(clearhits),
+and has had collisions (collisions, which may be more than one per
+call). </p>
+    <p><code>ct.reset</code> clears the collision table, making room
+for a
+new set of entries. </p>
+    <p>In Lisp, you construct a collision-table by calling <code>make-ct</code>:
+    </p>
+    <pre><code><br>(make-ct  <br>   memory-size             ; the number of possible tile indices<br>   safety-level)           ; one of :safe, :unsafe, or :super-safe<br></code></pre>
+    <p>which returns the newly initialized collision-table.
+The <code>memory-size</code> here must be a power of two, e.g., 1024;
+otherwise it is
+the same <code>memory-size</code> as before. If the <code>safety-level</code>
+is <code>:unsafe</code>, then
+the collision table is used only to collect statistics; collisions are
+still allowed
+and not corrected for. Normally, a <code>safety-level</code> of <code>:safe</code>
+is adequate, but <code>:super-safe</code> is available to be
+absolutely sure. </p>
+    <p>Once a collision table has been constructed, it is used in any
+of
+the routines
+previously described simply by passing it in in place of the <code>memory-size</code>
+input to the routine. For example, a lisp version of the 32 4x4 tilings
+    <a href="#Example">example</a>, using the safe version, would look
+like
+this: </p>
+    <pre><code><br>(setq ctable (make-ct 512 :safe))                    ; this is done once<br><br>(get-tiles 32 ctable (list (/ x .25) (/ y .25)))     ; this is done for each x,y<br></code></pre>
+    <p>In Python, you obtain a CollisionTable by calling <code>CollisionTable(memorySize,
+safetyLevel)</code>, with meanings as above except <code>safetyLevel</code>
+is one of 'safe', 'unsafe', or 'superSafe'.
+Once a collision table has been constructed, it is used in any of the
+routines
+previously described simply by passing it in in place of the <code>memorySize</code>
+input to the routine. For example, a python version of the 32 4x4
+tilings <a href="#Example">example</a>, using the safe version, would
+look like this: </p>
+    <pre><code><br>ctable = CollisionTable(512, 'safe')                  # this is done once<br><br>getTiles(32, ctable, (x/.25, y/.25))                  # this is done for each x,y<br></code></pre>
+    <hr> <br>
+    <h2> <a name="Wrap-around Versions"></a>Wrap-around Versions </h2>
+    <p>The tilings we have discussed so far stretch out to infinity
+with no
+need to specify a range for them. This is cool, but sometimes not what
+you want. Sometimes you want the variables to wrap-around over some
+range. For example, you may have an angle variable that goes from 0 to
+2pi and then should wrap around, that is, you would like generalization
+to occur between angles just greater than 0 and angles that are nearly
+2pi. To accomodate this, we provide some alternative, wrap-around
+versions of the tiling routines. </p>
+    <p>These versions take an additional input, <code>wrap-widths</code>,
+which parallels the float structure (array or list), and which
+specifies for each float the width of the range over which it wraps
+(e.g., 2pi). If you don't want a float to wrap, it's wrap-width should
+be zero (in LISP, nil). The wrapping width is in the same units as the
+floats, but should be an integer. Specifying the complete range of
+wrapping (rather than just the width) is not necessary for the same
+reason we did not need to give a range at all in the previous routines.
+    </p>
+    <p>For example, suppose you wanted to cover the 2pi x 3 rectangular
+area with 16 tilings, each with a width of generalization one-tenth of
+the space in each dimension, and with wrap-around in the first
+dimension but not the second. In C you would do </p>
+    <pre><code><br>int tiles_array[16];<br><br>float float_array[2];<br>int wrap_array[2];<br><br>float_array[0] = x / (3 * 0.1);<br>wrap_array[0] = 0;<br><br>float_array[1] = y / (2 * 3.14159 * 0.1);<br>wrap_array[1] = 10;<br><br>GetTilesWrap(tiles_array,16,512,float_array,2,wrap_array);<br></code></pre>
+where <code>GetTilesWrap</code> has the interface:
+    <pre><code><br>void GetTilesWrap(<br>    int tiles[],           // provided array will contain the returned tile indices<br>    int num_tilings,       // number of tile indices to be returned<br>    int memory_size,       // total number of possible tiles<br>    float floats[],        // array of floating-point vars to be converted to tiles<br>    int num_floats,        // number of floating-point variables<br>    int wrap_widths[],     // array of widths (length and units as in floats)<br>    int ints[],            // array of integer variables to be converted to tiles<br>    int num_ints)          // number of integer variables<br></code></pre>
+    <p>There is a known bug in the C version - because of an oddity of
+the C
+mod function the results are very slightly off as inputs cross zero. </p>
+    <p>In LISP, the wrapping routines are: </p>
+    <pre><code><br>(get-tiles-wrap                   <br>   num-tilings             ; the number of tilings desired<br>   memory-size             ; the number of possible tile indices<br>   floats                  ; a list of real values making up the input vector<br>   wrap-widths             ; list of widths for wrap-around on floats (ints or nil)<br>   ints)                   ; optional list of integers to get different hashings<br></code></pre>
+and
+    <pre><code><br>(load-tiles-wrap  <br>   tiles                   ; a provided array for the tile indices to go into<br>   starting-element        ; first element of "tiles" to be changed (typically 0)<br>   num-tilings             ; the number of tilings desired<br>   memory-size             ; the number of possible tile indices<br>   floats                  ; a list of real values making up the input vector<br>   wrap-widths             ; list of widths for wrap-around on floats (ints or nil)<br>   ints)                   ; list of optional inputs to get different hashings<br></code></pre>
+    <p>In Python, the wrapping routines are: </p>
+    <pre><code><br>getTilesWrap(numTilings, memorySize, floats, wrapWidths, ints)<br></code></pre>
+and
+    <pre><code><br>loadTilesWrap(tiles, startingElement, numTilings, memorySize, floats, \\<br><br>wrapWidths, ints)<br></code></pre>
+    <h2><a name="Source"></a>Source</h2>
+    <ul>
+      <li>C++ header, C++ source </li>
+      <li>Lisp source </li>
+      <li><a href="tiles.py.html">Python source</a> </li>
+    </ul>
+    <hr>
+</li>
+</ul>
+
+
+<!-- Beginning of: /cgi-bin/lastmodified.pl -->
+
+<hr><font size='-1'>
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/extendform.html?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=620,resizable=yes,scrollbars=yes');}">
+Extend</a>
+&nbsp;
+<a href="/openpageinfrastructure/howtoauthor.html">How to edit</a>
+&nbsp;
+<a href="/openpageinfrastructure/styleguide.html">Style guide</a>
+&nbsp;
+<a href="javascript:;"; onClick="window.open('/cgi-bin/viewpublishlog.py','simple',config='resizable=yes,scrollbar=yes,width=500,height=200')";>Troubleshooting</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/subscribe.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=320,resizable=yes,scrollbars=yes');}">
+Subscribe</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/notify.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=470,resizable=yes,scrollbars=yes');}">
+Notify</a>
+&nbsp;
+<a href="/openpageinfrastructure/suggestions.html"> Suggestions</a>
+&nbsp;
+<a href="/openpageinfrastructure/help.html"> Help</a>
+<br/>This <a href="/openpageinfrastructure/openpageidea.html">open web page</a> is hosted by the <a href="http://www.rlai.net"> RLAI
+group</a> at the <a href = "http://www.cs.ualberta.ca">University of Alberta</a>.
+&nbsp;
+<a href="/openpageinfrastructure/termsofuse.html">Terms of use</a></font>
+<br>
+<a name="refreshhere"></a><!--Auto content-->
+<!--LastModified1095973901LastModified-->
+
+
+<!-- End of: /cgi-bin/lastmodified.pl -->
+
+</body>
+</html>

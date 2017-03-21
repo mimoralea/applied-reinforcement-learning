@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="4"
+   name=""
+   committed-date="2005-01-27T19:03:33.208563Z"
+   url="http://rlai.cs.ualberta.ca:8080/RLtoolkit/fa"
+   kind="dir"
+   uuid="bbcd0721-a0ee-0310-933b-e55960500d3f"
+   revision="4"/>
+<entry
+   committed-rev="1"
+   name="sparselinear.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="4bf29cf04ee1d8268cca9e5b90d772d9"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="multirepresenter.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="5bb68e51d7a589124f3177de3f48da04"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="linear.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="49a1c380e5519ba66099a9fc0ed70c46"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="4"
+   name="tilecoder.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T19:03:33.208563Z"
+   checksum="95c76bd157bcc85266275a32ac2f82ef"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="representer.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="f43c733c7fe733218361eb090dfe2170"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="__init__.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="d41d8cd98f00b204e9800998ecf8427e"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="hypercross.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="0dee398958920dd4b011569443d17168"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="rr.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="f00cc9c5259aba63091caf8651c189d2"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="3"
+   name="readme.txt"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T18:29:31.151399Z"
+   checksum="cacb42d88f1a2a1e293dcb4fd851f89f"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="4"
+   name="demo.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T19:03:33.208563Z"
+   checksum="43be06665a14086abb177c3512108d05"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="fa.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="421abb63260b7b53bba4bc87fc8dfa5d"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="ER.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="23a3a70e0e86324323b539fa8ab9244a"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="KNN.py"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="a4b2064b0d65396f437b4c978ca90e23"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+</wc-entries>

@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>RLAI open web page</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<table style="width: 100%;" border="0" cellpadding="3" cellspacing="0">
+  <tbody>
+    <tr>
+      <td rowspan="2" bgcolor="#ffffff" valign="top" width="1%"> <a
+ href="http://rlai.cs.ualberta.ca"><img
+ src="http://rlai.cs.ualberta.ca/openpageinfrastructure/rl-logo.jpg"
+ alt="RLAI" border="0"></a></td>
+      <td style="vertical-align: top;"><span
+ style="color: rgb(102, 102, 102);">Reinforcement Learning and
+Artificial
+Intelligence (RLAI)</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: bottom;"> <span
+ style="font-family: sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 24px; line-height: normal; font-size-adjust: none;">Graph.py:
+A Quick Graphing Tool for Python</span><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+The <span style="font-weight: bold;">ambition</span> of this web
+page is to provide information on the usage of the graphing package.
+<hr>
+<h1>Graph.py: A Quick-Graphing Tool for Python
+</h1>
+<p> by <a href="sutton.html">Richard S. Sutton</a> <br>
+and Steph Schaeffer </p>
+<p><a name="graph"></a>
+This is a tool to enable users of Python to quickly graph lists of
+numbers. For example,
+if <code><i>data</i></code> is a list of numbers, then <code>graph(<i>data</i>)</code>
+will create a window
+with a graph of the numbers, appropriately scaled.&nbsp; Alternatively,
+the
+data can be a list of (x, y) or [x, y] coordinates, e.g., [[x1, y1],
+[x2, y2] ...]. If you
+have several lists to be plotted on the same graph, you just
+make a list of them and graph that.</p>
+<p>Graph is based on the graphics package <a href="g.html">G</a>.&nbsp;
+G and graph both rely on tk; you must have
+tk on your machine, and the Pyhton module Tkinter. You must also be
+running in a windowing environment. Note that you must execute the g
+command <code>gMainloop()</code>
+(to start window event processing) before you will
+actually see the
+window. The window will appear behind your currently running
+application; you may need to move your window and click on the graph
+window to see it properly.
+</p>
+<div align="right">[<a href="graph.py.html">source code</a>]</div>
+Now with <a href="#histograms">histograms</a> as well.
+<hr>
+<h2>Simple Examples</h2>
+<pre>graph([1, 2, 3, 3, 2, 1])                              #Graphs the numbers, as heights<br><br>graph([sin(x/10.0) for x in range(200)])               #Graphs (sin x); see figure below<br><br>graph([[x1, y1], [x2, y2], [x3, y3]])                  #Graphs line by x,y coordinates<br><br>graph([x/100.0, sin(x/100.0)] for x in range(314)])    #Detailed graph of (sin x)<br><br>graph([[sin(x) for x in range(0,20)], \                #Graphs (sin x) and cos(x)<br>       [cos(x) for x in range(0,20)]])                 #as 2 lines on the same graph<br></pre>
+The second example above, for example, produces:
+<p><img src="sin.jpg" alt="sin.jpg" height="217" width="515"></p>
+<h2>Multiple Graphs</h2>
+<a name="multiple graphs"></a>
+<p>All of the above create a new graph window to hold the graph, or
+take over the
+first existing graph window if there is one. If you wish to use
+multiple graphs, you need to give them names in the forms of strings
+that are the titles of the graph's windows. The name-strings are an
+additional argument to graph, as in these examples:
+</p>
+<pre>graph([sin(x) for x in range(20)], None, "Sine")             ; new graph window<br><br>graph(cos(x) for x in range(20)], None, "Cosine")            ; 2nd graph window<br><br>graph(sin(x) for x in frange(0, 3.14, .01)], None, "Sine")   ; replace first sin graph<br></pre>
+<p>
+</p>
+<h2>Controlling Line Colors</h2>
+<a name="Controlling line colors"></a>
+<p>Each line plotted on the graph will normally be a different color,
+chosen by some default way to be different from the other colors.
+If you want a line to be a particular color, you indicate this by a
+second argument to graph, as in:
+</p>
+<pre>graph([sin(x) for x in range(20)], "red")                    ; red sin line<br><br>graphMore([cos(x) for x in range(20), "blue")                ; second blue line on same graph<br></pre>
+Allowed values for the color argument are: "blue",
+"red",
+"green",
+"black",
+"yellow",
+"pink",
+"cyan",
+"purple",
+"magenta",
+"orange",
+"brown",
+"lightBlue",
+"gray",
+"darkGreen",
+"tan",
+"white",
+"lightGray",
+"darkGray". In addition to keywords, one can also use Macintosh color
+codes here, such as those
+produced by the color routines of the <a href="G/g.html">G</a>
+graphics package. When specifying a color,
+a graph name can still be used, as a third argument, as in
+<pre>graphMore([sin(x) for x in range(20)], "red", "My Graph")    ; red sin line<br></pre>
+<p>
+</p>
+<h2>Adding to an Existing Graph</h2>
+<a name="Adding to an Existing Graph"></a>
+<p>You can add a line to an existing graph by using graphMore instead
+of graph, as in the last two examples.
+</p>
+<hr><a name="histograms"></a>
+<h2>Histograms</h2>
+You can make simple histograms of data by calling <tt>histogram(list-of-data)</tt>.
+This produces a graph depicting the distribution of numbers in the data
+list. For example, <tt>histogram([randrange(10) for i in range(100)])</tt>
+produces:
+<p><img src="histogram.jpg" alt="histogram.jpg" height="226" width="479"></p>
+<p>Additional histograms can be added to a graph by calling <tt>histogramMore</tt>.
+Both routines take arguments:
+</p>
+<pre>data       a list of data to make the histogram with<br>numbins    number of bins/intervals to use in the histogram<br>minex      minimum value of data included in the histogram<br>maxex      maximum value - only data strictly less than this will be included<br>color      a color to use for the histogram line, as in graph<br>graph      a string indicating which graph to use, as in graph<br></pre>
+Thus, a more complete call to generate the above graph would be <br>
+<tt>histogram([randrange(10) for i in range(100)], 10, 0, 10, "red",
+"Histogram")</tt>.<br>
+<i>Minex</i> and <i>maxex</i> default to include all the data. <i>Numbins</i>
+defaults to 30 or, in the case of integer data, to the integer span of
+the data, if the span is less than 200.
+<div align="right">[<a href="graph.py.html#histogram">source code</a>]</div>
+<hr>
+<h2>Controlling Graph Limits and Scaling</h2>
+The range of the graph is initially set to just cover the data.
+Alternatively, you can manually set the upper and lower limits of the
+graph's
+data space by calling
+<a name="xGraphLimits"></a>
+<div align="right">[<a href="graph.py.html#xGraphLimits">function</a>]</div>
+<tt><b>xGraphLimits</b>(<i>xmin, xmax,</i> <i>graphTitle</i>)</tt>
+<a name="yGraphLimits"></a>
+<div align="right">[<a href="graph.py.html#yGraphLimits">function</a>]</div>
+<tt><b>yGraphLimits</b>(<i>ymin, ymax,</i> <i>graphTitle</i>)</tt>
+<p>Sets the corresponding axis's limits and thus scales the data.
+If the min or max argument is None, then it is unchanged. If both are
+None, or absent, then the graph returns to automatic scaling. The last
+argument, <i>graphTitle</i>, specifies the graph involved, defaulting
+to the first graph as always.
+</p>
+<p>Of course you can also change the scaling by grabbing the grow box
+of your graph
+and changing the size of the window.
+</p>
+<hr>
+<h2>Controlling Tick Marks</h2>
+By default graphs have tick marks at just the min and max of their x
+and y
+axes. Alternatively, you can manually set them by calling
+<a name="xTickmarks"></a>
+<div align="right">[<a href="graph.py.html#xTickmarks">function</a>]</div>
+<tt><b>xTickmarks</b>(<i>tickmarks, graphTitle</i>)</tt>
+<a name="yTickmarks"></a>
+<div align="right">[<a href="graph.py.html#yTickmarks">function</a>]</div>
+<tt><b>yTickmarks</b>(<i>tickmarks, graphTitle</i>)</tt>
+<p>Tickmarks can either be a list of actual tickmarks desired, or a
+number indicating the distance desired between tickmarks. <i>GraphTitle</i>
+specifies the graph involved, defaulting to the first graph as always.
+</p>
+<p>For example, yTickmarks([0, .5, 1]) puts y-axis tick marks at 0, .5
+and 1. yTickmarks(0.5) put y-axis tick marks on every half. You can get
+even more control by specifying the text labels for the tick marks,
+e.g., by yTickmarks([[0, "0.0"], [.5, "0.5"], [1, "1.0"]]) or <br>
+xTickmarks([[0, 'Up'], [1, 'Right'], [2, 'Down'], [3, Left']]). If no
+tick marks
+are specified, then the axis returns to automated tick-marking (just
+the min and max).
+</p>
+<hr>
+<h2>Adding and Removing Lines of Existing Graphs</h2>
+<a name="graphMore"></a>
+<div align="right">[<a href="graph.py.html#graphMore">function</a>]</div>
+<tt><b>graphMore</b>(<i>data</i>, <i>color</i>, <i>graphTitle</i>)</tt>
+<p>Plots additional lines, showing <i>data</i>, in the color indicated
+(if specified), on the first graph, or the graph indicated
+by <i>graphTitle</i>. The graph is rescaled if necessary to accomodate
+the new data.
+</p>
+<p><a name="graphLess"></a>
+</p>
+<div align="right">[<a href="graph.py.html#graphLess">function</a>]</div>
+<tt><b>graphLess</b>(<i>color</i>, <i>graphTitle</i>)</tt>
+<p>Removes a line of data from the first graph, or the graph indicated
+by <i>graphTitle</i>. The line removed is given by <i>color</i>,
+e.g., "red", etc., as given above.
+</p>
+<p><a name="subtractFromGraph"></a>
+</p>
+<div align="right">[<a href="graph.py.html#subtractFromGraph">function</a>]</div>
+<tt><b>subtractFromGraph</b>(<i>linenumber</i>, <i>graphTitle</i>)</tt>
+<p>Removes a line of data from the first graph, or the graph indicated
+by <i>graphTitle</i>. The line removed is given by linenumber,
+counting from 0, in the order the lines were added to the
+graph. If you remove line 0, all the others are of course renumbered so
+that they start at 0 again.
+</p>
+<hr>
+<h2>Printing, Viewing, Miscellaneous </h2>
+<p>Use command key sequences for your particular platform to grab the
+appropriate portion of the screen and print it or put it in a file for
+later printing. For example, on the Mac, command-shift-4 saves a
+portion of the screen (which you highlight) into a pdf file.<br>
+</p>
+<p>Here are some tricks to ease examination of the contents of a graph.
+First select the graph and then hit the space-bar. The first line of
+the graph is highlighted. The left-right arrow keys move the
+highlighting from one line
+to the other in sequence, so each can be easily picked out from the
+others.
+Hitting the space-bar again turns off highlighting. </p>
+<p>Move the cursor over the
+data space of a selected graph and it turns into a cross-hair. If you
+now
+click, the precise coordinates of the clicked point are printed
+to the shell window.
+<a name="gridGraph"></a></p>
+<p>The function <code><a href="graph.py.html#gridGraph">gridGraph</a></code>
+lays a grid of dotted lines out from each tick
+mark, horizontally and vertically. A first optional argument specifies
+the <em>density</em> of the dots (by default it is 5, meaning every
+fifth pixel is dark).
+A second optional argument specifies the graph in the usual way
+with a <i>graphTitle</i>.
+<a name="chooseGraph"></a></p>
+<p>You can access the default graph window in the same way as the
+graphing routines do internally by calling <code><a
+ href="graph.py.html#chooseGraph">chooseGraph</a>(graphTitle)</code>.
+<a name="nthColor"></a></p>
+<p>The default color of the <i>n</i>th line on a graph is determined
+by the internal function <code><a href="graph.py.html#nthColor">nthColor</a>(n)</code>.
+The current implementation returns the colors blue, red, green, black,
+yellow, pink,
+cyan, purple, magenta, orange, brown, lightBlue, gray, darkGreen, tan,
+white, lightGray, and darkGray,
+in that order starting from 0. You can change this simply by redefining
+<code>nthColor</code>. See the color specification routines in <a
+ href="G/G.html">G</a> for how to specify and construct colors.
+</p>
+<h2>Obtaining and Installing Graph.py</h2>
+Graph.py is built on the <a href="g.html">g</a> graphics language
+which is in turn built on Tkinter (the Python version of tk).
+To install graph, you need to obtain the quickgraph file from the <a
+ href="RLtoolkit1.0.html">RLtoolkit page</a>. This contains g, graph,
+and graph3d. (You will also need the tkinter module that came
+with Python).<br>
+<br>
+Once
+you have the files, here is the normal usage procedure (starting Python
+from within the directory you put graph in):
+<blockquote>
+  <pre>from graph import *<br></pre>
+</blockquote>
+Graph will automatically import G which imports tkinter (make sure that
+you also have g installed).<br>
+<br>
+If you installed <a href="RLAIUtilities.html">quickgraph</a> as a
+Python package, you can run Python from anywhere and import graph with:<br>
+<blockquote>
+  <pre>from quickgraph import *<br></pre>
+</blockquote>
+If you installed the <a href="RLtoolkit.html">RL Toolkit package</a>,
+you can run Python from anywhere and import graph with:<br>
+<blockquote>
+  <pre>from RLtoolkit.graph import *<br></pre>
+</blockquote>
+Note that you must execute the g command <code>gMainloop()</code>
+before your graph
+window will show up.<br>
+&nbsp;
+
+
+
+<!-- Beginning of: /cgi-bin/lastmodified.pl -->
+
+<hr><font size='-1'>
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/extendform.html?previousPage='+path;
+newWindow=window.open(pageName,'','width=630,height=690,resizable=yes,scrollbars=yes');}">
+Extend</a>
+&nbsp;
+<a href="/openpageinfrastructure/howtoauthor.html">How to edit</a>
+&nbsp;
+<a href="/openpageinfrastructure/styleguide.html">Style guide</a>
+&nbsp;
+<a href="javascript:;"; onClick="window.open('/cgi-bin/viewpublishlog.py','simple',config='resizable=yes,scrollbar=yes,width=500,height=200')";>Troubleshooting</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/subscribe.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=320,resizable=yes,scrollbars=yes');}">
+Subscribe</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/notify.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=470,resizable=yes,scrollbars=yes');}">
+Notify</a>
+&nbsp;
+<a href="/openpageinfrastructure/suggestions.html"> Suggestions</a>
+&nbsp;
+<a href="/openpageinfrastructure/help.html"> Help</a>
+<br/>This <a href="/openpageinfrastructure/openpageidea.html">open web page</a> is hosted by the <a href="http://www.rlai.net"> RLAI
+group</a> at the <a href = "http://www.cs.ualberta.ca">University of Alberta</a>.
+&nbsp;
+<a href="/openpageinfrastructure/termsofuse.html">Terms of use</a></font>
+<br>
+<a name="refreshhere"></a><!--Auto content-->
+<!--LastModified1098287055LastModified-->
+
+
+<!-- End of: /cgi-bin/lastmodified.pl -->
+
+</body>
+</html>

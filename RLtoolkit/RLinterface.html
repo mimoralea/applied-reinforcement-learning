@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>RLAI open web page</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <link href="/style.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <style type="text/css">
+<!--
+p {font-family: Verdana, Trebuchet, Arial, Palatino, sans-serif; font-size: 14px}
+code {font-family: Monaco, courier}
+pre {font-family: Monaco, courier}
+sub {font-size: 80%}
+-->
+  </style>
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<table style="width: 100%;" border="0" cellpadding="3" cellspacing="0">
+  <tbody>
+    <tr>
+      <td rowspan="2" bgcolor="#ffffff" valign="top" width="1%"> <a
+ href="http://rlai.cs.ualberta.ca"><img src="/rl-logo.jpg" alt="Home"
+ border="0"></a></td>
+      <td style="vertical-align: top;"><span
+ style="color: rgb(102, 102, 102);">Reinforcement Learning and
+Artificial
+Intelligence (RLAI)</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: bottom;"> <span
+ style="font-family: sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 24px; line-height: normal; font-size-adjust: none;">Reinforcement
+learning interface documentation (python) version 5</span> </td>
+    </tr>
+  </tbody>
+</table>
+<strong><span style="font-weight: normal;"><span
+ style="color: rgb(102, 102, 102);"><br>
+</span></span></strong>The <span style="font-weight: bold;">ambition</span>
+of this web
+page is to fully describe how to use the Python module defining a
+standard reinforcement learning interface. We describe 1) how to
+construct an interface object for a given agent and environment, 2) the
+inputs and outputs of the interface object, and 3) the inputs and
+outputs of the functions (procedures) defining the agent and
+environment. Not convered is the internal workings of the interface
+object or any particular agent and environment.<br>
+<hr>
+<p>The RLI (Reinforcement Learning Interface) module provides a
+standard interface for computational experiments with
+reinforcement-learning agents and environments. The interface is
+designed to facilitate comparison of different agent designs and their
+application to different problems (environments). This documentation
+presents the general ideas of the interface and a few examples of its
+use. After that is the source code for the <code>RLinterface</code>
+class and its three methods (<code>episode</code>, <code>steps</code>,
+and <code>episodes</code>) to answer any remaining questions. </p>
+<p>An <code>RLinterface</code> is a Python object, created by calling <code>RLinterface(agentFunction,
+environmentFunction)</code>. The <code>agentFunction</code> and <code>environmentFunction</code>
+define the agent and environment that will participate in the
+interface. There will be libraries of standard <code>agentFunction</code>'s
+and <code>environmentFunction</code>'s, and of course you can write
+your own. An <code>environmentFunction</code> normally takes an action
+from the <code>agentFunction</code> and produces a sensation and
+reward, while the <code>agentFunction</code> does the reverse: </p>
+<blockquote>
+  <p><code>environmentFunction(action) ==&gt; sensation, reward</code></p>
+  <p><code>agentFunction(sensation, reward) ==&gt; action</code></p>
+</blockquote>
+<p>(An <code>action</code> is defined as anything accepted by <code>environmentFunction</code>
+and a <code>sensation</code> is defined as anything produced by <code>environmentFunction</code>;
+<code>reward</code>s must be numbers.) Together, the <code>agentFunction</code>
+and <code>environmentFunction</code> can be used to generate <em>episodes</em>
+-- sequences of sensations s, actions a, and rewards r: </p>
+<blockquote>
+  <p><code>import RLinterface</code> <br>
+  <code>rli = RLinterface(myAgent, myEnv) </code></p>
+  <p><code>rli.episode(maxSteps) ==&gt;</code><strong><code>&nbsp;</code></strong>s<sub>0</sub>,
+a<sub>0</sub>, r<sub>1</sub>, s<sub>1</sub>, a<sub>1</sub>, r<sub>2</sub>,
+s<sub>2</sub>, a<sub>2</sub>, ..., r<sub>T</sub>, <code>'terminal'</code></p>
+</blockquote>
+<p>where <code>'terminal'</code> is a special sensation recognized by <code>RLinterface</code>
+and <code>agentFunction.</code> (In a continuing problem there would
+be just one never-terminating episode.)</p>
+<p>To produce the initial s<sub>0</sub>, and a<sub>0</sub>, the <code>agentFunction</code>
+and <code>environmentFunction</code> must also support being called
+with fewer arguments:</p>
+<blockquote>
+  <p><code>environmentFunction() ==&gt; sensation</code></p>
+  <p><code>agentFunction(sensation) ==&gt; action</code></p>
+</blockquote>
+<p>When the <code>environmentFunction</code> is called in this way
+(with no arguments) it should start a new episode -- reset the
+environment to a characteristic initial state (or distribution of
+states) and produce just a sensation without a reward. When the <code>agentFunction</code>
+is called in this way (with just one argument) it should not try to
+process a reward on this step and should also initialize itself for the
+beginning of an episode. The <code>agentFunction</code> and <code>environmentFunction</code>
+will always be called in this "reduced" way before being called in the
+"normal" way. </p>
+<p>Episodes can be generated by calling <code>rli.episode(maxNumSteps)</code>
+as above or, alternatively (and necessarily for continuing problems),
+segments of an episode can be generated by calling <code>rli.steps(numSteps)</code>,
+which returns the sequence of experience on the next<code> numSteps</code>
+steps. For example, suppose <code>rli</code> is a freshly made
+RLinterface and we run it for a single step, then for one more step,
+and then for two steps after that: </p>
+<blockquote>
+  <p><code>rli.steps(1) ==&gt; </code> s<sub>0</sub>, a<sub>0</sub></p>
+  <p><code>rli.steps(1) ==&gt; </code>r<sub>1</sub>, s<sub>1</sub>, a<sub>1</sub></p>
+  <p><code>rli.steps(2) ==&gt; </code>r<sub>2</sub>, s<sub>2</sub>, a<sub>2</sub>,
+r<sub>3</sub>, s<sub>3</sub>, a<sub>3</sub></p>
+</blockquote>
+<p>Each call to <code>rli.steps</code> continues the current episode.
+To start a new episode, call <code>rli.episode(1)</code>, which
+returns the same result as the first line above. Note that if <code>rli.steps(numSteps)</code>
+is called on an episodic problem it will run for <code>numsteps</code>
+even if episodes terminate and start along the way. Thus, for example,</p>
+<blockquote>
+  <p><code>rli.episode(1) ==&gt; </code>s<sub>0</sub>, a<sub>0</sub> </p>
+  <p><code>rli.steps(4) ==&gt; </code>r<sub>1</sub>, s<sub>1</sub>, a<sub>1</sub>,
+r<sub>2</sub>, <code>'terminal'</code>, s<sub>0</sub>, a<sub>0</sub>, r<sub>1</sub>,
+s<sub>1</sub>, a<sub>1</sub></p>
+</blockquote>
+<p>The method <code>rli.episode<u>s</u>(numEpisodes,
+maxStepsPerEpisode, maxStepsTotal)</code> is also provided for
+efficiently running multiple episodes.</p>
+<h3>Examples (these need to be reworked) </h3>
+<p>Here we do Q-learning with a random policy, presuming an MDP with N
+states and M actions.</p>
+<pre><dd><br>Q = NxM array of zeros<br>alpha = 0.1<br>gamma =0.9<br><br>def agentFunction(s, r):<br> Q(s,a) = Q(s,a) + alpha * (r + max_a(gamma*Q(sp,ap))<br> return random(M) # better to do epsilon greedy<br><br>state = 0<br><br>def environmentFunction(a):<br> ...<br> return s, 0<br><br>rli = RLinterface(agentFunction, environmentFunction)<br>rli.steps(1000)<br></dd></pre>
+If additional arguments are needed for the routines, use lambda
+expressions:
+<pre><dd><br><br>def agentFunction(agent, s, r):<br> ...<br> return a<br><br>def environmentFunction(environment, a):<br> if a == None:<br> return s0<br> else:<br> ...<br> return s, r<br><br>env = makeEnvironment ...<br>agt = makeAgent ...<br>rli = RLinterface(lambda s, r: agentFunction(agt, s, r), \<br> lambda a: environmentFunction(env, a) )<br>RLI.episodes(10,100000)<br></dd></pre>
+<h3>Calling Sequences for the RLinterface methods</h3>
+<p>
+Here are the details for calling the RLinterface methods introduced
+above:
+</p>
+<p><a name="RLinterface"></a>
+</p>
+<code><b>RLinterface</b></code>(<var>agentFunction,
+environmentFunction</var>)<br>
+<li> This function sets up an interface object, which can then be used
+to run simulated episodes and steps. The two arguments are both
+functions, and are described below.
+  <p><a name="agentFunction"></a> </p>
+  <dl>
+    <code><b>agentFunction</b></code>(<var>s</var> <big>[</big>, <var>r</var><big>]</big>)<br>
+    <dd>This function does the learning and chooses the actions for the
+agent. It will be called with a sensation <var>s</var>, and optionally
+with a reward<var>r</var>. If there is no reward, it indicates that
+this is to be the first move in an episode. The agent function should
+always return an action. For agents which have a specific first move
+for an episode, the code will look something like this:
+      <pre><code><br>def agentFunction(s, r==None):<br> if r == None: # start of episode<br> return a0 # return initial action<br> else: # learn from previous action<br> learn with s and r (and previously saved info)<br> a = choose next action<br> return a # return next action<br></code></pre>
+      <p>Where the first move is chosen the same as other moves, the
+code will
+look like this:<br>
+      </p>
+      <pre><code><br>def agentFunction(s, r==None):<br> if r != None: # learn from previous action<br> learn with s and r (and previously saved info)<br> a = choose next action<br> return a # return next action<br></code></pre>
+    </dd>
+  </dl>
+  <p> <a name="environmentFunction"></a></p>
+  <dl>
+    <code><b>environmentFunction</b></code>(<big>[</big><var>a</var><big>]</big>)<br>
+    <dd>This function does the environment task, such as determining
+the next
+state, or sensation after a move. It may be called with or without an
+action <var>a</var>. If there is no action, it indicates that this is
+the start of a new episode. In this case, the function should only
+return the initial sensation. Otherwise, it should return a new
+sensation and a reward.
+      <pre><code><br>def environmentFunction(a==None):<br> if a == None: # start of episode<br> return s0 # return initial sensation<br> else: <br> s, r = do action a<br> return s, r # return next sensation and reward<br></code></pre>
+      <p>Where the first move is chosen the same as other moves, the
+code will
+look like this:<br>
+      </p>
+      <pre =""><code><br>def agentFunction(s, r==None):<br> if r != None: # do some learning<br> learn with s and r (and previously saved info)<br> choose next move<br> return a<br></code></pre>
+    </dd>
+  </dl>
+</li>
+<p>The object created by <code>RLsimulation</code> has the following
+methods:.
+</p>
+<p> <a name="step"></a></p>
+<code><b>step</b></code>()<br>
+<li>Runs the simulation for exactly one step. Returns the list of
+sensations, actions and rewards from that step.
+</li>
+<p><a name="steps"></a>
+<a name="stepsQ"></a></p>
+<code><b>steps</b></code>(<var>numSteps</var>)<br>
+<code><b>stepsQ</b></code>(<var>numSteps</var>)<br>
+<li>
+Runs the simulation for <var>numSteps</var> steps, regardless of
+episode endings (if any). If <code>steps</code> is used, it will
+return a list of the sensations, actions and rewards in the simulation.
+If this is not wanted, use <code>stepsQ</code> instead (the quicker
+and quieter version). </li>
+<p><a name="episode"></a>
+<a name="episodeQ"></a></p>
+<code><b>episode</b></code>(<big>[</big><var>maxSteps</var><big>]</big>)<br>
+<code><b>episodeQ</b></code>(<big>[</big><var>maxSteps</var><big>]</big>)<br>
+<li>
+Runs a single episode (until state 'terminal' is reached). If <code>episode</code>
+is used, it will return a list of the sensations, actions and rewards
+in the episode. If this is not wanted, use <code>episodeQ</code>
+instead (the quicker and quieter version). If <var>maxSteps</var> is
+specified, the simulation will stop after that many steps even if the
+end of the episode hasn't been reached.
+</li>
+<p><a name="episodes"></a>
+<a name="episodesQ"></a></p>
+<code><b>episodes</b></code>(<var>numEpisodes</var> <big>[</big>,
+<var>maxSteps,
+maxStepsTotal</var><big>]</big>)<br>
+<code><b>episodesQ</b></code>(<var>numEpisodes</var> <big>[</big>, <var>maxSteps,
+maxStepsTotal</var><big>]</big>)<br>
+<li>
+Runs <var>numEpisodes</var> episodes. If <code>episodes</code> is
+used, it will return a list of the sensations, actions and rewards in
+the episodes. If this is not wanted, use <code>episodesQ</code>
+instead (the quicker and quieter version). If <var>maxSteps</var> is
+specified, it indicates the maximum number of steps allowed for each
+episode. If <var>maxStepsTotal</var> is specified, it limits the
+number of steps for all of the episodes together (regardless of whether
+an episode has finished, or the specified number of episodes have run).
+</li>
+<h3>&nbsp;</h3>
+<h3>Source Code for RLinterface Module</h3>
+Source code for the RLinterface module is located <a
+ href="RLinterface.py">here</a>.&nbsp;
+
+
+
+<!-- Beginning of: /cgi-bin/lastmodified.pl -->
+
+<hr><font size='-1'>
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/extendform.html?previousPage='+path;
+newWindow=window.open(pageName,'','width=630,height=690,resizable=yes,scrollbars=yes');}">
+Extend</a>
+&nbsp;
+<a href="/openpageinfrastructure/howtoauthor.html">How to edit</a>
+&nbsp;
+<a href="/openpageinfrastructure/styleguide.html">Style guide</a>
+&nbsp;
+<a href="javascript:;"; onClick="window.open('/cgi-bin/viewpublishlog.py','simple',config='resizable=yes,scrollbar=yes,width=500,height=200')";>Troubleshooting</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/subscribe.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=320,resizable=yes,scrollbars=yes');}">
+Subscribe</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/notify.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=470,resizable=yes,scrollbars=yes');}">
+Notify</a>
+&nbsp;
+<a href="/openpageinfrastructure/suggestions.html"> Suggestions</a>
+&nbsp;
+<a href="/openpageinfrastructure/help.html"> Help</a>
+<br/>This <a href="/openpageinfrastructure/openpageidea.html">open web page</a> is hosted by the <a href="http://www.rlai.net"> RLAI
+group</a> at the <a href = "http://www.cs.ualberta.ca">University of Alberta</a>.
+&nbsp;
+<a href="/openpageinfrastructure/termsofuse.html">Terms of use</a></font>
+<br>
+<a name="refreshhere"></a><!--Auto content-->
+<!--LastModified1098287271LastModified-->
+
+
+<!-- End of: /cgi-bin/lastmodified.pl -->
+
+</body>
+</html>

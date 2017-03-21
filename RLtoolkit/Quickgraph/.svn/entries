@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="1"
+   name=""
+   committed-date="2005-01-27T03:32:29.819237Z"
+   url="http://rlai.cs.ualberta.ca:8080/RLtoolkit/Quickgraph"
+   last-author="root"
+   kind="dir"
+   uuid="bbcd0721-a0ee-0310-933b-e55960500d3f"
+   revision="4"/>
+<entry
+   committed-rev="1"
+   name="graph3d.py"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="7264804bc75c9ead91bb1d6dd42547b9"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="graph.html"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="09d9bd17fdd45aa48885217a28670261"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:33.000000Z"/>
+<entry
+   committed-rev="1"
+   name="__init__.py"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="48a69d799a9f79137e7d4764abe4543f"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:33.000000Z"/>
+<entry
+   committed-rev="1"
+   name="sin.jpg"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="04fd1e11a77d49429ae3d54e6a9734e2"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:33.000000Z"/>
+<entry
+   committed-rev="1"
+   name="graph.py"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="031afc060bcf855de5702e2e11fe7769"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:33.000000Z"/>
+<entry
+   committed-rev="1"
+   name="readme.txt"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="eb24f824ccad785b65ae91e20a2e4b3b"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:33.000000Z"/>
+<entry
+   committed-rev="1"
+   name="graph3d.html"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="e82b9f0a78c0ce0bbad298e956c18c0d"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:33.000000Z"/>
+<entry
+   committed-rev="1"
+   name="histogram.jpg"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="d6d8d155fe7f66ed35b6d0a3a34f6aff"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:33.000000Z"/>
+<entry
+   committed-rev="1"
+   name="g.py"
+   text-time="2005-01-28T19:51:33.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="523dac782c950df635934327c312ae0b"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:33.000000Z"/>
+</wc-entries>

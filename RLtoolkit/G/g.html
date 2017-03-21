@@ -1,0 +1,1939 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>RLAI open web page</title>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=ISO-8859-1">
+  <meta http-equiv="Cache-control" content="no-cache">
+  <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+<table style="width: 100%;" border="0" cellpadding="3" cellspacing="0">
+  <tbody>
+    <tr>
+      <td rowspan="2" bgcolor="#ffffff" valign="top" width="1%"> <a
+ href="http://rlai.cs.ualberta.ca"><img
+ src="http://rlai.cs.ualberta.ca/openpageinfrastructure/rl-logo.jpg"
+ alt="RLAI" border="0"></a></td>
+      <td style="vertical-align: top;"><span
+ style="color: rgb(102, 102, 102);">Reinforcement Learning and
+Artificial
+Intelligence (RLAI)</span><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: bottom;"> <span
+ style="font-family: sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 24px; line-height: normal; font-size-adjust: none;">Reference
+manual for the g graphics system</span><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+The <span style="font-weight: bold;">ambition</span> of this web
+page is to provide information on the usage of the g graphics package.<br>
+<hr>
+<h1>Reference Manual for g.py, <br>
+<font size="+2"> A Python Module for Low-Level Device-Independent
+Graphics <br>
+</font>
+</h1>
+<h3>
+</h3>
+<p> </p>
+<p>by Richard S. Sutton and Steph Schaeffer </p>
+<p> There is a link to the Python source for g at the end of this
+document
+</p>
+<ul>
+  <li><a href="#Introduction">Introduction</a>
+    <ul>
+      <li><a href="#Views">Views</a> </li>
+      <li><a href="#Coordinate%20Systems">Coordinate Systems</a> </li>
+      <li><a href="#Hierarchies%20of%20Views">Hierarchies of Views</a> </li>
+      <li><a href="#G%20and%20the%20Quickdraw%20Window%20System">G and
+the Quickdraw Window System</a> </li>
+      <li><a href="#Naming%20Conventions">Naming Conventions</a> </li>
+      <li><a href="#A%20Complete%20Example%20of%20Using%20G">A Complete
+Example of Using G</a> </li>
+    </ul>
+  </li>
+  <li><a href="#G%20Objects%20and%20Object%20Classes">G Objects and
+Object Classes</a>
+    <ul>
+      <li><a href="#Gview">Gview</a> </li>
+      <li><a href="#Gwindow">Gwindow</a> </li>
+      <li><a href="#Gdevice">Gdevice</a> </li>
+      <li><a href="#GDEVICE">GDEVICE</a> </li>
+      <li><a href="#gGetParent">gGetParent</a> and <a
+ href="#gGetChildren">gGetChildren</a> </li>
+      <li><a href="#gCloseView">gCloseView</a> </li>
+      <li><a href="#gDrawView">gDrawView</a> </li>
+    </ul>
+  </li>
+  <li><a href="#Coordinate%20System%20Routines">Coordinate System
+Routines</a>
+    <ul>
+      <li><a href="#Examining%20the%20Coordinate%20Systems">Examining
+the Coordinate Systems</a>
+        <ul>
+          <li><a href="#gGetCoordinateSystem">gGetCoordinateSystem</a> </li>
+          <li><a href="#gdGetCoordinateSystem">gdGetCoordinateSystem</a>
+          </li>
+          <li><a href="#gGetCoordinateSystemR">gGetCoordinateSystemR</a>
+          </li>
+          <li><a href="#gdGetCoordinateSystemR">gdGetCoordinateSystemR</a>
+          </li>
+          <li><a href="#gGetCSScale">gGetCSScale</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Setting%20the%20Normalized%20Coordinate%20System">Setting
+the Normalized Coordinate System</a>
+        <ul>
+          <li><a href="#gSetCoordinateSystem">gSetCoordinateSystem</a> </li>
+          <li><a href="#gSetCoordinateSystemR">gSetCoordinateSystemR</a>
+          </li>
+          <li><a href="#gSetCSscale">gSetCSscale</a> </li>
+        </ul>
+      </li>
+      <li><a
+ href="#Converting%20Between%20Device%20and%20Normalized%20Coordinates">Converting
+Between Device and Normalized Coordinates</a>
+        <ul>
+          <li><a href="#gCoordx">gCoordx</a> </li>
+          <li><a href="#gCoordy">gCoordy</a> </li>
+          <li><a href="#gdCoordx">gdCoordx</a> </li>
+          <li><a href="#gdCoordy">gdCoordy</a> </li>
+        </ul>
+      </li>
+      <li><a
+ href="#Converting%20Between%20Device%20and%20Normalized%20Offsets">Converting
+Between Device and Normalized Offsets</a>
+        <ul>
+          <li><a href="#gOffsetx">gOffsetx</a> </li>
+          <li><a href="#gOffsety">gOffsety</a> </li>
+          <li><a href="#gdOffsetx">gdOffsetx</a> </li>
+          <li><a href="#gdOffsety">gdOffsety</a> </li>
+        </ul>
+      </li>
+      <li><a
+ href="#Converting%20Between%20the%20Coordinate%20Systems%20of%20Different%20Views">Converting
+Between the Coordinate Systems of Different Views</a>
+        <ul>
+          <li><a href="#gConvertx">gConvertx</a> </li>
+          <li><a href="#gConverty">gConverty</a> </li>
+          <li><a href="#gdConvertx">gdConvertx</a> </li>
+          <li><a href="#gdConverty">gdConverty</a> </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#Viewport%20Routines">Viewport Routines</a>
+    <ul>
+      <li><a href="#Getting%20the%20Viewport">Getting the Viewport</a>
+        <ul>
+          <li><a href="#gGetViewport">gGetViewport</a> </li>
+          <li><a href="#gdGetViewport">gdGetViewport</a> </li>
+          <li><a href="#gGetViewportR">gGetViewportR</a> </li>
+          <li><a href="#gdGetViewportR">gdGetViewportR</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Setting%20the%20Viewport">Setting the Viewport</a>
+        <ul>
+          <li><a href="#gSetViewport">gSetViewport</a> </li>
+          <li><a href="#gdSetViewport">gdSetViewport</a> </li>
+          <li><a href="#gSetViewportR">gSetViewportR</a> </li>
+          <li><a href="#gdSetViewportR">gdSetViewportR</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Hooks%20into%20Viewport%20Setting">Hooks into
+Viewport Setting</a>
+        <ul>
+          <li><a href="#gAcceptNewViewportSize">gAcceptNewViewportSize</a>
+          </li>
+          <li><a href="#FixedScaleWindow">FixedScaleWindow</a> </li>
+          <li><a href="#maintaingViewportsOfChildren">maintaingViewportsOfChildren</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#Color%20Specification%20Routines">Color Specification
+Routines</a>
+    <ul>
+      <li><a href="#Selecting%20Colors%20by%20Name">Selecting Colors by
+Name</a>
+        <ul>
+          <li><a href="#gColorBlack">gColorBlack</a> </li>
+          <li><a href="#gColorWhite">gColorWhite</a> </li>
+          <li><a href="#gColorPink">gColorPink</a> </li>
+          <li><a href="#gColorRed">gColorRed</a> </li>
+          <li><a href="#gColorOrange">gColorOrange</a> </li>
+          <li><a href="#gColorYellow">gColorYellow</a> </li>
+          <li><a href="#gColorGreen">gColorGreen</a> </li>
+          <li><a href="#gColorDarkGreen">gColorDarkGreen</a> </li>
+          <li><a href="#gColorLightBlue">gColorLightBlue</a> </li>
+          <li><a href="#gColorBlue">gColorBlue</a> </li>
+          <li><a href="#gColorPurple">gColorPurple</a> </li>
+          <li><a href="#gColorBrown">gColorBrown</a> </li>
+          <li><a href="#gColorTan">gColorTan</a> </li>
+          <li><a href="#gColorLightGray">gColorLightGray</a> </li>
+          <li><a href="#gColorGray">gColorGray</a> </li>
+          <li><a href="#gColorDarkGray">gColorDarkGray</a> </li>
+          <li><a href="#gColorMagenta">gColorMagenta</a> </li>
+          <li><a href="#gColorCyan">gColorCyan</a> </li>
+          <li><a href="#gColorFlip">gColorFlip</a> </li>
+          <li><a href="#gColorInvisible">gColorInvisible</a> </li>
+          <li><a href="#gColorOn">gColorOn</a> </li>
+          <li><a href="#gColorOff">gColorOff</a> </li>
+        </ul>
+      </li>
+      <li><a href="#gColorUserPick">gColorUserPick</a> </li>
+      <li><a href="#gColorRGB">gColorRGB</a> </li>
+      <li><a href="#gColorRGB255">gColorRGB255</a> </li>
+      <li><a href="#gColorBW">gColorBW</a> </li>
+      <li><a href="#gColorPen">gColorPen</a> </li>
+      <li><a href="#gSetColor">gSetColor</a> </li>
+      <li><a href="#gFont">gFont</a> </li>
+    </ul>
+  </li>
+  <li><a href="#Drawing%20Routines">Drawing Routines</a>
+    <ul>
+      <li><a href="#gClear">gClear</a> </li>
+      <li><a href="#gDelete">gDelete</a> </li>
+      <li><a href="#gMakeVisible">gMakeVisible</a> </li>
+      <li><a href="#Drawing%20Points">Drawing Points</a>
+        <ul>
+          <li><a href="#gDrawPoint">gDrawPoint</a> </li>
+          <li><a href="#gdDrawPoint">gdDrawPoint</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Lines">Drawing Lines</a>
+        <ul>
+          <li><a href="#gDrawLine">gDrawLine</a> </li>
+          <li><a href="#gdDrawLine">gdDrawLine</a> </li>
+          <li><a href="#gDrawLineR">gDrawLineR</a> </li>
+          <li><a href="#gdDrawLineR">gdDrawLineR</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Rectangles">Drawing Rectangles</a>
+        <ul>
+          <li><a href="#gOutlineRect">gOutlineRect</a> </li>
+          <li><a href="#gdOutlineRect">gdOutlineRect</a> </li>
+          <li><a href="#gOutlineRectR">gOutlineRectR</a> </li>
+          <li><a href="#gdOutlineRectR">gdOutlineRectR</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Filled%20Rectangles">Drawing Filled
+Rectangles</a>
+        <ul>
+          <li><a href="#gFillRect">gFillRect</a> </li>
+          <li><a href="#gdFillRect">gdFillRect</a> </li>
+          <li><a href="#gFillRectR">gFillRectR</a> </li>
+          <li><a href="#gdFillRectR">gdFillRectR</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Filled%20Polygons">Drawing Circles</a>
+        <ul>
+          <li><a href="#gFillPolygon">gFillPolygon</a> </li>
+          <li><a href="#gdFillPolygon">gdFillPolygon</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Circles">Drawing Circles</a>
+        <ul>
+          <li><a href="#gDrawCircle">gDrawCircle</a> </li>
+          <li><a href="#gdDrawCircle">gdDrawCircle</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Disks">Drawing Disks</a>
+        <ul>
+          <li><a href="#gDrawDisk">gDrawDisk</a> </li>
+          <li><a href="#gdDrawDisk">gdDrawDisk</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Arcs">Drawing Arcs</a>
+        <ul>
+          <li><a href="#gDrawArc">gDrawArc</a> </li>
+          <li><a href="#gdDrawArc">gdDrawArc</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Text">Drawing Text</a>
+        <ul>
+          <li><a href="#gFont">gFont</a> </li>
+          <li><a href="#gDrawText">gDrawText</a> </li>
+          <li><a href="#gdDrawText">gdDrawText</a> </li>
+          <li><a href="#gDrawTextCentered">gDrawTextCentered</a> </li>
+          <li><a href="#gdDrawTextCentered">gdDrawTextCentered</a> </li>
+        </ul>
+      </li>
+      <li><a
+ href="#Determining%20the%20Size%20in%20Which%20Text%20Will%20be%20Drawn">Determining
+the Size in Which Text Will be Drawn</a>
+        <ul>
+          <li><a href="#gTextHeight">gTextHeight</a> </li>
+          <li><a href="#gdTextHeight">gdTextHeight</a> </li>
+          <li><a href="#gTextWidth">gTextWidth</a> </li>
+          <li><a href="#gdTextWidth">gdTextWidth</a> </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#Event%20Routines">Event Routines</a>
+    <ul>
+      <li><a href="#gClickEventHandler">gClickEventHandler</a> and <a
+ href="#gdClickEventHandler">gdClickEventHandler</a> </li>
+      <li><a href="#gMouseUpEventHandler">gMouseUpEventHandler</a> and <a
+ href="#gdMouseUpEventHandler">gdMouseUpEventHandler</a> </li>
+      <li><a href="#gKeyEventHandler">gKeyEventHandler</a> </li>
+      <li><a href="#gDrawView">gDrawView</a> </li>
+    </ul>
+  </li>
+  <li><a href="#Additional%20Routines%20Built%20on%20G">Additional
+Routines Built on G</a>
+    <ul>
+      <li><a href="#Drawing%20Arrows">Drawing Arrows</a>
+        <ul>
+          <li><a href="#gDrawArrow">gDrawArrow</a> </li>
+          <li><a href="#gdDrawArrow">gdDrawArrow</a> </li>
+          <li><a href="#gDrawArrowR">gDrawArrowR</a> </li>
+          <li><a href="#gdDrawArrowR">gdDrawArrowR</a> </li>
+        </ul>
+      </li>
+      <li><a href="#Drawing%20Arrowheads">Drawing Arrowheads</a>
+        <ul>
+          <li><a href="#gDrawArrowhead">gDrawArrowhead</a> </li>
+          <li><a href="#gdDrawArrowhead">gdDrawArrowhead</a> </li>
+          <li><a href="#gDrawArrowheadR">gDrawArrowheadR</a> </li>
+          <li><a href="#gdDrawArrowheadR">gdDrawArrowheadR</a> </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#Control%20Routines%20Built%20on%20G">Control Routines
+Built on G</a>
+    <ul>
+      <li><a href="#gMainloop">gMainloop</a> </li>
+      <li><a href="#gQuit">gQuit</a> </li>
+      <li><a href="#gAddButton">gAddButton</a> </li>
+      <li><a href="#gDisableButton">gDisableButton</a> </li>
+      <li><a href="#gEnableButton">gEnableButton</a> </li>
+      <li><a href="#gSetTitle">gSetTitle</a> </li>
+      <li><a href="#gSetCursor">gSetCursor</a> </li>
+      <li><a href="#gAddMenu">gAddMenu</a> </li>
+    </ul>
+  </li>
+  <li><a href="#Obtaining%20and%20Installing%20G">Obtaining and
+Installing G</a> </li>
+  <li><a href="#Implementation%20Notes">Implementation Notes</a> </li>
+  <li><a href="#Examples">Examples</a> </li>
+</ul>
+<hr>
+<p><a name="Introduction"></a> </p>
+<h2><a name="_Introduction_a_"> </a> <a name="Introduction">
+Introduction </a> </h2>
+<p>
+</p>
+<p>This document describes G, a python module for low-level,
+interactive
+graphics programming. G provides a standard set of routines for
+graphics programming that is easily
+portable across machines, languages, and graphics devices. The
+design of G is based on Gus, a graphics package designed by
+Andrew Cromarty, Richard Sutton and others at the University
+of Massachusetts in 1981. G is meant to support the
+simultaneous use of multiple graphical devices. In 2004 G was converted
+to Python. This document
+describes the G routines and their use in Python.
+</p>
+<p>G is not intended to be complete nor static. New functionality can
+easily
+be added to it. For example, the current specification does not include
+the
+ability to draw ovals, but it would be easy to add this, and the
+current
+design suggests all the arguments and names for the new routines that
+would
+be needed.
+</p>
+<p><a name="Views"></a> </p>
+<h3><a name="_Views_a_"> </a> <a name="Views"> Views </a> </h3>
+<p>
+</p>
+<p>All graphical operations in G are done in the context of a
+special graphical environment (python object) called a <em>view</em>.
+The view
+specifies the region of the display to draw into, the
+coordinate system for drawing, and a variety of other state
+information pertaining to drawing commands. Typically, a user
+will have several views open at the same time, each supporting
+a different way of drawing onto a device. Windows are a
+special kind of view, and there is one view corresponding to
+the entire surface of the graphics device (e.g., to the whole
+screen). </p>
+<p><img src="windows-and-views.GIF"></p>
+<p>The region of the display corresponding to a view is
+called the view's <em>viewport</em>. G provides a complete set of <a
+ href="#Viewport%20Routines">viewport routines</a> for altering and
+examining viewports.
+</p>
+<p><a name="Coordinate Systems"></a> </p>
+<h3><a name="_Coordinate_Systems_a_"> </a> <a
+ name="Coordinate_Systems"> Coordinate Systems </a> </h3>
+<p>
+</p>
+<p>Views support drawing within their viewports in two
+coordinate systems. The <em>normalized</em> coordinate system
+permits drawing in floatingPoint coordinates within a range
+of <var>x</var> and <var>y</var> coordinates specified by the
+user on a view-by-view basis. Many users will probably operate
+exclusively with normalized coordinates, but those who
+wish greater control and efficiency can use the
+<em>device</em> coordinate system. The device coordinate
+system uses integer coordinates corresponding to the actual
+pixels of the graphics device. Use of the two coordinate
+systems can be freely intermixed, even for the same view.
+</p>
+<p>If one draws over the full range of a view's coordinate system then
+the
+result will also cover the full span of the view's viewport. Attempts
+to
+draw outside the coordinate system will be "clipped" at the viewport
+boundary and will not appear on the display. </p>
+<p>G provides a complete set of <a
+ href="#Coordinate%20System%20Routines">coordinate system routines</a>
+for setting the normalized coordinate system and for examining the
+current status of both the normalized and the device coordinate
+systems.
+</p>
+<p><a name="Hierarchies of Views"></a> </p>
+<h3><a name="_Hierarchies_of_Views_a_"> </a> <a
+ name="Hierarchies_of_Views"> Hierarchies of Views </a> </h3>
+<p>
+</p>
+<p>It is convenient to organize views into hierarchies. The
+viewports of child views are in terms of the coordinate systems
+of the the parent views, and are automatically moved when their
+parent is moved. In the primary example of this, the parent view is a
+window
+and the child views are subregions of the window. It is much easier to
+specify the viewports of the child views with respect to the
+window than, say, with respect to the screen as a whole. When the
+window is moved, the child views naturally move with it.
+</p>
+<p>The viewports of child views are not restricted to lie within the
+viewports of the parent view, but any portion protruding beyond the
+parent view will not be visible on the display (it will be clipped).
+</p>
+<p>In G, there is one hierarchy of views for each display device.
+The root view of each hierarchy is the device itself. </p>
+<center><img src="hierarchy.jpg"></center>
+<p>
+</p>
+<p><a name="G and the Tk Window System"></a> </p>
+<h3><a name="_G_and_the_Tk_Window_System_a_"> </a> <a
+ name="G_and_the_Tk_Window_System"> G and the Tk Window System </a> </h3>
+<p>
+</p>
+<p>G treats the window system in Tk as a display device called <a
+ href="#GDEVICE"><code>GDEVICE</code></a>. This device is the root view
+and the
+windows are the first generation child views. Drawing is not permitted
+directly on the device, but must be through windows. Tk has its
+own object
+classes, which are
+the basis
+for, but distinct from, G object classes <code><href ="#Gview">Gview
+and <code><href ="#Gwindow">Gwindow (see <a
+ href="#G%20class%20relationships">figure</a>).
+</href></code></href></code></p>
+<p>Much of G can be used without learning about its special object
+classes
+and routines for setting up views, but using the standard tk objects
+and routines instead. In this case drawing can only be done in device
+coordinates, but it will still be simpler than using the tk interface. </p>
+<p>Alternatively, G can be used without learning about tk at all, but
+using entirely G routines instead. One can use G routines instead of tk
+routines for most operations on windows.
+</p>
+<p><a name="Naming Conventions"></a> </p>
+<h3><a name="_Naming_Conventions_a_"> </a> <a
+ name="Naming_Conventions"> Naming Conventions </a> </h3>
+<p>
+</p>
+<p>All G routines begin with the prefix "<code>g</code>" or "<code>gd</code>".
+The <code>gd</code> prefix is used for routines that specify
+coordinates in
+device coordinates and the <code>g</code> prefix is used otherwise. A
+suffix
+convention is used for routines that specify two endpoints, such as
+<code>gDrawLine</code>. One version of the routine specifies both
+endpoints
+in absolute coordinates, while another specifies the second endpoint
+relatively, by an offset from the first. The relative version of the
+routine has
+a suffix of "<code>R</code>". For example, the version of
+<code>gDrawLine</code> that specifies the second endpoint relative to
+the
+first is named "<code>gDrawLineR</code>". This convention is used
+throughout G, not just for drawing routines. </p>
+<p>Routines for specifying and constructing colors to be used for
+drawing all
+begin with "<code>gColor</code>". All other G routines are meant to
+read as
+imperative commands, i.e., with a verb and object. For example,
+<code>gSetViewport</code> is the routine directing G to set the
+viewport of
+a specified view, and <code>gDrawCircle</code> is the command
+directing G to
+draw a circle. This may at first seem a little verbose, but it wears
+well. All
+G names are defined in a separate module called "g". All routines that
+work by
+side-effect include the word "<code>set</code>" in their names.
+Wherever the phrase "<code>CoordinateSystem</code>" appears in a
+routine name it can be abbreviated "<code>CS</code>".
+</p>
+<p><a name="A Complete Example of Using G"></a> </p>
+<h3><a name="_A_Complete_Example_of_Using_G_a"> </a> <a
+ name="A_Complete_Example_of_Using_G"> A Complete Example of Using G </a>
+</h3>
+<p>
+In this example a small circle is drawn in the middle of a newly
+created window:
+</p>
+<blockquote>
+  <pre>from g import *<br><var>w</var> = Gwindow()<br><var>black</var> = gColorBlack(<var>w</var>)<br>gDrawCircle(<var>w</var>, .5, .5, .1, <var>black</var>)<br>gMainloop()<br></pre>
+</blockquote>
+<p>
+</p>
+<hr>
+<p><a name="G Objects and Object Classes"></a> <a
+ name="G class relationships"></a></p>
+<h2><a name="_G_Objects_and_Object_Classes_a_"> </a> <a
+ name="G_Objects_and_Object_Classes"> G Objects and Object Classes </a>
+</h2>
+<p>
+</p>
+<p>Here are the major class-subclass relationships in G. This diagram
+is correct conceptually, but the implementation details may not be
+exactly as shown. </p>
+<center><img src="InheritencePython.gif"></center>
+<p>
+</p>
+<p><a name="Gview"></a>
+</p>
+<dl>
+  <code><b>Gview</b></code> <dd>The basic class of all G views.
+Inherits from tk's <code>Canvas</code>
+class. Mix this into new classes to define your own specialized G
+views. </dd>
+</dl>
+<p>
+</p>
+<dl>
+  <code><b>Gview</b></code>(<big>[</big><var>parent</var><big>]</big>) <dd>Return
+a new G view with parent <var>parent</var>, which must be
+an existing window or view. If <var>parent</var> is not provided, then
+it
+defaults to the frontmost Gwindow. If there are no Gwindows, then it
+defaults to the frontmost window of any class, typically the listener
+being
+typed into. Other initargs accepted by tk's <code>Canvas</code> class
+can also
+be provided. </dd>
+</dl>
+<p>
+</p>
+<p><a name="Gwindow"></a>
+</p>
+<dl>
+  <code><b>Gwindow</b></code> <dd>The class of all G windows. Inherits
+from <code>Gview</code>,
+and contains a tk <code>Toplevel</code> element. Mix this into new
+classes to define your own specialized G windows.
+    <p>Windows are a special class of view in that they appear with a
+border around them, including a title-bar at the top. The viewport of a
+window refers to the region inside the border. If you want the border
+to be visible you must leave extra room for it. </p>
+  </dd>
+</dl>
+<p>
+</p>
+<dl>
+  <code><b>Gwindow</b></code>(<big>[</big><var>parent, gViewport,
+gdViewport, gViewportR, gdViewportR</var><big>]</big>) <dd>Return a
+new G window on the device given by parent. If no parent
+is specified
+it defaults to <code><a href="#GDEVICE">GDEVICE</a></code>. If one of
+the
+viewport arguments is provided it is a list of four numbers, <var>(x1
+y1 x2
+y2)</var> or <var>(x y deltax deltay)</var>, specifying the initial
+viewport of
+the new window as if they had been input to one of the <a
+ href="#Setting%20the%0AViewport">viewport setting routines</a>. At
+most one viewport argument
+should be
+provided. Other initargs accepted by tk's <code>Toplevel</code> class
+can also be
+provided. For example:
+    <pre><code>Gwindow(gViewport=(.5,.5,.75,.75), windowTitle="My Window")</code><br>    </pre>
+  </dd>
+</dl>
+<p>
+</p>
+<dl>
+  <code><b>Gwindow</b></code>(<big>[</big><var>parent</var><big>]</big>)
+  <dd> <br>
+  </dd>
+</dl>
+<p>
+<a name="Gdevice"></a></p>
+<dl>
+  <code><b>Gdevice</b></code> <dd>The class of all G graphics devices.
+Inherits from <code>Gview</code>. </dd>
+</dl>
+<p>
+<a name="GDEVICE"></a></p>
+<dl>
+  <code><b>GDEVICE</b></code> <dd>This variable is bound to the root
+view and the graphics device
+corresponding to the main screen, an instance of <code>Gdevice</code>.
+(Drawing is not permitted directly on <code>GDEVICE</code>.) All
+windows
+that have no explicit parent are taken to have <code>GDEVICE</code> as
+their parent. Thus, it is the parent view of all regular tk windows. It
+can be passed into <a href="#Coordinate%20System%20Routines">coordinate
+system
+routines</a> that use normalized coordinates to establish a new
+coordinate
+system for positioning windows on the screen. For example, here is how
+one
+would establish a coordinate system for positioning windows in inches
+from
+the upper left corner of the screen:
+    <pre><code>gSetCSscale(GDEVICE,0,0,'inches,'inches,'upperLeft)</code><br>    </pre>
+    <p>In tk, the viewport of <code>GDEVICE</code> is always the
+entire
+screen, but the first 20 pixels of this are usually obscured by the
+menubar.
+Another 18 pixels are needed for window titles. Thus, if you want to
+make sure
+a window placed to start at 0,0 in normalized coordinates has its
+border and
+title bar within the visible range, you might do: </p>
+    <pre><code>gSetCSscale(GDEVICE,-1/72,-38/72,'inches,'inches,'upperLeft)</code><br>    </pre>
+    <p>Multiple screens? Other devices? Yes, yes, but not yet! </p>
+  </dd>
+</dl>
+<p>
+<a name="gGetParent"></a></p>
+<dl>
+  <code><var>view</var><b>.gGetParent</b></code>() <dd>Return the
+parent of <var>view</var>. </dd>
+</dl>
+<p>
+<a name="gGetChildren"></a></p>
+<dl>
+  <code><var>view</var><b>.gGetChildren</b></code>() <dd>Return a
+tuple of the child views of<var>view</var>. </dd>
+</dl>
+<p>
+<a name="gCloseView"></a></p>
+<dl>
+  <code><var>view</var><b>.gCloseView</b></code>() <dd>When you are
+done using a G view you should close it, causing
+various
+bookkeeping operations to be done. In tk, the view's parent disposes of
+the subview corresponding to the view. If view is a window, it will
+disappear from the screen. </dd>
+</dl>
+<p>
+<a name="Coordinate System Routines"></a></p>
+<h2><a name="_Coordinate_System_Routines_a_"> </a> <a
+ name="Coordinate_System_Routines"> Coordinate System Routines </a> </h2>
+<p>
+</p>
+<p>G provides a complete set of routines for examining the normalized
+and
+device <a href="#Coordinate%20Systems">coordinate systems</a> of a
+view, for
+setting the normalized coordinate system, and for converting back and
+forth
+between device and normalized coordinate systems.
+</p>
+<p>Coordinate systems are specified by two points, together giving the
+extreme <var>x</var> and <var>y</var> coordinates that will appear
+within
+the viewport, plus an indication of the corner of the viewport that
+will be
+occupied by the first point. For example, <code>gSetCoordinateSystem(<var>view</var>,0,0,1,1,'lowerLeft)</code>
+sets the coordinate system for
+<var>view</var> to run from 0,0 in the lowerLeft corner of the viewport
+to
+1,1 in the upper right. The allowed values for the corner, in all
+routines, are
+<code>'lowerLeft, 'upperLeft, 'lowerRight</code>, and
+<code>'upperRight</code>.
+</p>
+<p>The second point that defines a coordinate system can be specified
+either absolutely or relatively (as an offset with respect to the first
+point). In the relative case the routine ends with "<code>R</code>".
+Routines starting with "<code>gd</code>" pertain to (or return
+coordinates
+in) the device coordinate system whereas routines starting with
+"<code>g</code>" pertain to (or return coordinates in) the normalized
+coordinate system. Thus, the routine <code>gSetCoordinateSystemR</code>
+is used to set the normalized coordinate system of a view, specifying
+its
+second corner point relative to the first. In all coordinate system
+routines, the phrase "<code>CoordinateSystem</code>" can be abbreviated
+to
+just "<code>CS</code>".
+</p>
+<p><a name="Examining the Coordinate Systems"></a>
+</p>
+<h3><a name="_Examining_the_Coordinate_System"> </a> <a
+ name="Examining_the_Coordinate_Systems"> Examining the Coordinate
+Systems </a> </h3>
+<p>
+<a name="gGetCoordinateSystem"></a><a name="gdGetCoordinateSystem"></a></p>
+<dl>
+  <code><b>gGetCoordinateSystem</b></code>(<var>view</var>)<br>
+  <code><b>gdGetCoordinateSystem</b></code>(<var>view</var>) <dd>Return
+a tuple of five values, <var>x1, y1, x2, y2, corner</var>,
+describing the
+current normalized or device coordinate system for <var>view</var>.
+The
+coordinate system runs from coordinates <var>x1,y1</var> to <var>x2,y2</var>,
+with coordinates <var>x1,y1</var> occupying the
+corner of
+the viewport indicated by <var>corner</var>, which is one of <code>'lowerLeft,
+'upperRight, 'lowerRight</code>, or <code>'upperLeft</code>. It will
+always be the case that <var>x1
+&lt;
+x2</var> and <var>y1 &lt; y2</var>. <code>gGetCoordinateSystem</code>
+requires that <var>view</var> be a <code>Gview.</code> </dd>
+</dl>
+<p>
+<a name="gGetCoordinateSystemR"></a><a name="gdGetCoordinateSystemR"></a></p>
+<dl>
+  <code><b>gGetCoordinateSystemR</b></code>(<var>view</var>)<br>
+  <code><b>gdGetCoordinateSystemR</b></code>(<var>view</var>) <dd>Return
+a tuple of five values, <var>x, y, xSize, ySize, corner</var>,
+describing
+the current normalized or device coordinate system for <var>view</var>.
+The
+coordinate system runs from coordinates <var>x,y</var> to <var>x+xSize,y+ySize</var>,
+with coordinates <var>x,y</var>
+occupying the
+corner of the viewport indicated by <var>corner</var>, which is one of
+    <code>'lowerLeft, 'upperRight, 'lowerRight</code>, or <code>'upperLeft</code>.
+    <var>xSize</var> and <var>ySize</var>
+will
+always be positive. <code>gGetCoordinateSystemR</code> requires that <var>view</var>
+be a <code>Gview.</code> </dd>
+</dl>
+<p>
+<a name="gGetCSScale"></a></p>
+<dl>
+  <code><b>gGetCSScale</b></code>(<var>view</var>) <dd>Return a tuple
+of five values, <var>x, y, xscale, yscale corner</var>,
+describing the current normalized coordinate system for <var>view</var>.
+The
+coordinate system gives the corner of the viewport indicated by <var>corner</var>
+the coordinates <var>x,y</var> and then
+increases across
+the rest of the view according to the scale arguments <var>xscale</var>
+and <var>yscale</var>. corner is one of <code>'lowerLeft,
+'upperRight,
+'lowerRight</code>, or <code>'upperLeft</code>. The scale parameters
+are
+positive floating point numbers giving the scaling in pixels per unit
+of
+the normalized coordinate system.</dd>
+</dl>
+<p>
+<a name="Setting the Normalized Coordinate System"></a></p>
+<h3><a name="_Setting_the_Normalized_Coordina"> </a> <a
+ name="Setting_the_Normalized_Coordinat"> Setting the Normalized
+Coordinate System </a> </h3>
+<p>
+<a name="gSetCoordinateSystem"></a></p>
+<dl>
+  <code><b>gSetCoordinateSystem</b></code>(<var>view, x1, y1, x2, y2,
+corner</var>) <dd>Set the
+normalized coordinate system for <var>view</var> to run from
+coordinates <var>x1,y1</var> to coordinates <var>x2,y2</var>, with
+the point <var>x1,y1</var> occupying the corner of the viewport
+indicated by <var>corner</var>, which should be one of <code>'lowerLeft,
+'upperRight,
+'lowerRight</code>, or <code>'upperLeft</code>. In subsequent calls to
+    <code>g</code> drawing routines using <var>view</var>, the
+normalization will
+be performed such that objects drawn to fill the these new coordinates
+will
+fill the viewport of the view. (<code>gd</code> coordinate
+specification
+is not affected.)
+    <p>The initial normalized coordinate system for each view is from
+0,0 in the
+lowerLeft corner to 1,1 in the upper right. This could be restored at
+any time
+by <code>gSetCoordinateSystem(view,0,0,1,1,'lowerLeft)</code>. </p>
+  </dd>
+</dl>
+<p>
+<a name="gSetCoordinateSystemR"></a></p>
+<dl>
+  <code><b>gSetCoordinateSystemR</b></code>(<var>view, x, y, deltax,
+deltay, corner</var>) <dd>Set the normalized coordinate system for <var>view</var>
+to run
+from
+coordinates <var>x,y</var> to coordinates <var>x+deltax,y+deltay</var>,
+with the point <var>x,y</var> occupying the corner of the viewport
+indicated by <var>corner</var>, which should be one of <code>'lowerLeft,
+'upperRight, 'lowerRight</code>, or <code>'upperLeft</code>.
+Otherwise,
+the efect of this routine is the same as discussed above for <code>gSetCoordinateSystem</code>.
+  </dd>
+</dl>
+<p>
+<a name="gSetCSscale"></a></p>
+<dl>
+  <code><b>gSetCSscale</b></code>(<var>view, x, y, xscale, yscale,
+corner</var>) <dd>Set the normalized coordinate system of <var>view</var>
+to have
+coordinates <var>x,y</var> in the corner of the viewport indicated by <var>corner</var>,
+and then increase across the the rest of the
+view
+according to the scale arguments <var>xscale</var> and <var>yscale</var>.
+    <var>corner</var> should be one of should be
+one of <code>'lowerLeft, 'upperRight, 'lowerRight</code>, or <code>'upperLeft</code>.
+The scale parameters should be one of <code>'inches, 'centimeters,
+'pixels, 'points</code>, or a positive
+number indicating pixels per unit of the normalized coordinate system.
+    <p>See <a href="#GDEVICE">GDEVICE</a> for an
+example of how to set use <code>gSetCSscale</code> to set the
+normalized
+coordinate system such that windows can henceforth be positioned in
+inches
+from the upper left corner of the screen.</p>
+  </dd>
+</dl>
+<p>
+<a name="Converting Between Device and Normalized Coordinates"></a></p>
+<h3><a name="_Converting_Between_Device_and_N"> </a> <a
+ name="Converting_Between_Device_and_No"> Converting Between Device and
+Normalized Coordinates </a> </h3>
+<p>
+<a name="gCoordx"></a><a name="gCoordy"></a> </p>
+<dl>
+  <code><b>gCoordx</b></code>(<var>view, dx</var>)<br>
+  <code><b>gCoordy</b></code>(<var>view, dx</var>) <dd>Return the
+normalized coordinate corresponding to the provided
+device
+coordinate, with respect to <var>view</var>.</dd>
+</dl>
+<p>
+<a name="gdCoordx"></a> <a name="gdCoordy"></a> </p>
+<dl>
+  <code><b>gdCoordx</b></code>(<var>view, dx</var>)<br>
+  <code><b>gdCoordy</b></code>(<var>view, dx</var>) <dd>Return the
+device coordinate corresponding to the provided
+normalized
+coordinate, with respect to <var>view</var>. </dd>
+</dl>
+<p>
+<a name="Converting Between Device and Normalized Offsets"></a></p>
+<h3><a name="_Converting_Between_Device_and_N"> </a> <a
+ name="Converting_Between_Device_and_No"> Converting Between Device and
+Normalized Offsets </a> </h3>
+<p>
+<a name="gOffsetx"></a> <a name="gOffsety"></a> </p>
+<dl>
+  <code><b>gOffsetx</b></code>(<var>view, dxOffset</var>)<br>
+  <code><b>gOffsety</b></code>(<var>view, dyOffset</var>) <dd>Convert
+an offset (distance) in device coordinates to the same
+offset in normalized coordinates, with respect to <var>view</var>.
+Note that
+although the arguments are scaled in pixels, they may be reals to
+prevent
+round off error. </dd>
+</dl>
+<p>
+<a name="gdOffsetx"></a> <a name="gdOffsety"></a> </p>
+<dl>
+  <code><b>gOffsetx</b></code>(<var>view, dxOffset</var>)<br>
+  <code><b>gOffsety</b></code>(<var>view, dyOffset</var>) <dd>Convert
+an offset (distance) in normalized coordinates to the
+same
+offset in device coordinates, with respect to <var>view</var>. Note
+that
+although the returned values are scaled in pixels, they will be reals
+to
+prevent round off error. </dd>
+</dl>
+<p>
+<a name="Converting Between the Coordinate Systems of Different Views"></a></p>
+<h3><a name="_Converting_Between_the_Coordina"> </a> <a
+ name="Converting_Between_the_Coordinat"> Converting Between the
+Coordinate Systems of Different Views </a> </h3>
+<p>
+<a name="gConvertx"></a></p>
+<dl>
+  <code><b>gConvertx</b></code>(<var>fromView, toView, x</var>)<br>
+  <code><b>gConverty</b></code>(<var>fromView, toView, y</var>)<br>
+  <code><b>gdConvertx</b></code>(<var>fromView, toView, x</var>)<br>
+  <code><b>gdConverty</b></code>(<var>fromView, toView, y</var>) <dd>Given
+an <var>x</var> or <var>y</var> coordinate in the
+coordinate system of <var>fromView</var>, these routines return the
+corresponding coordinate in the coordinate system of <var>toView</var>.
+  </dd>
+</dl>
+<p>
+<a name="Viewport Routines"></a></p>
+<h2><a name="_Viewport_Routines_a_"> </a> <a name="Viewport_Routines">
+Viewport Routines </a> </h2>
+<p>
+</p>
+<p>G provides routines for setting and examining the viewport of each
+view in both normalized and device coordinates. A view's viewport is
+always given in terms of a coordinate system of the <em>parent</em> of
+the view. </p>
+<p>Changing the viewport affects subsequent drawing operations. In
+subsequent drawing, clipping will be to the new viewport (or rather to
+the
+portion of it which is viewable and within the parent view's viewport).
+In
+addition, in subsequent calls to <code>"g"</code> graphics routines,
+normalization of the coordinates will also be to the new viewport.
+Thus, a
+program that normally fills the entire parent view can be made to use
+just
+a portion of it merely by resetting the viewport (provided it uses
+entirely
+normalized coordinates). For example, if the parent has the default
+coordinate system (running from 0 to 1 in both dimensions), then one
+can
+use just the upper right quandrant of it by calling <code>gSetViewport(<var>view</var>,.5,.5,1,1)</code>.
+</p>
+<p>Changing the viewport normally does not change the coordinate
+systems in
+any way. However, it is possible to trigger arbitrary used code
+whenever
+the viewport is changed. See the section on <a
+ href="#Hooks%20into%0AViewport%0ASetting">Hooks into Viewport Setting</a>.
+</p>
+<p>I'd prefer that changing the viewport did not change the display in
+any
+way. However, in the current implementation, using tk views, this does
+not seem to be possible. Whenever the viewport is changed, any regions
+uncovered or newly covered will be erased, and then have <code><a
+ href="#gDrawView">gDrawView</a></code>() called on them).
+</p>
+<p><a name="Getting the Viewport"></a>
+</p>
+<h3><a name="_Getting_the_Viewport_a_"> </a> <a
+ name="Getting_the_Viewport"> Getting the Viewport </a> </h3>
+<p>
+<a name="gGetViewport"></a><a name="gdGetViewport"></a></p>
+<dl>
+  <code><b>gGetViewport</b></code>(<var>view</var>)<br>
+  <code><b>gdGetViewport</b></code>(<var>view</var>) <dd>Return a
+tuple of four values, <var>x1, y1, x2, y2</var>,
+indicating the current
+viewport in device coordinates or normalized coordinates, in the
+coordinate
+system of the parent of <var>view</var>. It will always be the case
+that <var>x1 &lt; x2</var> and <var>y1 &lt; y2</var>. <code>gGetViewport</code>
+requires that the parent of <var>view</var>
+be
+a <code><a href="#Gview">Gview</a></code>. </dd>
+</dl>
+<p>
+<a name="gGetViewportR"></a><a name="gdGetViewportR"></a></p>
+<dl>
+  <code><b>gGetViewportR</b></code>(<var>view</var>)<br>
+  <code><b>gdGetViewportR</b></code>(<var>view</var>) <dd>Return a
+tuple of four values, <var>x y xSize ySize</var>,
+indicating the current
+viewport in device coordinates or normalized coordinates, in the
+coordinate
+system of the parent of <var>view</var>. <var>x</var> and <var>y</var>
+are
+the position of the corner of the viewport that has smallest
+coordinates,
+and <var>xSize</var> and <var>ySize</var> are the size of the
+viewport. <code>gGetViewportR</code> requires that the parent of <var>view</var>
+be a <code><a href="#Gview">Gview</a></code>. </dd>
+</dl>
+<p>
+<a name="Setting the Viewport"></a></p>
+<h3><a name="_Setting_the_Viewport_a_"> </a> <a
+ name="Setting_the_Viewport"> Setting the Viewport </a> </h3>
+<p>
+<a name="gSetViewport"></a><a name="gdSetViewport"></a></p>
+<dl>
+  <code><b>gSetViewport</b></code>(<var>view, x1, y1, x2, y2</var>)<br>
+  <code><b>gdSetViewport</b></code>(<var>view, x1, y1, x2, y2</var>) <dd>Set
+the viewport for <var>view</var> to the rectangular portion
+of the display
+including the pixels <var>x1,y1</var> and <var>x2,y2</var>, in the
+normalized or
+device coordinates of the parent of <var>view</var>. <code>gSetViewport</code>
+requires that the parent of <var>view</var> be a <code><a
+ href="#Gview">Gview</a></code>.
+    <p>The default viewport after initialization of a view is the full
+display
+surface of the parent. </p>
+  </dd>
+</dl>
+<p>
+<a name="gSetViewportR"></a><a name="gdSetViewportR"></a></p>
+<dl>
+  <code><b>gSetViewportR</b></code>(<var>view, x, y, deltax, deltay</var>)<br>
+  <code><b>gdSetViewportR</b></code>(<var>view, x, y, deltax, deltay</var>)
+  <dd>
+    <p>Set the viewport for <var>view</var> to the rectangular portion
+of the
+display including the pixels <var>x,y</var> and <var>x+deltax,y+deltay</var>,
+in
+the normalized or device coordinates of the parent of <var>view</var>.
+If any
+of the last four arguments are nil (or not provided) then they default
+to
+their values for the current viewport. <code>gSetViewportR</code>
+requires that the parent of <var>view</var> be a <code><a
+ href="#Gview">Gview</a></code>. </p>
+  </dd>
+</dl>
+<p>
+</p>
+<p><!-- &gt;p>&amp;hr&
+<a name="gWithinViewportP"></a>
+<div align=right>[<a href="g.lisp.html#gWithinViewportP">function</a>]</div>
+<code><b>gWithinViewportP</b></code>(<var>view, x, y</var></code>
+<p />
+<a name="gdWithinViewportP"></a>
+<div align=right>[<a href="g.lisp.html#gdWithinViewportP">function</a>]</div>
+<code><b>gdWithinViewportP</b></code>(<var>view dx dy</var></code>
+<p />
+<p>Return <code>t</code> if the pixel (in coordinates of <var>view</var>) is
+inside the viewport of <var>view</var>, otherwise <code>nil</code>. -->
+</p>
+<p><a name="Hooks into Viewport Setting"></a> </p>
+<h3><a name="_Hooks_into_Viewport_Setting_a_"> </a> <a
+ name="Hooks_into_Viewport_Setting"> Hooks into Viewport Setting </a> </h3>
+<p>
+In many applications, viewports can be changed interactively by users,
+e.g.,
+when they resize or move a window using the mouse. When this is done,
+user code may need to be run to adjust coordinate systems or to redraw
+objects. To assist with this sort of programming, G provides hooks into
+the viewport setting system. The following routines are called whenever
+the viewport is changed, either interactively by mousing or by user
+code.
+</p>
+<p><a name="gAcceptNewViewportSize"></a>
+<a name="FixedScaleWindow"></a></p>
+<dl>
+  <code><b>gAcceptNewViewportSize</b></code>(<var>view</var>) <dd>This
+method is called whenever the viewport of <var>view</var>
+is
+changed in size. The default method does nothing. Users may want to
+write
+specialized methods for specialized view or window classes in order to
+make
+automatic adjustments whenever the viewport size is changed. For
+example,
+instead of having the normalized coordinate system expanding to fill a
+larger viewport, one may prefer the coordinate system to grow
+proportionately, to reveal more of the data space. This and other
+affects
+can be easily achieved by resetting the coordinate system each time the
+viewport is changed, e.g., by calls to <code>gSetCSscale</code>. For
+example, the effect just described can be accomplished as follows:
+    <pre><code><br>   class FixedScaleWindow (Gwindow):<br>   <br>      def gAcceptNewViewportSize(self):<br>         gSetCSscale(window,0,0,'inches,'inches,'upperLeft)<br>         Gwindow.gAcceptNewViewportSize(self)</code><br>    </pre>
+    <p>Now window classes with <code>FixedScaleWindow</code> mixed in
+will behave as desired. </p>
+  </dd>
+</dl>
+<p>
+<a name="maintaingViewportsOfChildren"></a></p>
+<p>Consider another example of the use of
+<code>gAcceptNewViewportSize</code>. Suppose you want the sizes and
+positions of child views within a window to be relative to the viewport
+of
+the window. The natural way to do this is to set up a normalized
+coordinate
+system for the window and place the child views within the window using
+that coordinate system. However, ordinarily all this would get messed
+up
+if the window's viewport were changed, because the viewports of the
+child
+views would not be readjusted The following code defines a mixin that
+causes the child views to all be automatically changed as well:
+</p>
+<pre><code><br>   class maintaingViewportsOfChildren (Gview):<br><br>      def gAcceptNewViewportSize(self):<br>         children = gGetChildren(view)<br>         gViewports = []<br>         for child in children:<br>            gViewports.append(gGetViewport(child))<br>         Gview.gAcceptNewViewportSize(self)<br>         for child, gViewport in zip(children, gViewports):<br>            x1, y1, x2, y2 = gViewport<br>            gSetViewport(child, x1, y1, x2, y2)<br></code></pre>
+<p>
+</p>
+<p>Views of this class, or with this class mixed in, will, whenever
+their viewports are changed, automatically change the viewports of
+their child views to maintain their positions and sizes in the
+normalized coordinates of this view. Thus, whenever a view is changed
+in size, all the child views will be changed proportionately.
+</p>
+<p><a name="gAcceptNewViewportPosition"></a> </p>
+<dl>
+  <code><b>gAcceptNewViewportPosition</b></code>(<var>view</var>) <dd>Similar
+to the above, this method is called whenever the viewport
+of <var>view</var> is
+changed in position (i.e. moved). </dd>
+</dl>
+<p>
+</p>
+<p><a name="Color Specification Routines"></a> </p>
+<h2><a name="_Color_Specification_Routines_a_"> </a> <a
+ name="Color_Specification_Routines"> Color Specification Routines </a>
+</h2>
+<p>
+</p>
+<p>G provides several routines for specifying colors, all
+beginning with "<code>gColor</code>". Each returns a
+<i>colorCode</i> to be used in drawing routines. <span
+ style="background: rgb(255, 255, 206) none repeat scroll 0% 50%; -moz-background-clip: initial; -moz-background-origin: initial; -moz-background-inline-policy: initial;"><font
+ color="#0000ff">ColorCodes</font></span>(as set by <a
+ href="#gColorPen">gColorPen</a>)
+may be specific to the window, and thus a view must be
+specified whenever constructing a colorCode. Normally,
+colorCodes are constructed infrequently and then used over
+and over, but it is also possible to construct a new
+colorCode each time anything is drawn.
+</p>
+<p>If the device does not support the requested color -- for example,
+if you ask for a blue color when using a grayscale screen -- then you
+will get some approximation to the requested color.
+</p>
+<p>In G, one can also set the characteristics of the "pen" as part of
+the colorCode.
+The pen specifies various characteristics of tk drawing, which
+underlies G. These characteristics can be set by the G routine <a
+ href="#gColorPen">gColorPen</a>, but these effects are entirely device
+specific.
+</p>
+<p>ColorCodes should not be altered by the user in anyway. The
+implementation may rely on this.
+</p>
+<p><a name="Selecting Colors by Name"></a>
+</p>
+<dl>
+  <code><b><a name="gColorBlack">gColorBlack</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorWhite">gColorWhite</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorPink">gColorPink</a></b> </code><var>view</var>)<br>
+  <code><b><a name="gColorRed">gColorRed</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorOrange">gColorOrange</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorYellow">gColorYellow</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorGreen">gColorGreen</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorDarkGreen">gColorDarkGreen</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorLightBlue">gColorLightBlue</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorBlue">gColorBlue</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorPurple">gColorPurple</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorBrown">gColorBrown</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorTan">gColorTan</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorLightGray">gColorLightGray</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorGray">gColorGray</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorDarkGray">gColorDarkGray</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorMagenta">gColorMagenta</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorCyan">gColorCyan</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorFlip">gColorFlip</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorInvisible">gColorInvisible</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorOn">gColorOn</a></b></code>(<var>view</var>)<br>
+  <code><b><a name="gColorOff">gColorOff</a></b></code>(<var>view</var>)<br>
+  <dd>All these functions return a color code for <var>view </var>
+according to the last part of their name. The name "flip"
+refers to a color that reversibly inverts the color currently on the
+screen. The color "invisible" draws but does not affect the color of
+any pixels on the screen. (These and other possibilities can also be
+constructed via the use of the specific routine <code><a
+ href="#gColorPen">gColorPen</a></code>.) <a name="off
+color"></a> The
+names <code>off</code> and <code>on</code>
+have special meaning in conjunction with the <code><a href="#gClear">gClear</a></code>
+drawing command. <code>gClear</code>
+sets the entire display to the <code>off</code> color, which may be
+different for different
+devices. In general, <code>on</code> is the normal drawing
+color for a device, and <code>off</code> is its opposite, or
+erasing color.
+    <p>Currently <code>on</code> is the same as <code>'black</code>
+and <code>off</code> is the same as <code>'white</code>. </p>
+  </dd>
+</dl>
+<p>
+For quick and dirty color use, we also provide the following symbols,
+internal to the G package:
+</p>
+<p><code><b>gBlack</b></code><br>
+<code><b>gWhite</b></code><br>
+<code><b>gPink</b></code><br>
+<code><b>gRed</b></code><br>
+<code><b>gOrange</b></code><br>
+<code><b>gYellow</b></code><br>
+<code><b>gGreen</b></code><br>
+<code><b>gDarkGreen</b></code><br>
+<code><b>gLightBlue</b></code><br>
+<code><b>gBlue</b></code><br>
+<code><b>gPurple</b></code><br>
+<code><b>gBrown</b></code><br>
+<code><b>gTan</b></code><br>
+<code><b>gLightGray</b></code><br>
+<code><b>gGray</b></code><br>
+<code><b>gDarkGray</b></code><br>
+<code><b>gMagenta</b></code><br>
+<code><b>gCyan</b></code><br>
+<code><b>gFlip</b></code><br>
+<code><b>gInvisible</b></code><br>
+<code><b>gOn</b></code><br>
+<code><b>gOff</b></code><br>
+</p>
+<p><a name="gColorUserPick"></a>
+</p>
+<dl>
+  <code><b>gColorUserPick</b></code>(<var>view</var><big>[</big>, <var>*args</var><big>]</big>)
+  <dd>Allows the user to pick the desired color using the standard
+interactive Macintosh color picker. <var>args</var> can be used to set
+the initial color and other aspects of the color picker. Note: when
+this is invoked, you will notice a Python item flashing in your dock.
+You must click on it to get the color picker to display. We are still
+working on resolving this. </dd>
+</dl>
+<p>
+<a name="gColorRGB"></a></p>
+<dl>
+  <code><b>gColorRGB</b></code>(<var>view, red, green, blue</var>) <dd>Return
+a colorCode for <var>view</var> corresponding to the
+specified <var>red, green</var>, and <var>blue</var> color
+components, which
+range from 0 for minimum intensity to 1 for maximum intensity. </dd>
+</dl>
+<p>
+<a name="gColorRGB255"></a></p>
+<dl>
+  <code><b>gColorRGB255</b></code>(<var>view, red, green, blue</var>) <dd>Return
+a colorCode for <var>view</var> corresponding to the
+specified red,
+green, and blue color components, which range from 0 for minimum
+intensity
+to 255 for maximum intensity. </dd>
+</dl>
+<p>
+<a name="gColorBW"></a></p>
+<dl>
+  <code><b>gColorBW</b></code>(<var>view, intensity</var>) <dd> Return
+a colorCode for <var>view</var> for the color specified
+according
+to its <var>intensity</var> along a continuum from the <code>off</code>
+color
+at <var>intensity</var>=0 to the <code>on</code> color at <var>intensity</var>=1.0.
+See above for definitions of <code>on</code> and <code>off</code>
+colors. </dd>
+</dl>
+<p>
+<a name="gColorPen"></a></p>
+<dl>
+  <code><b>gColorPen</b></code>(<var>view, colorCode, pattern, mode,
+xSize</var><big>[</big>, <var>ySize</var><big>]</big>) <dd>Return a
+new colorCode for <var>view</var> that is like <var>colorCode</var>
+except that it has pen characteristics as
+specified by the remaining arguments. <var>colorCode</var> may be a
+simple color name (string) or object returned by <code><a
+ href="#gColorUserPick">gColorUserPick</a>, <a href="#gColorRGB">gColorRGB</a>,
+    <a href="#gColorRGB255">gColorRGB255</a></code>, or it may be a
+colorCode object returned by <code>gColorPen</code>.
+    <p>The <var>pattern</var> is an 8 by 8 bit pattern that acts like
+the ink of the pen. Currently G is not using the <var>pattern</var>,
+so all items are drawn as "solid" objects, and there are no dithering
+effects. </p>
+    <p>The <var>mode</var> determines the interaction between the
+pixels being drawn (from <var>pattern</var>) and the pixels already on
+the display. For example, the drawn pixels could replace them, OR with
+them, XOR with them, etc. Currently the <var>mode</var> is not being
+used either, so all pixels replace, or paint over the existing ones. </p>
+    <p>The last two arguments to <code>gColorPen</code> make the
+pen <var>xSize</var> pixels wide and <var>ySize</var> pixels
+tall. This causes lines and other graphical objects drawn with
+the new color to appear with the new thickness. When the pen
+size is greater than one, the extra pixels are drawn below and
+to the right of the usual pixels. Only the <var>xSize</var> is being
+used. </p>
+  </dd>
+</dl>
+<p>
+<a name="gSetColor"></a></p>
+<dl>
+  <code><b>gSetColor</b></code>(<var>view, colorcode</var>) <dd>Sets
+the color information to use when drawing on <var>view</var>
+to <var>colorcode</var>. The <var>colorcode</var> should be either a
+simple color, or the object returned by gColorPen. </dd>
+</dl>
+<p>
+<a name="gFont"></a></p>
+<dl>
+  <code><b>gFont</b></code>(<var>view, fontname, fontsize, fontface</var>)
+  <dd>Returns a font object to use when drawing text. The <var>fontname</var>
+should be a string of the font name (e.g. <code>"Geneva"</code>), <var>fontsize</var>
+should be an integer size (e.g. <code>11</code>), and <var>fontface</var>
+should be a string describing the face desired (e.g. <code>"normal",
+"bold", "italic", "bold italic"</code>). </dd>
+</dl>
+<p>
+<a name="Drawing Routines"></a> </p>
+<h2><a name="_Drawing_Routines_a_"> </a> <a name="Drawing_Routines">
+Drawing Routines </a> </h2>
+<p>
+</p>
+<p> The drawing routines are those G routines that perform a display
+(or output-buffering) function.
+</p>
+<p>Most drawing routines come in two forms, one prefaced by
+"<code>g</code>", and the other by "<code>gd</code>". These two forms
+differ only in the method used to specify spatial coordinates on the
+display surface. The <code>g</code> routines use normalized
+realValued coordinates. Many users will probably use exclusively
+<code>g</code> routines, but for those who wish to have greater
+control at the pixel level, the <code>gd</code> routines operate in
+device-dependent integer coordinates corresponding to pixels of the
+display. Most calls to <code>g</code> routines get quickly
+translated into calls to <code>gd</code> routines within G. The use
+of these two kinds of routines can be freely intermixed.
+</p>
+<p>A suffix convention is used for routines that specify two endpoints,
+such as
+<code>gDrawLine</code>. One version of the routine specifies both
+endpoints
+in absolute coordinates, while another specifies the second endpoint
+relatively, by an offset from the first. The relative version of the
+routine has
+a suffix of "<code>R</code>". For example, the version of
+<code>gDrawLine</code> that specifies the second endpoint relative to
+the
+first is named "<code>gDrawLineR</code>". </p>
+<p>Here are some examples of drawing in device coordinates:
+</p>
+<center><img src="line-and-rect.GIF"></center>
+<p>
+</p>
+<p>The arguments of all the drawing routines are patterned as follows.
+The first argument is the view within which drawing takes place. The
+following arguments typically specify the <var>x</var> and
+<var>y</var> coordinates of the drawing operation. For <code>g</code>
+routines these are in normalized coordinates. For <code>gd</code>
+routines, these are in pixel coordinates, and in tk they must be
+integers. The final argument is an optional colorCode. (Color codes
+are constructed by the <a href="#Color%20Specification%20Routines">color
+specification routines</a>.) If a color is not provided (or nil), then
+the color used is the same as the last color used with the window
+associated with the view. To establish a current color for drawing
+without calling an actual drawing routine, use <code><a
+ href="#gSetColor">gSetColor</a></code>.
+</p>
+<p>Not all of tk's abilities are currently available via G routines.
+Additional routines should be added, patterned after these, as the need
+for their additional abilities arise.
+</p>
+<p><a name="gClear"></a> </p>
+<dl>
+  <code><b>gClear</b></code>(<var>view</var> <big>[</big>, <var>color</var><big>]</big>)
+  <dd>Clear the viewport by filling it with <var>color</var>, or with
+the <code><a href="#off%20color">off</a></code><a href="#off%20color">
+color</a> if <var>color</var> is not provided. Under normal
+circumstances, a
+display is initialized to the <code>off</code> color, but G itself
+performs no initialization of display. </dd>
+</dl>
+<p>
+<a name="gDelete"></a></p>
+<dl>
+  <code><b>gDelete</b></code>(<var>view, object</var>) <dd>Deletes the
+drawn object <var>object</var> from <var>view</var>.
+If <var>object</var> is a list, or a list of lists, it is traversed to
+the individual items and they are all deleted. The objects are obtained
+as the results of the drawing routines. If you save the results of
+those calls, you can delete the items drawn easily. </dd>
+</dl>
+<p>
+<a name="gMakeVisible"></a></p>
+<dl>
+  <code><b>gMakeVisible</b></code>(<var>view</var>) <dd>Make the
+effects of all previously called graphics routines
+visible in
+the display for the device associated with <var>view</var>. </dd>
+</dl>
+<p>
+<a name="Drawing Points"></a><a name="gDrawPoint"></a></p>
+<dl>
+  <code><b>gDrawPoint</b></code>(<var>view, x, y</var> <big>[</big>, <var>color</var><big>]</big>)
+  <dd>Colors the pixel <var>x,y</var> on <var>view</var>. Returns a
+pointer
+to this point. </dd>
+</dl>
+<p>
+<a name="Drawing Lines"></a><a name="gDrawLine"></a><a name="gdDrawLine"></a></p>
+<dl>
+  <code><b>gDrawLine</b></code>(<var>view, x1, y1, x2, y2</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawLine</b></code>(<var>view, x1, y1, x2, y2</var> <big>[</big>,
+  <var>color</var><big>]</big>) <dd>Draw the line segment between and
+including the pixels <var>x1,y1</var>
+and <var>x2</var>,<var>y2</var>. Returns a pointer to the line
+segment. </dd>
+</dl>
+<p>
+<a name="gDrawLineR"></a></p>
+<dl>
+  <code><b>gDrawLineR</b></code>(<var>view, x, y, deltax, deltay</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawLineR</b></code>(<var>view, x, y, deltax, deltay</var>
+  <big>[</big>, <var>color</var><big>]</big>) <dd>Draw the line
+segment between and including the pixels <var>x,y</var>
+and <var>x+deltax</var>,<var>y+deltay</var>. Returns a pointer to the
+line segment. </dd>
+</dl>
+<p>
+<a name="Drawing Rectangles"></a><a name="gOutlineRect"></a><a
+ name="gdOutlineRect"></a></p>
+<dl>
+  <code><b>gOutlineRect</b></code>(<var>view, x1, y1, x2, y2</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdOutlineRect</b></code>(<var>view, x1, y1, x2, y2</var> <big>[</big>,
+  <var>color</var><big>]</big>) <dd>Draw a wire-frame or hollow
+rectangle with one corner at <var>x1,y1</var>
+and the
+other at <var>x2</var>,<var>y2</var>. </dd>
+</dl>
+<p>
+</p>
+<p><a name="gOutlineRectR"></a>
+<a name="gdOutlineRectR"></a> </p>
+<dl>
+  <code><b>gOutlineRectR</b></code>(<var>view, x, y, deltax, deltay</var>
+  <big>[</big>, <var>color</var><big>]</big>)<br>
+  <code><b>gdOutlineRectR</b></code>(<var>view, x, y, deltax, deltay</var>
+  <big>[</big>, <var>color</var><big>]</big>) <dd>Draw a wire-frame
+or hollow rectangle with one corner at <var>x,y</var>
+and the
+other at <var>x+deltax</var>,<var>y+deltay</var>. Returns a pointer to
+the rectangle.
+    <p>Only vertically or horizontally oriented rectangles can be drawn
+--
+arbitrary angles are not possible. A box of dimension zero appears as a
+single
+pixel. </p>
+  </dd>
+</dl>
+<p>
+</p>
+<p><a name="Drawing Filled Rectangles"></a>
+<a name="gFillRect"></a><a name="gdFillRect"></a> </p>
+<dl>
+  <code><b>gFillRect</b></code>(<var>view, x1, y1, x2, y2</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdFillRect</b></code>(<var>view, x1, y1, x2, y2</var> <big>[</big>,
+  <var>color</var><big>]</big>) <dd>Fill in the rectangular area
+including the pixels <var>x1,y1</var>
+and <var>x2</var>,<var>y2</var> with <var>color</var>. Returns a
+pointer to the rectangle. </dd>
+</dl>
+<p>
+<a name="gFillRectR"></a><a name="gdFillRectR"></a> </p>
+<dl>
+  <code><b>gFillRectR</b></code>(<var>view, x, y, deltax, deltay</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdFillRectR</b></code>(<var>view, x, y, deltax, deltay</var>
+  <big>[</big>, <var>color</var><big>]</big>) <dd>Fill in the
+rectangular area including the pixels <var>x,y</var>
+and <var>x+deltax</var>,<var>y+deltay</var> with <var>color</var>.
+Returns a pointer to the rectangle.
+    <p>Only vertically or horizontally oriented rectangles can be drawn
+--
+arbitrary angles are not possible. A rectangle of dimension zero
+appears as a
+single pixel. </p>
+  </dd>
+</dl>
+<p>
+<a name="Drawing Filled Polygons"></a><a name="gFillPolygon"></a><a
+ name="gdFillPolygon"></a> </p>
+<dl>
+  <code><b>gFillPolygon</b></code>(<var>view, color, x1, y1, x2, y2,
+x3, y3,</var> ...<br>
+  <code><b>gdFillPolygon</b></code>(<var>view, color, x1, y1, x2, y2,
+x3, y3,</var> ... <dd>Fill in the polygonal area specified by the
+points <var>x1,y1
+x2,y2 x3,y3 ...</var>
+with <var>color</var>. The area filled is the area <var>inside</var>
+the points, such that if they are all the same, then nothing is drawn.
+If <var>color</var> is nil, then it defaults to the last drawn color
+on the view. There must be at least one point. Returns a pointer to the
+polygon. </dd>
+</dl>
+<p>
+<a name="Drawing Circles"></a><a name="gDrawCircle"></a><a
+ name="gdDrawCircle"></a></p>
+<dl>
+  <code><b>gDrawCircle</b></code>(<var>view, x, y, radius</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawCircle</b></code>(<var>view, x, y, radius</var> <big>[</big>,
+  <var>color</var><big>]</big>) <dd>Draw a circle to the display with
+its center at <var>x,y</var>
+and with radius <var>radius</var>. A circle of radius zero will not
+appear on the
+display at all. A
+radius passed to <code>gDrawCircle</code> is interpretted as a
+distance along the
+"y" or vertical dimension and the circle size is scaled accordingly.
+Returns a pointer to the circle.
+    <p>As currently implemented, this routine will draw circles that
+are
+as wide as they are tall <em>as measured in numbers of pixels</em>.
+Thus, if the aspect ratio of the display is not 1:1, circles will
+come out as elipses. The shape of the circle is never affected by the
+coordinate systems associated with <var>view</var>. Note that this
+can cause different parts of a display to change their positions
+relative to each other (when using <code>g</code> routines) as a
+view is mapped to different viewports. </p>
+  </dd>
+</dl>
+<p>
+<a name="Drawing Disks"></a><a name="gDrawDisk"></a><a name="gdDrawDisk"></a></p>
+<dl>
+  <code><b>gDrawDisk</b></code>(<var>view, x, y, radius</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawDisk</b></code>(<var>view, x, y, radius</var> <big>[</big>,
+  <var>color</var><big>]</big>) <dd>Draw a disk (i.e., a filled-in
+circle) to the display with its
+center at <var>x,y</var> and with radius <var>radius</var>.
+Otherwise, these
+routine behave just like the circleDrawing routines above. Returns a
+pointer to the circle. </dd>
+</dl>
+<p>
+<a name="Drawing Arcs"></a><a name="gDrawArc"></a><a name="gdDrawArc"></a></p>
+<dl>
+  <code><b>gDrawArc</b></code>(<var>view, x, y, radius, startAngle,
+angle</var> <big>[</big>, <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawArc</b></code>(<var>view, x, y, radius, startAngle,
+angle</var> <big>[</big>, <var>color</var><big>]</big>) <dd>Draw a
+arc to the display with its center of rotation at <var>x,y</var>
+and with radius <var>radius</var>. The arc begins at <var>startAngle</var>
+degrees and proceeds for <var>angle</var>
+degrees. Degrees follow the standard mathematical conventions,
+increasing
+counterclockwise from zero pointing directly to the right. For example,
+    <code>gDrawArc(<var>view,x,y,</var>radius,180,90,<var>color</var>)</code>
+draws a quarter circle in the lower left quadrant.
+Otherwise, these routines behave similarly to the circleDrawing
+routines
+described above. They also return a pointer to the new object. </dd>
+</dl>
+<p>
+<a name="Drawing Text"></a><a name="gDrawText"></a><a name="gdDrawText"></a></p>
+<dl>
+  <code><b>gDrawText</b></code>(<var>view, string, font, x, y</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawText</b></code>(<var>view, string, font, x, y</var> <big>[</big>,
+  <var>color</var><big>]</big>) <dd>Write the string of text to <var>view</var>
+in color <var>color</var>.
+The
+lower left corner of the string appears at <var>x,y</var>. <var><a
+ name="Font">Font</a></var> is a tuple of font description information,
+e.g., <code>("Monaco",12,'italic')</code> in tk. You can use <code><a
+ href="#gFont">gFont</a></code> to build this object.
+    <p>In tk, permitted font names
+include all the fonts installed in your system. The font size is in
+points
+from 1 to 127. The font styles should be one or more of the following: <code>'normal',
+'italic', 'bold'</code>. If several of these are
+provided, they must be in one string (e.g. <code>'bold italic'</code>).
+A <code>'normal'</code> font style implies the absence of other font
+styles. </p>
+  </dd>
+</dl>
+<p>
+<a name="gDrawTextCentered"></a><a name="gdDrawTextCentered"></a></p>
+<dl>
+  <code><b>gDrawTextCentered</b></code>(<var>view, string, font, x, y</var>
+  <big>[</big>, <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawTextCentered</b></code>(<var>view, string, font, x, y</var>
+  <big>[</big>, <var>color</var><big>]</big>) <dd>Write the string of
+text to <var>view</var> in color <var>color</var>.
+The
+center of the string appears at <var>x,y</var>. <var>Font</var> is as
+described above. </dd>
+</dl>
+<p>
+<a name="Determining the Size in Which Text Will be Drawn"></a><a
+ name="gTextHeight"></a><a name="gdTextHeight"></a></p>
+<dl>
+  <code><b>gTextHeight</b></code>(<var>view, string, font</var>)<br>
+  <code><b>gdTextHeight</b></code>(<var>view, string, font</var>) <dd>Return
+the vertical size of <var>text</var> when drawn to <var>view</var> in
+    <var>font</var>, in either pixels or normalized
+coordinates. <var>Font</var> is as described <a href="#Font">above</a>.
+  </dd>
+</dl>
+<p>
+<a name="gTextWidth"></a><a name="gdTextWidth"></a></p>
+<dl>
+  <code><b>gTextWidth</b></code>(<var>view, string, font</var>)<br>
+  <code><b>gdTextWidth</b></code>(<var>view, string, font</var>) <dd>Return
+the horizontal size of <var>text</var> when drawn to <var>view</var>
+in <var>font</var>, in either pixels or normalized
+coordinates. <var>Font</var> is as described <a href="#Font">above</a>.
+  </dd>
+</dl>
+<p>
+</p>
+<p><a name="Event Routines"></a> </p>
+<h2><a name="_Event_Routines_a_"> </a> <a name="Event_Routines">
+Event Routines </a> </h2>
+<p>
+</p>
+<p>These are routines for responding to events.
+</p>
+<p><a name="gGetCursorPosition"></a>
+<a name="gdGetCursorPosition"></a></p>
+<dl>
+  <code><b>gGetCursorPosition</b></code>(<var>view</var>)<br>
+  <code><b>gdGetCursorPosition</b></code>(<var>view</var>) <dd>NOT
+IMPLEMENTED in Python.
+Return a tuple of two values, the current <var>x</var> and <var>y</var>
+coordinates of the cursor (mouse) in the
+coordinate system of <var>view</var>. If the cursor is not within the
+viewport of <var>view</var>, then None is returned. </dd>
+</dl>
+<p>
+<a name="gClickEventHandler"></a><a name="gdClickEventHandler"></a></p>
+<dl>
+  <code><b>gClickEventHandler</b></code>(<var>view, x, y</var>)<br>
+  <code><b>gdClickEventHandler</b></code>(<var>view dx dy</var>) <dd>If
+you would like your program to be able to respond to mouse
+clicks within a G view, then you should specialize the Gview class and
+write a
+new method for <code>gClickEventHandler</code> or <code>gdClickEventHandler</code>
+specialized for the new class.
+That method will
+be called with the coordinates of the mouse click whenever there is a
+mouse click within the viewport of a view of that new class. For
+example, here is how to cause the current mouse coordinates to be
+printed
+to the shell window each time the mouse button is clicked within the
+view:
+    <pre>   class myView (Gview):<br>    <br>       def gClickEventHandler (self, x, y):<br>           print x, y<br></pre>
+  </dd>
+</dl>
+<p>
+<a name="gMouseUpEventHandler"></a><a name="gdMouseUpEventHandler"></a></p>
+<dl>
+  <code><b>gMouseUpEventHandler</b></code>(<var>view, x, y</var>)<br>
+  <code><b>gdMouseUpEventHandler</b></code>(<var>view dx dy</var>) <dd>If
+you would like your program to be able to respond to mouse
+dragging within a G view, then you should specialize the Gview class
+and write a
+new method for <code>gMouseUpEventHandler</code> or <code>gdMouseUpEventHandler</code>
+specialized for the new class.
+That method will
+be called with the coordinates where the mouse was released whenever
+the mouse button is released in the viewport of a view of that new
+class. Use this in conjunction with the click event handlers to allow
+the user to drag objects in the view. For example, here is how to cause
+an object to be dragged within the view:
+    <pre>   class myView (Gview):<br>    <br>       def gClickEventHandler (self, x, y):<br>           self.lastx, self.lasty = x, y<br>           # find object specified at x, y<br>           ...<br>           self.curEvent = 'move'<br><br>       def gMouseUpEventHandler (self, x, y):<br>           if self.curEvent == 'move':<br>              if x != selflastx or y != lasty:<br>                 # move object from lastx, lasty to x, y<br>                 ...<br>           self.curEvent = None<br>       <br></pre>
+  </dd>
+</dl>
+<p>
+<a name="gDrawView"></a> </p>
+<dl>
+  <code><b>gDrawView</b></code>(<var>view</var>) <dd>This routine is
+called each time your view is moved or uncovered
+from behind other windows, or resized. If you make a specialized form
+for a subclass of Gview, then you can arrange for the view to to be
+automatically redrawn when uncovered. Otherwise, covered and uncovered
+views are simply blanked out with the <code>off</code> color. For
+example, suppose you want a black circle on a white background to
+always appear in your view. This is what you should do:
+    <pre>   class myView (Gview):<br><br>      def gDrawView(self):<br>         gDrawCircle(self,.5,.5,.2,gColorBlack(view))<br><br>      def gAcceptNewViewportSize(self): <br>         Gview.gAcceptNewViewportSize(self)<br>         gClear(view)<br>         self.gDrawView()      ; complete redrawing on vp changes<br></pre>
+    <p> </p>
+  </dd>
+</dl>
+<p>
+</p>
+<p><a name="Additional Routines Built on G"></a> </p>
+<h2><a name="_Additional_Routines_Built_on_G_"> </a> <a
+ name="Additional_Routines_Built_on_G"> Additional Routines Built on G </a>
+</h2>
+<p>
+</p>
+<p> The following routines follow the argument conventions established
+for G, and are designed to extend and be compatible with the other G
+routines. Since they are written "on top of" G, i.e., since they
+simply call G routines, they are not considered elementary G routines.
+(Obviously, this division is a bit arbitrary.)
+</p>
+<p><a name="Drawing Arrows"></a>
+<a name="gDrawArrow"></a><a name="gdDrawArrow"></a></p>
+<dl>
+  <code><b>gDrawArrow</b></code>(<var>view, x1, y1, x2, y2</var> <big>[</big>,
+  <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawArrow</b></code>(<var>view, x1, y1, x2, y2</var> <big>[</big>,
+  <var>color</var><big>]</big>) <dd>Draw an arrow from <var>x1,y1</var>
+to <var>x2</var>,<var>y2</var>
+on <var>view</var>. </dd>
+</dl>
+<p>
+<a name="gDrawArrowR"></a><a name="gdDrawArrowR"></a></p>
+<dl>
+  <code><b>gDrawArrowR</b></code>(<var>view, x, y, deltax, deltay</var>
+  <big>[</big>, <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawArrowR</b></code>(<var>view, x, y, deltax, deltay</var>
+  <big>[</big>, <var>color</var><big>]</big>) <dd>Draw an arrow from <var>x,y</var>
+to <var>x+deltax</var>,<var>y+deltay</var>
+on <var>view</var>. </dd>
+</dl>
+<p>
+<a name="Drawing Arrowheads"></a><a name="gDrawArrowhead"></a><a
+ name="gdDrawArrowhead"></a></p>
+<dl>
+  <code><b>gDrawArrowhead</b></code>(<var>view, x1, y1, x2, y2 bodySize
+headSize</var> <big>[</big>, <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawArrowhead</b></code>(<var>view, x1, y1, x2, y2
+bodySize headSize</var> <big>[</big>, <var>color</var><big>]</big>) <dd>Draw
+an arrow from <var>x1,y1</var> to <var>x2</var>,<var>y2</var> with
+independent control over the size
+of
+the main segment of the arrow and the head of the arrow. <var>BodySize</var>
+is the fraction of the total length between the
+two endpoints that is filled by the main segment (starting from the
+head end of the arrow) and <var>headSize</var> is the relative
+length of the head segments to the distance between the endpoints.
+For example, just the arrowhead alone could be drawn by setting <var>bodySize</var>=0.
+As another example, <code>gDrawArrow</code>
+is
+implemented as
+    <pre>      def gDrawArrow(view,x1,y1,x2,y2,color=None) <br>         gDrawArrowhead(view,x1,y1,x2,y2,1,.25,color)) <br></pre>
+  </dd>
+</dl>
+<p>
+</p>
+<p><a name="gDrawArrowheadR"></a>
+<a name="gdDrawArrowheadR"></a></p>
+<dl>
+  <code><b>gDrawArrowheadR</b></code>(<var>view, x, y, deltax, deltay
+bodySize headSize</var> <big>[</big>, <var>color</var><big>]</big>)<br>
+  <code><b>gdDrawArrowheadR</b></code>(<var>view, x, y, deltax, deltay
+bodySize headSize</var> <big>[</big>, <var>color</var><big>]</big>) <dd>Draw
+an arrow from <var>x,y</var> to <var>x+deltax</var>,<var>y+delta</var>
+with independent control
+over the size of
+the main segment of the arrow and the head of the arrow. Otherwise as
+above. </dd>
+</dl>
+<p>
+</p>
+<p><a name="Additional Routines for G"></a> </p>
+<h2><a name="_Control_Routines_for_G_a_"> </a> <a
+ name="Control_Routines_for_G"> Control Routines for G </a> </h2>
+<p>
+</p>
+<p> These routines add buttons and menus and invoke the event
+processing. </p>
+<p> <a name="gMainloop"></a></p>
+<dl>
+  <code><b>gMainloop</b></code>()<br>
+  <dd> Starts event processing for your application. Your windows will
+now be displayed and the buttons and menus available . Updates to the
+windows will automatically be displayed. Note that after you call this
+command, nothing after it in your program will be executed. This should
+be the LAST thing you call. </dd>
+</dl>
+<p> <a name="gQuit"></a></p>
+<dl>
+  <code><b>gQuit</b></code>()<br>
+  <dd> Deletes all Gwindows and stops event processing for your
+application. </dd>
+</dl>
+<p><a name="gAddButton"></a>
+<a name="gdAddButton"></a></p>
+<dl>
+  <code><b>gAddButton</b></code>(<var>view, text, command, x, y</var> <big>[</big>,
+  <var>background</var><big>]</big>)<br>
+  <code><b>gdAddButton</b></code>(<var>view, text, command, x, y</var> <big>[</big>,
+  <var>background</var><big>]</big>) <dd>Add a button to <var>view</var>
+at <var>x, y</var> with the
+specified text on it. When selected, <var>command</var> will be
+invoked. To make the button look better, <var>background</var> should
+be specified as the color of the window where the button will be
+placed. The newly created button is returned so that you can change the
+cursor for it, if desired, with gSetCursor. </dd>
+</dl>
+<p>
+<a name="gEnableButton"></a></p>
+<dl>
+  <code><b>gEnableButton</b></code>(<var>button</var>)<br>
+  <dd> Makes <var>button</var> active. If the button had been
+disabled, it is no longer greyed out. Note that when buttons are
+created they are enabled by default; you only need this to re-enable a
+button which has been disabled. </dd>
+</dl>
+<p> <a name="gDisableButton"></a></p>
+<dl>
+  <code><b>gDisableButton</b></code>(<var>button</var>)<br>
+  <dd> Makes <var>button</var> inactive. The button is greyed out and
+cannot be invoked by the user. </dd>
+</dl>
+<p> <a name="gSetTitle"></a></p>
+<dl>
+  <code><b>gSetTitle</b></code>(<var>vieworbutton, newtitle</var>)<br>
+  <dd> If <var>vieworbutton</var> is a window, the window title is set
+to <var>newtitle</var>. If it is a button, the button label is set to <var>newtitle</var>.
+  </dd>
+</dl>
+<p><a name="gSetCursor"></a>
+<a name="gdCursor"></a> </p>
+<dl>
+  <code><b>gSetCursor</b></code>(<var>view, cursorname</var>)<br>
+  <dd>Use this function if you would like to have the cursor appear in
+some special form when it moves over the viewport of a G view or a
+button. The <var>cursorname</var> should be a string containing the
+name of a tk cursor. Some are <code>'crosshair', 'cross'</code>
+(crosshair cursor), <code>'sizing'</code> (resize handles), <code>'arrow',
+'sb_down_arrow', 'sb_up_arrow', 'sb_left_arrow', 'sb_right_arrow'</code>
+(various arrows), <code>'watch', 'plus', 'pencil', 'hand1', 'hand2',
+'xterm'</code>.
+    <p>For example, to make the cross-hairs cursor appear whenever the
+cursor goes over your
+view, you would do the following: <code>gSetCursor(myview, 'crosshair')</code>
+    </p>
+  </dd>
+</dl>
+<p>
+<a name="gAddMenu"></a></p>
+<dl>
+  <code><b>gAddMenu</b></code>(<var>parent, menulabel</var> <big>[</big>,
+  <var>menuitems</var><big>]</big>)<br>
+  <dd>Add a menu to <var>parent</var> consisting of the menu items in
+the list <var>menuitems</var>. If <var>parent</var> is a window, the
+menu will be added to the menubar for that window. If it is a menu, the
+new menu will be added as a submenu. The newly created menu is returned
+by the function so that it can be used as the parent in future calls.
+    <p>The format of the menu items is as follows: </p>
+    <ul>
+      <li><var>---</var>, or <var>'separator'</var> <br>
+gives a separator in the menu </li>
+      <li><var>[text, command]</var> <br>
+gives a menu item with the label <var>text</var> which when pressed
+will invoke <var>command</var> </li>
+      <li><var>['button', label, variable, on, off, command]</var> <br>
+gives a menu checkbutton with the label <var>label</var>, which is
+controlled by the variable <var>variable</var> (a gIntVar or
+gStringVar). The on and off values for the variable are specifed by <var>on</var>
+and <var>off</var>. When this menu button is selected, <var>command</var>
+will be invoked. All arguments must be present. If you do not wish to
+have a command, use None.
+gIntVar and gStringVar are classes which have two methods: get() and
+set(to). Use these methods to get the current value or set the
+variable's value. The menu button will be automatically updated
+(checked or unchecked). </li>
+    </ul>
+    <p>For example: <code></code></p>
+    <pre>   gAddMenu(window, "FA Demo", \<br>                    [["Init", initDemo], \<br>                     ['button', "Show Old Line", showoldlines, 1, 0, None], \<br>                     ["Resolution Higher", setResolutionHigher],  \<br>                     ["Resolution Lower", setResolutionLower],   \<br>                     '---',   \<br>                     ["Alpha = 1.0", lambda: setAlpha(1.0)]])<br></pre>
+  </dd>
+</dl>
+<p>
+</p>
+<p><a name="Obtaining and Installing G"></a> </p>
+<h2><a name="_Obtaining_and_Installing_G_a_"> </a> <a
+ name="Obtaining_and_Installing_G"> Obtaining and Installing G </a> </h2>
+<p>
+</p>
+<p>G as described herein can be obtained by downloading the file <a
+ href="g.py">g.py</a> and saving it. To use G,
+make sure that tk and the Python Tkinter module are installed on your
+machine. Move to the directory where you put g, and start Python. Then
+import G </p>
+<dd> <code>from g import *</code></dd>
+<dt><br>
+</dt>
+You will then have access to all the G routines. Make sure you start up
+the event processor with <code><a href="#gMainloop">gMainloop</a></code>
+or your windows won't display or be interactive.<br>
+<p>If you have downloaded the <a href="RLtoolkit.html">RL Toolkit
+package</a> and installed it as a python module, you can run
+Python from anywhere and import g with </p>
+<dd> <code>from RLtoolkit.g import *</code>
+</dd>
+<p><a name="Implementation Notes"></a> </p>
+<h2><a name="_Implementation_Notes_a_"> </a> <a
+ name="Implementation_Notes"> Implementation Notes </a> </h2>
+<p>G is based on the python package Tkinter. As all of our development
+has
+been on a Macintosh, and not all of tk is available through Tkinter,
+and even less on the mac, some things have not been included so far
+(patterns, modes, button colors, etc). G is still under development and
+some undesired things may happen. Please let us know if they do. <a
+ name="Examples"></a> </p>
+<h2><a name="_Examples_a_"> </a> <a name="Examples_a"> Examples </a>
+</h2>
+<p>Here is a small example: </p>
+<dd>
+  <pre><code><br># eg with gDrawView - try resizing the window!!<br><br>from g import *<br><br>class MyWindow(Gwindow):<br><br>    def __init__(self):<br>        Gwindow.__init__(self)<br>        gdSetViewport(self, 10, 30, 300, 500)<br>        <br>    def gDrawView(self):<br>        gClear(self, 'blue')<br>        drawThing(self)<br><br>def drawThing(win, color):<br>    gdFillRect(win, 10, 20, 100, 200, color)<br><br>w = MyWindow()<br>gMainloop()<br></code></pre>
+  <p>Here is a very small sample program with a button. </p>
+</dd>
+<dd>
+  <pre><code><br>from g import *<br><br>def drawThing():<br>    global w<br>    gdFillRect(, 10, 20, 100, 200, 'red')<br><br>w = Gwindow()<br>gdSetViewport(w, 10, 30, 300, 500)<br>gClear(w, 'blue')<br>gdAddButton(w, "draw", drawThing, 20, 400, 'blue')<br>gMainloop()<br></code></pre>
+  <p> </p>
+</dd>
+
+
+
+<!-- Beginning of: /cgi-bin/lastmodified.pl -->
+
+<hr><font size='-1'>
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/extendform.html?previousPage='+path;
+newWindow=window.open(pageName,'','width=630,height=690,resizable=yes,scrollbars=yes');}">
+Extend</a>
+&nbsp;
+<a href="/openpageinfrastructure/howtoauthor.html">How to edit</a>
+&nbsp;
+<a href="/openpageinfrastructure/styleguide.html">Style guide</a>
+&nbsp;
+<a href="javascript:;"; onClick="window.open('/cgi-bin/viewpublishlog.py','simple',config='resizable=yes,scrollbar=yes,width=500,height=200')";>Troubleshooting</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/subscribe.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=320,resizable=yes,scrollbars=yes');}">
+Subscribe</a>
+&nbsp;
+<a href="javascript:;" onClick="{path=window.location.pathname;
+pageName = 'http://rlai.cs.ualberta.ca/openpageinfrastructure/notify.shtml?previousPage='+path;
+newWindow=window.open(pageName,'','width=530,height=470,resizable=yes,scrollbars=yes');}">
+Notify</a>
+&nbsp;
+<a href="/openpageinfrastructure/suggestions.html"> Suggestions</a>
+&nbsp;
+<a href="/openpageinfrastructure/help.html"> Help</a>
+<br/>This <a href="/openpageinfrastructure/openpageidea.html">open web page</a> is hosted by the <a href="http://www.rlai.net"> RLAI
+group</a> at the <a href = "http://www.cs.ualberta.ca">University of Alberta</a>.
+&nbsp;
+<a href="/openpageinfrastructure/termsofuse.html">Terms of use</a></font>
+<br>
+<a name="refreshhere"></a><!--Auto content-->
+<!--LastModified1098286746LastModified-->
+
+
+<!-- End of: /cgi-bin/lastmodified.pl -->
+
+</body>
+</html>

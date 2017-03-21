@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="2"
+   name=""
+   committed-date="2005-01-27T18:24:49.620125Z"
+   url="http://rlai.cs.ualberta.ca:8080/RLtoolkit/gridworld/Gridworlds"
+   kind="dir"
+   uuid="bbcd0721-a0ee-0310-933b-e55960500d3f"
+   revision="4"/>
+<entry
+   committed-rev="1"
+   name="rgw"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="4566e6247b2e6a5075b31caef63bed97"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="rgw2"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="80811ef04ad27d1594a0f113d4c5cb53"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gwo16x16"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="53d68cf9cc248ddbe3ba634a3538a0de"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gw16x16"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="6d52d7e4a4dc64cdea851757426e5778"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gw8x6"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="5d650669816c49904ac5b948c367c767"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gw40x40line"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="a1437010ddae60c0d8fc01b9cf1d0010"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gwo40x40rooms"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="ba7d8b04da2fbfd1d54b170b31ef5349"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="2"
+   name="gwo16x10"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T18:24:49.620125Z"
+   checksum="df994dbcdb6654642a8c54e5355abb95"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gw16x10"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="ade68df91b1f52c6787fa270e74d9c65"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gw40x40rooms"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="450d335f5190f1c653d4780d621c638e"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+<entry
+   committed-rev="1"
+   name="gw16x10cleared"
+   text-time="2005-01-28T19:51:32.000000Z"
+   committed-date="2005-01-27T03:32:29.819237Z"
+   checksum="94299b1f6db2c88a93c8d50dc663d23c"
+   last-author="root"
+   kind="file"
+   prop-time="2005-01-28T19:51:32.000000Z"/>
+</wc-entries>
