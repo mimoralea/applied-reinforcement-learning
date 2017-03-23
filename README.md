@@ -2,6 +2,60 @@
 
 This repository will contain a series of lessons about Reinforcement Learning and Decision Making.
 
+
+# Notebooks Installation
+
+This repository contains Jupyter Notebooks to follow along with the lectures. However, there are several
+packages and applications that need to be installed. To make things easier on you, I took a little longer
+time to setup a reproducible environment that you can use to follow along.
+
+## Docker Container
+
+
+
+## Ubuntu
+
+
+
+Table of Contents
+=================
+
+  * [Part I: Introduction](#part-i-introduction)
+      * [1. Introduction to Decision-Making](#1-introduction-to-decision-making)
+        * [1.1 Decision-Making](#11-decision-making)
+  * [Part II: Reinforcement Learning and Decision-Making](#part-ii-reinforcement-learning-and-decision-making)
+      * [2. Sequential Decisions](#2-sequential-decisions)
+        * [2.1 Modeling Decision-Making Problems](#21-modeling-decision-making-problems)
+        * [2.2 Solutions Representation](#22-solutions-representation)
+        * [2.2 Simple Sequential Problem](#22-simple-sequential-problem)
+        * [2.3 Slightly more complex problems](#23-slightly-more-complex-problems)
+        * [2.4 Evaluating solutions](#24-evaluating-solutions)
+        * [2.5 Improving on solutions](#25-improving-on-solutions)
+        * [2.6 Finding Optimal solutions](#26-finding-optimal-solutions)
+        * [2.7 Improving on Policy Iteration](#27-improving-on-policy-iteration)
+        * [2.8 Exercises](#28-exercises)
+      * [3. Deterministic and Stochastic Actions](#3-deterministic-and-stochastic-actions)
+        * [3.xx Exercises](#3xx-exercises)
+      * [4. Known and Unknown Environments](#4-known-and-unknown-environments)
+        * [4.xx Exercises](#4xx-exercises)
+  * [Part III: Decision-Making in Hard Problems](#part-iii-decision-making-in-hard-problems)
+      * [5. Discrete and Continuous States](#5-discrete-and-continuous-states)
+        * [5.xx Exercises](#5xx-exercises)
+      * [6. Discrete Actions and Continuous Actions](#6-discrete-actions-and-continuous-actions)
+        * [6.xx Exercises](#6xx-exercises)
+      * [7. Observable and Partially-Observable States](#7-observable-and-partially-observable-states)
+        * [7.xx Exercises](#7xx-exercises)
+  * [Part IV: Multiple Decision-Making Agents](#part-iv-multiple-decision-making-agents)
+      * [8. Single and Multiple Agents](#8-single-and-multiple-agents)
+        * [8.xx Exercises](#8xx-exercises)
+      * [9. Cooperative and Adversarial Agents](#9-cooperative-and-adversarial-agents)
+        * [9.xx Exercises](#9xx-exercises)
+  * [Part V: Human Decision-Making and Beyond](#part-v-human-decision-making-and-beyond)
+      * [10. Decision-Making and Humans](#10-decision-making-and-humans)
+      * [11. Conclusion](#11-conclusion)
+      * [12. References](#12-references)
+
+
 ## Part I: Introduction
 
 ### 1. Introduction to Decision-Making
@@ -158,14 +212,7 @@ term.
 When explaining reinforcement learning, it is very common to show a very basic world to illustrate fundamental
 concepts. Let's think of a grid world as in figure below:
 
-_____________________
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
----------------------
+<IMAGE GOES HERE>
 
 In this world, the agent starts at 'S'. Reaching the space marked with a 'G' ends the game and gives the agent
 a reward of 1. Reaching the space with an 'F' ends the game and gives the agent a reward of -1. The agent is able
@@ -180,14 +227,7 @@ move left, etc. Which will just bounce the agent back to the cell it took the ac
 Before we being exploring how to get the best solution to this problem. I'd like us to detour into how do we
 know how good is a solution. For example, imagine I give you a policy:
 
-_____________________
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
-|    |    |    |    |
----------------------
+<IMAGE GOES HERE>
 
 Is there a way we can put a number to this policy so we can later rank it?
 
