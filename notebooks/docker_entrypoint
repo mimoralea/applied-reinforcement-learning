@@ -10,6 +10,7 @@ path=$(cd $(dirname "$0") && pwd)
 
 # Set up display; otherwise rendering will fail
 rm -f /tmp/.X12-lock
+
 # "$path/../scripts/Xdummy" :12 &
 "$path/Xdummy" :12 &
 export DISPLAY=:12
@@ -27,7 +28,7 @@ for i in $(seq 1 10); do
 done
 if ! [ -e "$file" ]; then
     echo "Timing out: $file was not created"
-    #exit 1
+    exit 1
 fi
 
 exec "$@"

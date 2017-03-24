@@ -10,13 +10,10 @@ RUN apt-get upgrade -y
 # install dependencies
 RUN apt-get install -y libav-tools python3 ipython3 python3-pip python3-opengl
 RUN apt-get install -y libpq-dev libjpeg-dev libboost-all-dev libsdl2-dev
-RUN apt-get install -y curl cmake swig wget unzip git xpra
+RUN apt-get install -y curl cmake swig wget unzip git xpra xvfb
 
 # clean up
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* 
-
-# create work directory
-# RUN mkdir /notebooks
 
 # switch back to user
 USER $NB_USER
@@ -27,6 +24,6 @@ RUN pip3 install numpy scikit-learn scipy pyglet setuptools
 RUN pip3 install gym tensorflow keras asciinema
 
 # WORKDIR /root
-ENTRYPOINT ["/notebooks/docker_entrypoint"]
+# ENTRYPOINT ["/home/jovyan/work/docker_entrypoint"]
 # ENV DEBIAN_FRONTEND teletype
 # WORKDIR /notebooks
