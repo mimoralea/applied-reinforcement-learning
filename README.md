@@ -19,7 +19,7 @@ Follow the instructions at (https://docs.docker.com/engine/getstarted/step_one/#
 
 ## Run Notebooks
 
-### TL;DR; version
+### TL;DR version
 
 1. `git clone git@github.com:mimoralea/applied-reinforcement-learning.git && cd applied-reinforcement-learning`
 2. `docker pull mimoralea/openai-gym:v1`
