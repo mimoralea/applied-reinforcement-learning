@@ -19,13 +19,13 @@ Follow the instructions at (https://docs.docker.com/engine/getstarted/step_one/#
 
 ## Run Notebooks
 
-TL;DR; version
+### TL;DR; version
 
 1. `git clone git@github.com:mimoralea/applied-reinforcement-learning.git && cd applied-reinforcement-learning`
 2. `docker pull mimoralea/openai-gym:v1`
 3. `docker run -it --rm -p 8888:8888 -p 6006:6006 -v $PWD/notebooks/:/mnt/notebooks/ mimoralea/openai-gym:v1`
 
-A little more detailed version:
+### A little more detailed version:
 
 1. Clone the repository to a desired location (E.g. `git clone git@github.com:mimoralea/applied-reinforcement-learning.git ~/Projects/applied-reinforcement-learning`)
 2. Enter into the repository directory (E.g. `cd ~/Projects/applied-reinforcement-learning`)
@@ -34,17 +34,17 @@ A little more detailed version:
     3.2. To pull it from Docker hub use: `docker pull mimoralea/openai-gym:v1`
 4. Run the container: `docker run -it --rm -p 8888:8888 -p 6006:6006 -v $PWD/notebooks/:/mnt/notebooks/ mimoralea/openai-gym:v1`
 
-You can now open the Notebooks in your browser:
+#### Open the Notebooks in your browser:
 
 * `http://localhost:8888` (or follow the link that came out of the run command about which will include the token)
 
-You can also open TensorBoard at the following address:
+#### Open TensorBoard at the following address:
 
 * `http://localhost:6006`
 
 This will help you visualize the Neural Network in the lessons with function approximation.
 
-## Tips
+## Docker Tips
 
 * If you'd like to access a bash session of a running container do:
 ** `docker ps` # will show you currently running containers -- note the id of the container you are trying to access
