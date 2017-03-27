@@ -19,11 +19,19 @@ Follow the instructions at (https://docs.docker.com/engine/getstarted/step_one/#
 
 ## Run Notebooks
 
+TL;DR; version
+
+1. `git clone git@github.com:mimoralea/applied-reinforcement-learning.git && cd applied-reinforcement-learning`
+2. `docker pull mimoralea/openai-gym:v1`
+3. `docker run -it --rm -p 8888:8888 -p 6006:6006 -v $PWD/notebooks/:/mnt/notebooks/ mimoralea/openai-gym:v1`
+
+A little more detailed version:
+
 1. Clone the repository to a desired location (E.g. `git clone git@github.com:mimoralea/applied-reinforcement-learning.git ~/Projects/applied-reinforcement-learning`)
 2. Enter into the repository directory (E.g. `cd ~/Projects/applied-reinforcement-learning`)
-3. Either Build yourself or Pull the already built Docker container:
-3a. To build it use the following command: `docker build -t mimoralea/openai-gym:v1 .`
-3b. To pull it from Docker hub use: `docker pull mimoralea/openai-gym:v1`
+3. Either Build yourself or Pull the already built Docker container:  
+    3.1. To build it use the following command: `docker build -t mimoralea/openai-gym:v1 .`
+    3.2. To pull it from Docker hub use: `docker pull mimoralea/openai-gym:v1`
 4. Run the container: `docker run -it --rm -p 8888:8888 -p 6006:6006 -v $PWD/notebooks/:/mnt/notebooks/ mimoralea/openai-gym:v1`
 
 You can now open the Notebooks in your browser:
