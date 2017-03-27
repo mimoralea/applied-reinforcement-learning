@@ -9,12 +9,41 @@ This repository contains Jupyter Notebooks to follow along with the lectures. Ho
 packages and applications that need to be installed. To make things easier on you, I took a little longer
 time to setup a reproducible environment that you can use to follow along.
 
-## Docker Container
+## Install git
 
+Follow the instructions at (https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
+## Install Docker
 
-## Ubuntu
+Follow the instructions at (https://docs.docker.com/engine/getstarted/step_one/#step-2-install-docker)
 
+## Run Notebooks
+
+1. Clone the repository to a desired location (E.g. `git clone git@github.com:mimoralea/applied-reinforcement-learning.git ~/Projects/applied-reinforcement-learning`)
+2. Enter into the repository directory (E.g. `cd ~/Projects/applied-reinforcement-learning`)
+2. Either Build yourself or Pull the already built Docker container:
+    2a. To build it use the following command: `docker build -t mimoralea/openai-gym:v1 .`
+    2b. To pull it from Docker hub use: `docker pull mimoralea/openai-gym:v1`
+3. Run the container: `docker run -it --rm -p 8888:8888 -p 6006:6006 -v $PWD/notebooks/:/mnt/notebooks/ mimoralea/openai-gym:v1`
+
+You can now open the Notebooks in your browser:
+
+* `http://localhost:8888` (or follow the link that came out of the run command about which will include the token)
+
+You can also open TensorBoard at the following address:
+
+* `http://localhost:6006`
+
+This will help you visualize the Neural Network in the lessons with function approximation.
+
+## Tips
+
+* If you'd like to access a bash session of a running container do:
+** `docker ps` # will show you currently running containers -- note the id of the container you are trying to access
+** `docker exec --user root -it c3fbc82f1b49 /bin/bash` # in this case c3fbc82f1b49 is the id
+* If you'd like to start a new container instance straight into bash (without running Jupyter or TensorBoard)
+** `docker run -it --rm mimoralea/openai-gym:v1 /bin/bash` # this will run the bash session as the Notebook user
+** `docker run --user root -e GRANT_SUDO=yes -it --rm mimoralea/openai-gym:v1 /bin/bash` # this will run the bash session as root
 
 
 Table of Contents
