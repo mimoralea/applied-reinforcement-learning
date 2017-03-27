@@ -28,13 +28,7 @@ USER $NB_USER
 # install necessary packages
 RUN pip3 install --upgrade pip
 RUN pip3 install numpy scikit-learn scipy pyglet setuptools
-RUN pip3 install gym tensorflow keras asciinema
-
-# move notebooks into container
-# ADD notebooks /mnt/notebooks
-
-# make the dir with notebooks the working dir
-WORKDIR /mnt/notebooks
+RUN pip3 install gym tensorflow keras asciinema pandas
 
 # create a script to start the notebook with xvfb on the back
 # this allows screen display to work well
@@ -43,5 +37,11 @@ RUN echo '#!/bin/bash' > /tmp/run.sh && \
     echo 'xvfb-run -s "-screen 0 1280x720x24" /usr/local/bin/start-notebook.sh' >> /tmp/run.sh && \
     chmod +x /tmp/run.sh
 
+# move notebooks into container
+# ADD notebooks /mnt/notebooks
+
+# make the dir with notebooks the working dir
+WORKDIR /mnt/notebooks
+
 # run the script to start the notebook
-CMD ["/tmp/run.sh"]
+ENTRYPOINT ["/tmp/run.sh"]
