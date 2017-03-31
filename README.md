@@ -46,11 +46,11 @@ This will help you visualize the Neural Network in the lessons with function app
 
 ## Docker Tips
 
-* If you'd like to access a bash session of a running container do:
-** `docker ps` # will show you currently running containers -- note the id of the container you are trying to access
+* If you'd like to access a bash session of a running container do:  
+** `docker ps` # will show you currently running containers -- note the id of the container you are trying to access  
 ** `docker exec --user root -it c3fbc82f1b49 /bin/bash` # in this case c3fbc82f1b49 is the id
-* If you'd like to start a new container instance straight into bash (without running Jupyter or TensorBoard)
-** `docker run -it --rm mimoralea/openai-gym:v1 /bin/bash` # this will run the bash session as the Notebook user
+* If you'd like to start a new container instance straight into bash (without running Jupyter or TensorBoard)  
+** `docker run -it --rm mimoralea/openai-gym:v1 /bin/bash` # this will run the bash session as the Notebook user  
 ** `docker run --user root -e GRANT_SUDO=yes -it --rm mimoralea/openai-gym:v1 /bin/bash` # this will run the bash session as root
 
 
