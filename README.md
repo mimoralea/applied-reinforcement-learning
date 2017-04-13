@@ -72,9 +72,16 @@ Table of Contents
         * [2.7 Improving on Policy Iteration](#27-improving-on-policy-iteration)
         * [2.8 Exercises](#28-exercises)
       * [3. Deterministic and Stochastic Actions](#3-deterministic-and-stochastic-actions)
-        * [3.xx Exercises](#3xx-exercises)
+        * [3.1 We can't perfectly control the world](#31-we-cant-perfectly-control-the-world)
+        * [3.2 Dealing with stochasticity](#32-dealing-with-stochasticity)
+        * [3.3 Exercises](#33-exercises)
       * [4. Known and Unknown Environments](#4-known-and-unknown-environments)
-        * [4.xx Exercises](#4xx-exercises)
+        * [4.1 What if we don't have a model of the environment?](#41-what-if-we-dont-have-a-model-of-the-environment)
+        * [4.2 The need to explore](#42-the-need-to-explore)
+        * [4.3 What to learn?](#43-what-to-learn)
+        * [4.4 What to do with what we learn?](#44-what-to-do-with-what-we-learn)
+        * [4.5 Adding small randomness to your actions](#45-adding-small-randomness-to-your-actions)
+        * [4.6 Exercises](#46-exercises)
   * [Part III: Decision-Making in Hard Problems](#part-iii-decision-making-in-hard-problems)
       * [5. Discrete and Continuous States](#5-discrete-and-continuous-states)
         * [5.xx Exercises](#5xx-exercises)
@@ -91,7 +98,6 @@ Table of Contents
       * [10. Decision-Making and Humans](#10-decision-making-and-humans)
       * [11. Conclusion](#11-conclusion)
       * [12. References](#12-references)
-
 
 ## Part I: Introduction
 
