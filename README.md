@@ -328,6 +328,9 @@ and devise few ways for solving it. Recursion, Memoization and Dynamic Programmi
 
 Lesson 2 Notebook.
 
+#### 2.9 Further Readings
+
+
 ### 3. Deterministic and Stochastic Actions
 
 #### 3.1 We can't perfectly control the world
@@ -356,6 +359,9 @@ the Notebook below we will implement the algorithms discussed in previous chapte
 and stochastic transitions.
 
 Lesson 3 Notebook.
+
+#### 3.4 Further Readings
+
 
 ### 4. Known and Unknown Environments
 
@@ -438,11 +444,20 @@ iteration.
 
 Lesson 4 Notebook.
 
+#### 4.7 Further Readings
+
+
 ## Part III: Decision-Making in Hard Problems
 
 ### 5. Discrete and Continuous States
 
-#### 5.xx Exercises
+#### 5.1 Too large to hold in memory
+
+#### 5.2 Discretizition of state space
+
+#### 5.3 Use of function approximation
+
+#### 5.4 Exercises
 
 In this lesson we got a step closer to what we could call 'real-world' reinforcement learning. In specific,
 we look at a kind of environment in which there are so many states that we can no longer represent a table
@@ -453,9 +468,19 @@ discretizing the state space in a way to making a manual function approximation 
 
 Lesson 5 Notebook.
 
-### 6. Discrete Actions and Continuous Actions
+#### 5.5 Further Readings
 
-#### 6.xx Exercises
+### 6. Discrete and Continuous Actions
+
+#### 6.1 Continous action space
+
+#### 6.2 Discretizition of action space
+
+#### 6.3 Use of function approximation
+
+#### 6.4 Searching for the policy
+
+#### 6.5 Exercises
 
 In this lesson we looked for the first time at the a problem in which the both the number of states and the number
 of actions available to the agent are very large or continuous. We introduced a series of methods based on policy
@@ -464,9 +489,18 @@ will apply function approximation to come up with the best solution to it.
 
 Lesson 6 Notebook.
 
+#### 6.6 Further Readings
+
+
 ### 7. Observable and Partially-Observable States
 
-#### 7.xx Exercises
+#### 7.1 Is what we see what it is?
+
+#### 7.2 State Estimation
+
+#### 7.3 Control in Partially-Observable Environments
+
+#### 7.4 Exercises
 
 In this lesson we learned that what we see is not always what it is happening in the world. Our perceptions might be
 biased, we might not have a 20/20 vision and more importantly we might think we have 20/20 but we might not. For this
@@ -474,11 +508,17 @@ reason is important to know that there are other ways of estimating states. In t
 at a very popular method for state estimation called the Kalman Filter for a very basic problem partially-observable
 states problem.
 
+#### 7.5 Further Readings
+
 ## Part IV: Multiple Decision-Making Agents
 
 ### 8. Single and Multiple Agents
 
-#### 8.xx Exercises
+#### 8.1 Agents with same objectives
+
+#### 8.2 What when other agents are at play?
+
+#### 8.3 Exercises
 
 In this lesson we opened up ourselves to the world of multiple agents. This lesson concentrated on
 contrasting single and multiple agents, however, there is more than just that, we know that
@@ -488,9 +528,15 @@ or many. Later we will look at specific environments of multi-agent reinforcemen
 
 Lesson 8 Notebook.
 
+#### 8.4 Further Readings
+
 ### 9. Cooperative and Adversarial Agents
 
-#### 9.xx Exercises
+#### 9.1 Agents with conflicting objectives
+
+#### 9.2 Teams of agents with conflicting objectives
+
+#### 9.3 Exercises
 
 In this lesson we looked into how things change when we interact with other agents, and these agents can be
 cooperative, or adversarial or perhaps a combination of both if we think adversarial teams. For this lesson,
@@ -498,9 +544,17 @@ and to close up on the series of Notebooks well, we will look into the world of 
 
 Lesson 9 Notebook.
 
+#### 9.4 Further Readings
+
 ## Part V: Human Decision-Making and Beyond
 
 ### 10. Decision-Making and Humans
+
+#### 10.1 Similarities between methods discussed and humans
+
+#### 10.2 Differences between methods discussed and humans
+
+#### 10.3 Further Readings
 
 ### 11. Conclusion
 
