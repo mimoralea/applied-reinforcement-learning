@@ -6,5 +6,5 @@
 
 #### 10.2 Differences between methods discussed and humans
 
-#### 10.3 Further Readings
+#### 10.3 Further Reading
 

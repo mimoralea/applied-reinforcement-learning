@@ -14,5 +14,5 @@ reason is important to know that there are other ways of estimating states. In t
 at a very popular method for state estimation called the Kalman Filter for a very basic problem partially-observable
 states problem.
 
-#### 7.5 Further Readings
+#### 7.5 Further Reading
 

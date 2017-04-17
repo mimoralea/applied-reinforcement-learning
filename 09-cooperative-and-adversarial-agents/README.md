@@ -12,4 +12,4 @@ and to close up on the series of Notebooks well, we will look into the world of 
 
 Lesson 9 Notebook.
 
-#### 9.4 Further Readings
+#### 9.4 Further Reading

@@ -17,5 +17,5 @@ will apply function approximation to come up with the best solution to it.
 
 Lesson 6 Notebook.
 
-#### 6.6 Further Readings
+#### 6.6 Further Reading
 

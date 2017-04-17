@@ -27,5 +27,5 @@ and stochastic transitions.
 
 Lesson 3 Notebook.
 
-#### 3.4 Further Readings
+#### 3.4 Further Reading
 

@@ -40,3 +40,7 @@ and unknown environments, discrete and continuous states, discrete and continuou
 observable and partially observable states, single and multiple agents, cooperative and
 adversarial agents, and finally, we will put everything in the perspective of human
 intelligence. I hope you enjoy this work.
+
+#### 1.2 Exercises
+
+#### 1.3 Further Reading

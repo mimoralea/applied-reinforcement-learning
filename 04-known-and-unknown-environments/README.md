@@ -79,4 +79,4 @@ iteration.
 
 Lesson 4 Notebook.
 
-#### 4.7 Further Readings
+#### 4.7 Further Reading

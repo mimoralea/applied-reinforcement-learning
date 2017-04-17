@@ -49,4 +49,4 @@ discretizing the state space in a way to making a manual function approximation 
 
 Lesson 5 Notebook.
 
-#### 5.5 Further Readings
+#### 5.5 Further Reading

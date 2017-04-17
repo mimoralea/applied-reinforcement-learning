@@ -16,4 +16,4 @@ or many. Later we will look at specific environments of multi-agent reinforcemen
 
 Lesson 8 Notebook.
 
-#### 8.4 Further Readings
+#### 8.4 Further Reading

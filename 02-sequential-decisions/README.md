@@ -182,4 +182,4 @@ and devise few ways for solving it. Recursion, Memoization and Dynamic Programmi
 
 Lesson 2 Notebook.
 
-#### 2.9 Further Readings
+#### 2.9 Further Reading
