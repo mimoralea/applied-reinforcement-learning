@@ -46,7 +46,7 @@ Table of Contents
   * [Part III: Decision-Making in Hard Problems](05-discrete-and-continous-states/README.md#part-iii-decision-making-in-hard-problems)
       * [5. Discrete and Continuous States](05-discrete-and-continous-states/README.md#5-discrete-and-continuous-states)
         * [5.1 Too large to hold in memory](05-discrete-and-continous-states/README.md#51-too-large-to-hold-in-memory)
-        * [5.2 Discretizition of state space](05-discrete-and-continous-states/README.md#52-discretizition-of-state-space)
+        * [5.2 Discretization of state space](05-discrete-and-continous-states/README.md#52-discretization-of-state-space)
         * [5.3 Use of function approximation](05-discrete-and-continous-states/README.md#53-use-of-function-approximation)
         * [5.4 Exercises](05-discrete-and-continous-states/README.md#54-exercises)
         * [5.5 Further Readings](05-discrete-and-continous-states/README.md#55-further-readings)
