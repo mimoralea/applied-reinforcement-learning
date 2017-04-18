@@ -12,3 +12,4 @@
   * Dynamic Programming by Richard Bellman
   * Dynamic Programming and Optimal Control Vol I by Dimitri P. Bertsekas
   * Dynamic Programming and Optimal Control Vol II by Dimitri P. Bertsekas
+  * Reinforcement Learning: An Introduction by Richard S. Sutton et al.
