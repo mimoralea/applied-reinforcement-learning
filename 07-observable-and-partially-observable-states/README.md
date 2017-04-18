@@ -41,3 +41,8 @@ states problem.
 
 #### 7.5 Further Reading
 
+  * [Particle Filters in Robotics](https://arxiv.org/pdf/1301.0607.pdf)
+  * [Bayesian Filtering: From Kalman Filters to Particle Filters, and Beyond](http://www.dsi.unifi.it/users/chisci/idfric/Nonlinear_filtering_Chen.pdf)
+  * [Reinforcement Learning Using Approximate Belief States](https://ai.stanford.edu/~koller/Papers/Rodriguez+al:NIPS99.pdf)
+  * [Bayesian Reinforcement Learning in Continuous POMDPs with Gaussian Processes](https://www.cs.cmu.edu/~sross1/publications/gppomgp_IROS09.pdf)
+  * [Deep Reinforcement Learning with POMDPs](http://cs229.stanford.edu/proj2015/363_report.pdf)
