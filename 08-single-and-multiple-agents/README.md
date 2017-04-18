@@ -36,3 +36,9 @@ or many. Later we will look at specific environments of multi-agent reinforcemen
 Lesson 8 Notebook.
 
 #### 8.4 Further Reading
+
+  * [Game Theory: Basic Concepts](http://www.umass.edu/preferen/Game%20Theory%20Evolving/GTE%20Public/GTE%20Game%20Theory%20Basic%20Concepts.pdf)
+  * [Game Theory](http://www.cdam.lse.ac.uk/Reports/Files/cdam-2001-09.pdf)
+  * [An Analysis of Stochastic Game Theory for Multiagent Reinforcement Learning](http://www.cs.cmu.edu/~mmv/papers/00TR-mike.pdf)
+  * [Multi-agent reinforcement learning: An overview](https://pdfs.semanticscholar.org/d96d/a4ac9f78924871c3c4d0dece0b84884fe483.pdf)
+  * [Multi Agent Reinforcement Learning: Independent vs Cooperative Agents](http://web.media.mit.edu/~cynthiab/Readings/tan-MAS-reinfLearn.pdf)
