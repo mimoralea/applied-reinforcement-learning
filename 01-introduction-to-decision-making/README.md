@@ -43,4 +43,17 @@ intelligence. I hope you enjoy this work.
 
 #### 1.2 Exercises
 
+One of the most interesting methods for statistical decision-making is Bayesian Networks and 
+Decision Graphs. On this first Notebook we will look a little bit into Utility Theory, 
+statistical decision-making and Bayesian Networks. It is important to mention that these
+are not Reinforcement Learning, however, they are very important methods for 
+decision-making under uncertainty, therefore important to know about.
+
+Lesson 1 Notebook.
+
 #### 1.3 Further Reading
+
+  * [Decision Theory A Brief Introduction](http://people.kth.se/~soh/decisiontheory.pdf)
+  * [Statistical Decision Theory: Concepts, Methods and Applications](http://probability.ca/jeff/ftpdir/anjali0.pdf)
+  * [A Brief History of Decision Making](https://hbr.org/2006/01/a-brief-history-of-decision-making)
+  * [The Theory of Decision Making](http://worthylab.tamu.edu/courses_files/01_edwards_1954.pdf)
