@@ -80,3 +80,8 @@ iteration.
 Lesson 4 Notebook.
 
 #### 4.7 Further Reading
+
+  * [Reinforcement Learning: A Survey](https://www.cs.cmu.edu/~tom/10701_sp11/slides/Kaelbling.pdf)
+  * [Algorithms for Sequential Decision Making](https://www.cs.rutgers.edu/~mlittman/papers/thesis-with-gammas.pdf)
+  * [Shaping and policy search in Reinforcement learning](http://www.cs.ubc.ca/~nando/550-2006/handouts/andrew-ng.pdf)
+  * [Dynamic Programming and Optimal Control](http://web.mit.edu/dimitrib/www/dpchapter.pdf)
