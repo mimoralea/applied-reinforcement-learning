@@ -183,3 +183,8 @@ and devise few ways for solving it. Recursion, Memoization and Dynamic Programmi
 Lesson 2 Notebook.
 
 #### 2.9 Further Reading
+
+  * [Dynamic programming](https://people.eecs.berkeley.edu/~vazirani/algorithms/chap6.pdf)
+  * [Value iteration and policy iteration algorithms for Markov decision problem](http://www.ics.uci.edu/~csp/r42a-mdp_report.pdf)
+  * [Introduction to Markov Decision Processes](http://castlelab.princeton.edu/ORF569papers/Powell_ADP_2ndEdition_Chapter%203.pdf)
+  * [Reinforcement Learning: A Survey](https://www.cs.cmu.edu/~tom/10701_sp11/slides/Kaelbling.pdf)
