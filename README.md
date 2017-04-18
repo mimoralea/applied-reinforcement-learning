@@ -1,7 +1,23 @@
 # Applied Reinforcement Learning
 
-This repository will contain a series of lessons about Reinforcement Learning and Decision Making.
+I've been studying reinforcement learning and decision-making for a couple of years now.
+One of the most difficult things that I've encountered is not necessarily related to 
+the concepts but how these concepts have been explained. To me, learning occurs when one
+is able to make a connection with the concepts being taught. For this, often an intuitive
+explanation is required, and likely a hands-on approach helps build that kind of 
+understanding.
 
+My goal for this repository is to create, with the community, a resource that would help
+newcomers understand reinforcement learning in an intuitive way. Consider what you see here
+my initial attempt to teach some of these concepts as plain and simple as I can possibly
+explain them.
+
+If you'd like to collaborate, whether a typo, or an entire addition to the text, maybe a fix
+to a notebook or a whole new notebook, please feel free to send your issue and/or pull 
+request to make things better. As long as your pull request aligns with the goal of the 
+repository, it is very likely we will merge. I'm not the best teacher, or reinforcement
+learning researcher, but I do believe we can make reinforcement learning and decision-making 
+easy for anyone to understand. Well, at least easier.
 
 Table of Contents
 =================
