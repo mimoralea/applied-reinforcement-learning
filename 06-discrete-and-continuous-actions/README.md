@@ -50,4 +50,8 @@ Lesson 6 Notebook.
 
 #### 6.6 Further Reading
 
-  * [CONTINUOUS CONTROL WITH DEEP REINFORCEMENT LEARNING](https://arxiv.org/pdf/1509.02971.pdf)
+  * [Reinforcement Learning in Continuous State and Action Spaces](http://oai.cwi.nl/oai/asset/19689/19689B.pdf)
+  * [Continuous Control with Deep Reinforcement Learning](https://arxiv.org/pdf/1509.02971.pdf)
+  * [Reinforcement Learning in Continuous Action Spaces through Sequential Monte Carlo Methods](https://papers.nips.cc/paper/3318-reinforcement-learning-in-continuous-action-spaces-through-sequential-monte-carlo-methods.pdf)
+  * [Q-Learning in Continuous State and Action Spaces](http://users.cecs.anu.edu.au/~rsl/rsl_papers/99ai.kambara.pdf)
+  * [Deep Reinforcement Learning: An Overview](https://arxiv.org/pdf/1701.07274.pdf)
