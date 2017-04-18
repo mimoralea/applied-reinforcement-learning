@@ -50,3 +50,9 @@ discretizing the state space in a way to making a manual function approximation 
 Lesson 5 Notebook.
 
 #### 5.5 Further Reading
+
+  * [Residual Algorithms: Reinforcement Learning with Function Approximation](http://www.leemon.com/papers/1995b.pdf)
+  * [A Brief Survey of Parametric Value Function Approximation](http://www.cs.utexas.edu/~dana/MLClass/RL_VF.pdf)
+  * [A Tutorial on Linear Function Approximators for Dynamic Programming and Reinforcement Learning](https://cs.brown.edu/people/stefie10/publications/geramifard13.pdf)
+  * [Playing Atari with Deep Reinforcement Learning](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf)
+  * [Function Approximation via Tile Coding: Automating Parameter Choice](http://www.cs.utexas.edu/~ai-lab/pubs/SARA05.pdf)
