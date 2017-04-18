@@ -25,3 +25,9 @@ and to close up on the series of Notebooks well, we will look into the world of 
 Lesson 9 Notebook.
 
 #### 9.4 Further Reading
+
+  * [Adversarial Reinforcement Learning](http://www.cs.cmu.edu/~mmv/papers/03TR-advRL.pdf)
+  * [Markov games as a framework for multi-agent reinforcement learning](https://www.cs.rutgers.edu/~mlittman/papers/ml94-final.pdf)
+  * [Value-function reinforcement learning in Markov games](http://www.sts.rpi.edu/~rsun/si-mal/article3.pdf)
+  * [Learning To Play the Game of Chess](https://papers.nips.cc/paper/1007-learning-to-play-the-game-of-chess.pdf)
+  * [Mastering the Game of Go with Deep Neural Networks and Tree Search](https://gogameguru.com/i/2016/03/deepmind-mastering-go.pdf)
