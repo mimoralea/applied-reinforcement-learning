@@ -28,4 +28,8 @@ and stochastic transitions.
 Lesson 3 Notebook.
 
 #### 3.4 Further Reading
-
+  
+  * [Markov Decision Processes: Concepts and Algorithms](http://www.cs.vu.nl/~annette/SIKS2009/material/SIKS-RLIntro.pdf)
+  * [Markov Decision Processes: Lecture Notes](https://math.la.asu.edu/~jtaylor/teaching/Fall2012/STP425/lectures/MDP.pdf)
+  * [Markov Decision Processes](http://www.lancaster.ac.uk/postgrad/zaninie/MDP.pdf)
+  * [Markov Decision Processes](https://cs.uwaterloo.ca/~jhoey/teaching/cs486/mdp.pdf)
