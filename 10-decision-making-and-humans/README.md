@@ -35,3 +35,8 @@ be working on these days.
 
 #### 10.3 Further Reading
 
+  * [Reinforcement Learning, High-Level Cognition, and the Human Brain](http://users.ugent.be/~tverguts/Publications_files/Silvetti%20RL%20chapter.pdf)
+  * [A Comparison of Human and Agent Reinforcement Learning in Partially Observable Domains](http://mlg.eng.cam.ac.uk/pub/pdf/DosGha11.pdf)
+  * [Intrinsically Motivated Reinforcement Learning](http://web.eecs.umich.edu/~baveja/Papers/FinalNIPSIMRL.pdf)
+  * [Intrinsic Motivation For Reinforcement Learning Systems](http://www-anw.cs.umass.edu/pubs/2005/barto_s_yale05.pdf)
+  * [Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction and Intrinsic Motivation](https://arxiv.org/pdf/1604.06057.pdf)
