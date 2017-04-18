@@ -51,6 +51,7 @@ Lesson 5 Notebook.
 
 #### 5.5 Further Reading
 
+  * [An Analysis of Reinforcement Learning with Function Approximation](http://icml2008.cs.helsinki.fi/papers/652.pdf)
   * [Residual Algorithms: Reinforcement Learning with Function Approximation](http://www.leemon.com/papers/1995b.pdf)
   * [A Brief Survey of Parametric Value Function Approximation](http://www.cs.utexas.edu/~dana/MLClass/RL_VF.pdf)
   * [A Tutorial on Linear Function Approximators for Dynamic Programming and Reinforcement Learning](https://cs.brown.edu/people/stefie10/publications/geramifard13.pdf)
