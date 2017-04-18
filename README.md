@@ -18,6 +18,8 @@ Table of Contents
   * [Part I: Introduction](01-introduction-to-decision-making/README.md#part-i-introduction)
       * [1. Introduction to Decision-Making](01-introduction-to-decision-making/README.md#1-introduction-to-decision-making)
         * [1.1 Decision-Making](01-introduction-to-decision-making/README.md#11-decision-making)
+        * [1.2 Exercises](01-introduction-to-decision-making/README.md#12-exercises)
+        * [1.3 Further Reading](01-introduction-to-decision-making/README.md#13-further-reading)
   * [Part II: Reinforcement Learning and Decision-Making](02-sequential-decisions/README.md#part-ii-reinforcement-learning-and-decision-making)
       * [2. Sequential Decisions](02-sequential-decisions/README.md#2-sequential-decisions)
         * [2.1 Modeling Decision-Making Problems](02-sequential-decisions/README.md#21-modeling-decision-making-problems)
