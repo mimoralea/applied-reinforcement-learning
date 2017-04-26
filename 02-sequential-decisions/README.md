@@ -107,24 +107,20 @@ term.
 #### 2.3 Slightly more complex problems
 
 When explaining reinforcement learning, it is very common to show a very basic world to illustrate fundamental
-concepts. Let's think of a grid world as in figure below:
-
-<IMAGE GOES HERE>
-
-In this world, the agent starts at 'S'. Reaching the space marked with a 'G' ends the game and gives the agent
-a reward of 1. Reaching the space with an 'F' ends the game and gives the agent a reward of -1. The agent is able
-to select 4 actions every time, (N, S, E, W). The actions selected has exactly the effect we expect. For example,
-N would move the agent one cell up, E to the cell on the right. Unless the agent is attempting to enter a space
-marked with an 'X' which is a wall and cannot be entered, and unless the agent is in the left most cell trying to
-move left, etc. Which will just bounce the agent back to the cell it took the action from.
+concepts. Let's think of a grid world where the agent starts at 'S'. Reaching the space marked with a 'G' ends 
+the game and gives the agent a reward of 1. Reaching the space with an 'F' ends the game and gives the agent
+a reward of -1. The agent is able to select 4 actions every time, (N, S, E, W). The actions selected has exactly 
+the effect we expect. For example,N would move the agent one cell up, E to the cell on the right. Unless the 
+agent is attempting to enter a space marked with an 'X' which is a wall and cannot be entered, and unless the 
+agent is in the left most cell trying to move left, etc. Which will just bounce the agent back to the cell 
+it took the action from.
 
 
 #### 2.4 Evaluating solutions
 
 Before we being exploring how to get the best solution to this problem. I'd like us to detour into how do we
-know how good is a solution. For example, imagine I give you a policy:
-
-<IMAGE GOES HERE>
+know how good is a solution. For example, we can imagine a solution given by a series of arrows representing
+the different actions to be taken at each cell.
 
 Is there a way we can put a number to this policy so we can later rank it?
 
@@ -144,7 +140,7 @@ Vpi(s) = Epi{r_{t+1} + g*r_{t+2} + g**2*r_{t+3} + ... | St = s}
 ```
 
 So, we are basically finding the value we would get from each of the states if we followed this policy.
-Fair enough.
+Fair enough. Let's forget about equations, check the "Furter reading" sections for that.
 
 #### 2.5 Improving on solutions
 
