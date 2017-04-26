@@ -41,14 +41,6 @@ observable and partially observable states, single and multiple agents, cooperat
 adversarial agents, and finally, we will put everything in the perspective of human
 intelligence. I hope you enjoy this work.
 
-#### 1.2 Exercises
-
-One of the most interesting methods for statistical decision-making is Bayesian Networks and 
-Decision Graphs. On this first Notebook we will look a little bit into Utility Theory, 
-statistical decision-making and Bayesian Networks. It is important to mention that these
-are not Reinforcement Learning, however, they are very important methods for 
-decision-making under uncertainty, therefore important to know about.
-
 Lesson 1 Notebook.
 
 #### 1.3 Further Reading
