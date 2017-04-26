@@ -41,9 +41,7 @@ observable and partially observable states, single and multiple agents, cooperat
 adversarial agents, and finally, we will put everything in the perspective of human
 intelligence. I hope you enjoy this work.
 
-Lesson 1 Notebook.
-
-#### 1.3 Further Reading
+#### 1.2 Further Reading
 
   * [Decision Theory A Brief Introduction](http://people.kth.se/~soh/decisiontheory.pdf)
   * [Statistical Decision Theory: Concepts, Methods and Applications](http://probability.ca/jeff/ftpdir/anjali0.pdf)
