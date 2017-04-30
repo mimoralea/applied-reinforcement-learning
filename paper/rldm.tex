@@ -116,49 +116,171 @@ this way engaged as concepts get progressively more and more complex.
 
 \section{Removing Friction}
 
-Once the student's intuition is engaged and curiosity has been sparked, a
+Once the students' curiosity has been sparked and intuition is engaged, a
 convenient way to interact with the concepts should be presented. The
 friction of getting hands-on experience is one of the most difficult
-barriers to break, but once this is past, the student can better
-understand the concepts.
+barriers to break for beginners, but once this is past, the student can
+much better understand the concepts.
+
+We worked on three different important points to fully remove the friction
+beginners have when first getting into reinforcement learning.
 
 \subsection{Setting Up A Convenient Environment}
+
+One of the most remarkable accomplishments on this project is the creation
+of a fully configured reinforcement learning platform to use OpenAI
+Gym \cite{openaigym} environments on Jupyter Notebooks inside of Docker
+containers.
+
+Besides technicalities, having a ready-to-go environment that can help
+students be ready to go within 20 min wait time for the first run after
+copy-paste of provided commands is wonderful. After that initial setup
+it takes less than 1 min every subsequent run. This allows the student to put
+very little time configuring and battling with packages and configuration
+scripts that do not add knowledge in reinforcement learning concentrating
+that way all the effort on things that trully matter.
+
 \subsection{Providing With Boilerplate Code}
+
+Moreover, we supplement the notebooks with abundant boilerplate code. Graphs,
+visualization functions, binaries creating web requests in the background to
+show videos of carefully selected agent episodes are some of the examples of
+code provided to the students.
+
+This allows the students to interact only with bits of code that are directly
+related with reinforcement learning and be able to safely ignore other bits.
+
 \subsection{Asking For Minimal Effort}
 
+Then, we proceed to ask students to put just enough effort to get them engage.
+The hands-on interaction with the notebooks are designed for beginner to get
+started with reinforcement learning. Perhaps, these students have not seen
+reinforcement learning or even machine learning code in action before. Therefore,
+in addition to all of the boilerplate material already mentioned, we also
+provide with most of the common algorithms on each of the notebooks and
+only ask the students to complete small sections that would make the core
+algorithms work more effectively.
+
+The idea is that after they have contact with reinforcement learning code, they
+will have more confidence when interacting with more advanced problems and
+projects during the OMSCS course.
+
 \section{Showing Options}
+
 Lastly, connecting to intuition and getting hands-on experience will be
 futile unless the students have a new interest of exploring the field by
-themselves. Therefore, showing the path for further learning is a final
-and very important step.
+themselves. This is the most important aspect of our project, we believe
+education is about motivation. The role of an instructor is merly to spark
+students curisity and help them find the path to their own realization.
+
+Therefore, at this point we hope to have awaken the students' interest to
+explore this marvelous field. Now, showing the path for further learning is
+a final and very important step.
 
 \subsection{Assigning Relevant Readings}
+
+To help the students better navigate the field of reinforcement learning,
+we provide with ``Further Reading'' sections in every single lesson, and a
+single final section of ``Recommended Books'' at the end of the project. The fact
+that we teach the concepts in an direct and simple language is by no means
+an indication that academic material can be skipped. Actually, the way we
+present the material should be seen just as a \emph{primer}, helping the
+concepts later presented come together more naturally, and absorbed more
+quickly.
+
 \subsection{Watching Academic Lectures}
+
+Next, we will hope students go on watching academic lectures afterwards.
+To have world-class experts in the field of reinforcement learning teaching
+concepts they are so familiar with and have been studying and working for so
+many is necessary. For this reason, we added a ``Recommended Courses''
+sections for students to continue the search and learning on their own.
+
 \subsection{Completing Homework and Projects}
 
-This document is an example of \texttt{thebibliography} environment using 
-in bibliography management. Three items are cited: \textit{The \LaTeX\ Companion} 
-book \cite{latexcompanion}, the Einstein journal paper \cite{einstein}, and the 
-Donald Knuth's website \cite{knuthwebsite}. The \LaTeX\ related items are
-\cite{latexcompanion,knuthwebsite}.
+Finally, we would hope that many of the students using these materials are
+the same students either planning to enroll for the OMSCS course or just
+enrolled. The OMSCS course, after a brief explanation of core concepts,
+shows very advanced concepts very rapidly. In addition, there are specially
+designed homework and project assignments so that the students get a solid
+grasp of reinforcement learning.
+
+Completing the coursework would certainly put the students in the driving seat
+making them owners of their destiny and letting them pick wisely what reinforcement
+learning area to explore next. 
+
+\section{Future Work}
+
+No work is perfect and neither is this one. However, for the
+{\raise.17ex\hbox{$\scriptstyle\sim$}}2 months of effort
+put into it, I think the progress that has been made is incredible. We started
+with an aggresive proposal and delivered most of it. We kept progress steady, but
+flexible enough to adapt along the way while still completing core components.
+The lessons, the container, the notebooks, the assigned readings, the recommended
+courses, all provide with a solid foundation for the deep understanding of
+reinforcement learning and decision making.
+
+It is this foundation that can now make further progress easier to achieve. After
+opening this work to the community during the summer semester, we hope to receive
+help to make this project better going forward.
+
+\subsection{Additional Notebooks}
+
+One of the important future work is the addition of notebooks. We had the chance
+to complete 7 notebooks, but while trying to rush in some final work, we noticed
+the quality of the later notebooks was seriously degrading the quality of the
+project. Instead, we opted for improving the quality of previous notebooks and
+leaving the newer projects out of this release.
+
+This creates an opportunity for adding those notebooks that were removed and
+improving them considerably. Also, the addition of new notebooks would be of
+great benefit as well.
+
+\subsection{Effectiveness Evaluation}
+
+A more difficult future work would be to find a way to measure the effectiveness
+of this material. Ideally, an Educational Technology student can take on the task
+to research whether the strategy presented here actually improves student
+performance. It would be interesting to gather and study this kind of feedback.
+
+\subsection{Request For Feedback}
+
+Finally, one of the next steps we will be taking on is to release this project
+on different places. First, to previous students on the Slack channel of the
+Georgia Tech Study Group organization. These folks are now veterans of our course
+and would be a great source of feedback. Second, we will release to the OpenAI
+community in an attempt to get a very diverse group to look and provide with
+feedback. The expectation is that this feedback will be followed at times with
+actual changes in the form of GitHub pull requests. This, and only this, would
+make this the project we initially envisioned. 
+
+\section{Conclusion}
+
+In this paper, we proposed a more robust way of teaching reinforcement learning
+and decision making. We presented a series of lessons taught on a very specific
+format, we delivered a fully-configured coding environment for the development
+of reinforcement learning agents and algorithms, we provided with boilerplate
+code and a series of notebooks to assist with hands-on experimentation, and we
+supplemented this with more academic readings, and lectures.
+
+We sincerely hope this project will be useful to lots of people interested in
+learning the ins and outs of reinforcement learning and decision making. And,
+in fact, the project recently helped an OMSCS Reinforcement Learning and
+Decision Making student find his way around the complex topic of function
+approximation in reinforcement learning. The potential, however, is bigger and
+the path for improvement obvious in some cases. Our desire is to see this
+work continue to grow into a more mature and effective way of teaching this
+amazing field.
 
 \medskip
  
 \begin{thebibliography}{9}
-\bibitem{latexcompanion} 
-Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
-\textit{The \LaTeX\ Companion}. 
-Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{openaigym}
+  Greg Brockman, Vicki Cheung, Ludwig Pettersson et al.
+\textit{OpenAI Gym}. 
+ArXiv, 1606.01540, 2016.
  
-\bibitem{einstein} 
-Albert Einstein. 
-\textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
-[\textit{On the electrodynamics of moving bodies}]. 
-Annalen der Physik, 322(10):891–921, 1905.
- 
-\bibitem{knuthwebsite} 
-Knuth: Computers and Typesetting,
-\\\texttt{http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html}
 \end{thebibliography}
 
 
