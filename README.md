@@ -97,7 +97,8 @@ Table of Contents
         * [10.2 Differences between methods discussed and humans](10-decision-making-and-humans/README.md#102-differences-between-methods-discussed-and-humans)
         * [10.3 Further Reading](10-decision-making-and-humans/README.md#103-further-reading)
       * [11. Conclusion](11-conclusion/README.md#11-conclusion)
-      * [12. References](12-references/README.md#12-references)
+      * [12. Recommended Books](12-recommended-books/README.md#12-recommended-books)
+      * [12. Recommended Courses](13-recommended-courses/README.md#13-recommended-courses)
 
 
 

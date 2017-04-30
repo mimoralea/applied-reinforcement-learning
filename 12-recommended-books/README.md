@@ -1,4 +1,4 @@
-### 12. References
+### 12. Recommended Books
 
   * Reinforcement Learning State-of-the-Art by Marco Wiering et al.
   * Probabilistic Robotics by Sebastian Thrun et al.
