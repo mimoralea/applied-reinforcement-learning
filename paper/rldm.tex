@@ -1,9 +1,9 @@
 \documentclass[11pt]{article} % For LaTeX2e
 \usepackage{rldmsubmit,palatino}
 \usepackage{graphicx}
+\usepackage{hyperref}
 
-\title{A Complementary Way of Teaching Reinforcement Learning and Decision Making}
-
+\title{A More Robust Way of Teaching Reinforcement Learning and Decision Making}
 
 \author{
 Miguel Morales\thanks{http://www.mimoralea.com} \\
@@ -13,14 +13,6 @@ Atlanta, GA 30332 \\
 \texttt{mimoralea@gatech.edu} \\
 }
 
-% The \author macro works with any number of authors. There are two commands
-% used to separate the names and addresses of multiple authors: \And and \AND.
-%
-% Using \And between authors leaves it to \LaTeX{} to determine where to break
-% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
-% puts 3 of 4 authors names on the first line, and the last on the second
-% line, try using \AND instead of \And before the third author name.
-
 \newcommand{\fix}{\marginpar{FIX}}
 \newcommand{\new}{\marginpar{NEW}}
 
@@ -29,33 +21,19 @@ Atlanta, GA 30332 \\
 \maketitle
 
 \begin{abstract}
-  Reinforcement Learning and Decision Making is a complex subject. Being the
-  focus of research of a variety of fields including artificial intelligence,
-  psychology, machine learning, operations research, control theory, animal
-  and human neuroscience, economics, and ethology, it is expected that the
-  vast amount of available information could become counterproductive.
-  Beginners often find themselves lost while trying to grasp the key concepts
-  that are truly vital for understanding. Additionally, reinforcement learning
-  and decision making, being a relatively new field, is often taught by
-  world-class researchers that frequently unintentionally omit explaining
-  core concepts that might seem too basic, but are as well fundamental. This
-  creates a gap of knowledge that, if left unfilled, causes trouble for learning
-  the more advanced topics.
-
-  Fortunately, as reinforcement learning and decision making is also studied
-  by fields like animal and human neuroscience, ethology, and psychology, often
-  the concepts can be taught on an intuitive level. The notion of learning
-  by interacting with the environment should be easy to understand to all of
-  us as this is one of the ways we learn. The work described on this paper
-  is an attempt to deliver reinforcement learning and decision making concepts
-  using different teaching techniques that potentially promote intuitive learning.
-  The idea is that these work would serve beginners fill the gaps of knowledge,
-  as a `primer` to prepare them for the more advanced and in-depth material.
+  We propose a new way of teaching reinforcement learning and decision making
+  that is designed be an improvement to traditional academic teaching. We use
+  a three step approach to deliver the most complete learning experience in a
+  way that engages the student and allows them to grasp the concepts regardless
+  of their skill level. We present a specific way of teaching the content, a
+  new and fully configured coding platform, a set of hands-on exercises and
+  a group of recommended next steps for deeper learning.
 \end{abstract}
 
-\keywords{
-teaching tutorials jupyter intuition hands-on
-}
+\keywords{teaching tutorials jupyter intuition hands-on}
+\repository{https://www.github.com/mimoralea/applied-reinforcement-learning}
+\spresentation{https://youtu.be/ltjS5ktziLQ}
+\lpresentation{https://youtu.be/1WjNj_JmFaE}
 
 \acknowledgements{
   I am thankful to my mentor, Kenneth Brooks, for providing assistance when
@@ -63,81 +41,100 @@ teaching tutorials jupyter intuition hands-on
   concise and clear feedback on how to make this project better. Thank you
   to all my peers who also provided sincere feedback throughout the semester.
   I hope to see you all enjoying our OMSCS course in Reinforcement Learning
-  and Decision Making. It is a rewarding experience. Pun intended.}
+  and Decision Making. It is a rewarding experience. Pun intended.
+}
 
 \startmain % to start the main 1-4 pages of the submission.
 
 \section{Introduction}
+Reinforcement Learning and Decision Making is a complex subject. Being the
+focus of research of a variety of fields including artificial intelligence,
+psychology, machine learning, operations research, control theory, animal
+and human neuroscience, economics, and ethology, it is expected that the
+vast amount of available information could become counterproductive.
+Beginners often find themselves lost while trying to grasp the key concepts
+that are truly vital for understanding. Additionally, reinforcement learning
+and decision making, being a relatively new field, is often taught by
+world-class researchers that frequently unintentionally omit explaining
+core concepts that might seem too basic, but are as well fundamental. This
+creates a gap of knowledge that, if left unfilled, causes trouble for learning
+the more advanced topics. This present a challenge for sparking interest and
+keeping students engaged throughout their learning experience. If the content
+is not delivered correctly, the students can quickly feel confused, lost and
+disengaged, and when that happens learning stops.
 
-RLDM requires electronic submissions.  This year's electronic
-submission site is   
-\begin{center}
-   https://cmt3.research.microsoft.com/RLDM2017/
-\end{center}
+\section{Sparking Curiosity}
 
-Please read the instructions below, and follow them faithfully. Note
-that there is also a template \verb+rldm.rtf+ for Microsoft Word,
-which is available from the website below.
-\subsection{Style}
+Fortunately, since reinforcement learning and decision making is studied
+by fields like animal and human neuroscience, ethology, and psychology, often
+the concepts can be taught on an intuitive level. The notion of learning
+by interacting with an environment should be easy to understand to all of
+us as this is one of the ways we learn.
 
-Papers to be submitted to RLDM must be prepared according to the
-instructions presented here. Papers consist of a \emph{title}, which
-has a maximum of 100 characters, an \emph{abstract}, which is a
-maximum of 2000 characters, up to five key words, and an
-\emph{extended abstract}, which starts on the second page, and can be
-between one and four pages. Figures and references should be included
-in the latter.
+We leverage this fact and use a strategy to keep readers engaged on the
+material.
 
-Authors preferring \LaTeX{} are requested to use the RLDM \LaTeX{}
-style files obtainable at the RLDM website at
-\begin{center}
-   http://www.rldm.org/
-\end{center}
-The file \verb+rldm.pdf+ contains these instructions and illustrates
-the various formatting requirements your RLDM paper must
-satisfy. There is a \LaTeX{} style file called \verb+rldmsubmit.sty+,
-and a \LaTeX{} file \verb+rldm.tex+, which may be used as a ``shell''
-for writing your paper. All you have to do is replace the author,
-title, abstract, keywords, acknowledgements and text of the paper with
-your own. The file
-\verb+rldm.rtf+ is provided as an equivalent shell for Microsoft Word users. 
+\subsection{Using Simple And Direct Language}
 
-\section{Background and Definitions}
-\label{back_def}
+One of the important things to we accomplished is to use simple and direct
+language throughout the documents. This keeps the reader engaged regardless
+of their reinforcement learning knowledge level.
 
-The paper size for RLDM is ``US Letter'' (rather than ``A4''). Margins
-are 1.5cm around all sides. Use 11~point type with a vertical spacing
-of 12~points. Palatino is the preferred typeface throughout.
-Paragraphs are separated by 1/2~line space, with no indentation.
+We carefully select words and examples that bring the concepts to a
+common sense understanding so that all students can follow the initial
+readings.
 
-Paper title is 17~point, initial caps/lower case, bold, centered between
-2~horizontal rules. Top rule is 4~points thick and bottom rule is 1~point
-thick. Allow 0.6cm space above and below title to rules. 
+\subsection{Keeping A Single Narrative}
 
-The lead author's name is to be listed first (left-most), and
-the co-authors' names (if different address) are set to follow. If
-there is only one co-author, list both author and co-author side by side.
+Additionally, and what was perhaps the most difficult part, we keep a single
+narrative throughout the sequence of concepts being presented. The intention
+here is to allow students to continue reading and use the understanding they
+accumulated in previous lessons to understand the following.
 
-\section{Using Intuition as a Primer}
+The more simplistic approach is to select concepts from the entire body of
+reinforcement learning and decision making and use different lessons to present
+different material. However, the problem with this approach is that it does
+not help the student get the full picture and the connection with other topics.
+The effort to present concepts in logical sequence, although complex to define
+initially, not only feel a more natural way to present beginners, but it helps
+beginners stay engaged in the material.
 
-Please prepare PostScript or PDF files with paper size ``US Letter''.
-The -t letter option on dvips will produce US Letter files.
+\subsection{Showing Concepts And Their Complement}
 
-This document is an example of \texttt{thebibliography} environment using 
-in bibliography management. Three items are cited: \textit{The \LaTeX\ Companion} 
-book \cite{latexcompanion}, the Einstein journal paper \cite{einstein}, and the 
-Donald Knuth's website \cite{knuthwebsite}. The \LaTeX\ related items are
-\cite{latexcompanion,knuthwebsite}.
+Finally, in order to spark and maintain students' curisity on, we show the
+full spectrum of a single concept. Even if just defining the opposite, we
+still make an effort to mention it and briefly explain it. Often things in
+life have a complementary side that when combined better show the qualities
+of each other. For example, explaining deterministic actions is interesting
+all by itself, but you could gain a much better understanding if I explained
+them along side stochastic actions.
 
-\section{Creating Awareness through Experimentation}
+We paid close attention to show concepts and their complements in every
+lesson. The expectation is that this would help the students have a better
+sense of the full range of possibilities on any given point, keeping them
+this way engaged as concepts get progressively more and more complex.
 
-Please prepare PostScript or PDF files with paper size ``US Letter''.
-The -t letter option on dvips will produce US Letter files.
+\section{Removing Friction}
 
-\section{Building Knowledge through Assigned Readings}
+Once the student's intuition is engaged and curiosity has been sparked, a
+convenient way to interact with the concepts should be presented. The
+friction of getting hands-on experience is one of the most difficult
+barriers to break, but once this is past, the student can better
+understand the concepts.
 
-Please prepare PostScript or PDF files with paper size ``US Letter''.
-The -t letter option on dvips will produce US Letter files.
+\subsection{Setting Up A Convenient Environment}
+\subsection{Providing With Boilerplate Code}
+\subsection{Asking For Minimal Effort}
+
+\section{Showing Options}
+Lastly, connecting to intuition and getting hands-on experience will be
+futile unless the students have a new interest of exploring the field by
+themselves. Therefore, showing the path for further learning is a final
+and very important step.
+
+\subsection{Assigning Relevant Readings}
+\subsection{Watching Academic Lectures}
+\subsection{Completing Homework and Projects}
 
 This document is an example of \texttt{thebibliography} environment using 
 in bibliography management. Three items are cited: \textit{The \LaTeX\ Companion} 

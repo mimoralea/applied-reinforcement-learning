@@ -108,10 +108,19 @@ Address \\
 \newcommand\startmain{\newpage\setcounter{page}{1}\par}
 \newcommand\startopt{\newpage\centerline{\Large \bf Supplementary Material}}
 
-\def\keywords#1{\vskip.2in\begin{minipage}[t]{1in}%
+\def\keywords#1{\vskip.2in\begin{minipage}[t]{1.4in}%
 {\bf Keywords:}\end{minipage}\begin{minipage}[t]{4in}#1\end{minipage}}
 
 \def\acknowledgements#1{\vskip.2in\subsubsection*{Acknowledgements}#1}
+
+\def\repository#1{\vskip.2in\begin{minipage}[t]{1.4in}%
+{\bf Repository:}\end{minipage}\begin{minipage}[t]{5in}\url{#1}\end{minipage}}
+
+\def\spresentation#1{\vskip.2in\begin{minipage}[t]{1.4in}%
+{\bf Short Presentation:}\end{minipage}\begin{minipage}[t]{5in}\url{#1}\end{minipage}}
+
+\def\lpresentation#1{\vskip.2in\begin{minipage}[t]{1.4in}%
+{\bf Long Presentation:}\end{minipage}\begin{minipage}[t]{5in}\url{#1}\end{minipage}}
 
 \renewenvironment{abstract}{\vskip.075in\centerline{\large\bf
 Abstract}\vspace{0.5ex}}{\par}
