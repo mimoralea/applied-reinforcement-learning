@@ -57,20 +57,23 @@ Beginners often find themselves lost while trying to grasp the key concepts
 that are truly vital for understanding. Additionally, reinforcement learning
 and decision making, being a relatively new field, is often taught by
 world-class researchers that frequently unintentionally omit explaining
-core concepts that might seem too basic, but are as well fundamental. This
-creates a gap of knowledge that, if left unfilled, causes trouble for learning
-the more advanced topics. This present a challenge for sparking interest and
-keeping students engaged throughout their learning experience. If the content
-is not delivered correctly, the students can quickly feel confused, lost and
+core concepts that might seem too basic \cite{gapranda}, but are as well
+fundamental. This creates a gap of knowledge that, if left unfilled, causes
+trouble for learning the more advanced topics. This present a challenge for sparking
+interest and keeping students engaged throughout their learning experience. If the
+content is not delivered correctly, the students can quickly feel confused, lost and
 disengaged, and when that happens learning stops.
 
 \section{Sparking Curiosity}
 
 Fortunately, since reinforcement learning and decision making is studied
-by fields like animal and human neuroscience, ethology, and psychology, often
-the concepts can be taught on an intuitive level. The notion of learning
-by interacting with an environment should be easy to understand to all of
-us as this is one of the ways we learn.
+by fields like animal and human neuroscience, ethology, and psychology\cite{suttons98},
+often the concepts can be taught on an intuitive level.
+Recent studies in neuroscience have shown that emotions and cognition are
+interrelated\cite{intuition}. By keeping the readings approachable we allow
+students to connect to the narratives at different levels. The notion of
+learning by interacting with an environment should be easy
+to understand to all of us as this is one of the ways we learn.
 
 We leverage this fact and use a strategy to keep readers engaged on the
 material.
@@ -90,7 +93,9 @@ readings.
 Additionally, and what was perhaps the most difficult part, we keep a single
 narrative throughout the sequence of concepts being presented. The intention
 here is to allow students to continue reading and use the understanding they
-accumulated in previous lessons to understand the following.
+accumulated in previous lessons to understand the following. Similar to what
+the direct instruction paradigm\cite{directinstruction} encourages, we provide
+with the structure and sequence on how the concepts will be presented.
 
 The more simplistic approach is to select concepts from the entire body of
 reinforcement learning and decision making and use different lessons to present
@@ -108,7 +113,9 @@ still make an effort to mention it and briefly explain it. Often things in
 life have a complementary side that when combined better show the qualities
 of each other. For example, explaining deterministic actions is interesting
 all by itself, but you could gain a much better understanding if I explained
-them along side stochastic actions.
+them along side stochastic actions. This approach is also known as Compare and
+Contrast, and the literature suggests that teaching comparative thinking
+strengthens student learning\cite{compare}.
 
 We paid close attention to show concepts and their complements in every
 lesson. The expectation is that this would help the students have a better
@@ -143,9 +150,10 @@ that way all the effort on things that trully matter.
 
 \subsection{Providing With Boilerplate Code}
 
-Moreover, we supplement the notebooks with abundant boilerplate code. Graphs,
-visualization functions, binaries creating web requests in the background to
-show videos of carefully selected agent episodes are some of the examples of
+Moreover, we supplement the notebooks with abundant boilerplate code. Graphs and
+visualization functions that very likely aid in the learning process \cite{visualization},
+binaries creating web requests in the background to show videos of carefully
+selected agent episodes are some of the examples of
 code provided to the students.
 
 This allows the students to interact only with bits of code that are directly
@@ -277,10 +285,41 @@ amazing field.
  
 \begin{thebibliography}{9}
 
+\bibitem{gapranda}
+  Ferguson, Julie E.
+  \textit{Bridging The Gap Between Research and Practice}
+  KM4Dev, Volume 1(3), 46-54.
+ 
+\bibitem{suttons98}
+  Richard Sutton, Andrew Barto.
+  \textit{Reinforcement Learning: An Introduction.}
+  MIT Press, 1998.
+ 
+\bibitem{intuition}
+  Maray Immordino-Yang, Matthias Faeth.
+  \textit{Building Smart Students: A Neuroscience Perspective on the Role
+    of Emotion and Skilled Intuition in Learning.}
+  Bloomington, 2010.
+ 
+\bibitem{directinstruction}
+  Baumann, James F.
+  \textit{The effectiveness of a direct instruction paradigm for teaching main idea comprehension.}
+  Reading Research Quarterly (1984): 93-115.
+ 
+\bibitem{compare}
+  Silver, Harvey F.
+  \textit{Compare and Contrast.}
+  Strategic Teacher PLC Guides, 2010.
+ 
+\bibitem{visualization}
+  Naps, Thomas L., et al.
+  \textit{Exploring the role of visualization and engagement in computer science education.}
+  ACM Sigcse Bulletin. Vol. 35. No. 2. ACM, 2002.
+ 
 \bibitem{openaigym}
   Greg Brockman, Vicki Cheung, Ludwig Pettersson et al.
-\textit{OpenAI Gym}. 
-ArXiv, 1606.01540, 2016.
+  \textit{OpenAI Gym.}
+  ArXiv, 1606.01540, 2016.
  
 \end{thebibliography}
 
