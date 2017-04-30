@@ -8,21 +8,21 @@ given the exact same environmental conditions, the actions are not always determ
 problems have some stochasticity attached to it in how the world reacts to the agents' actions. For example, we can
 think the stock trading agent taking an action to buy a stock, but encountering network issues along the way and
 therefore failing at the transaction. Similarly, for the robotics example, we can imagine how moving a robotic
-arm to a given location might be precise within certain range. So the probability of that actions affecting the
+arm to a given location might be precise within a certain range. So the probability of that actions affecting the
 environment the same way each time even if given the same exact initial conditions is not total.
 
 #### 3.2 Dealing with stochasticity
 
 The way we account for the fact that the world is stochastic is by using expectation of rewards. For example, when
-we calculate the rewards we would obtain for taking an action on a given state, we would take into account the probabilities
+we calculate the rewards we would obtain for taking an action in a given state, we would take into account the probabilities
 of transitioning to every single other new state and multiply this probability by the reward we would obtain. If we
 sum all of them, we obtain the expectation.
 
 #### 3.3 Exercises
 
-In this lesson we looked into how the environment can get more complex than we discussed in previous lessons.
+In this lesson, we looked into how the environment can get more complex than we discussed in previous lessons.
 However, the same algorithms we presented earlier can help us plan when we have a model of the environment. On
-the Notebook below we will implement the algorithms discussed in previous chapter in worlds with deterministic
+the Notebook below we will implement the algorithms discussed in the previous chapter in worlds with deterministic
 and stochastic transitions.
 
 Lesson 3 Notebook.
