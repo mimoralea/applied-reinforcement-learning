@@ -1,4 +1,5 @@
 # Applied Reinforcement Learning
+## useful for learning
 
 I've been studying reinforcement learning and decision-making for a couple of years now.
 One of the most difficult things that I've encountered is not necessarily related to 
