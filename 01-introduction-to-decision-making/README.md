@@ -35,7 +35,7 @@ difference between Reinforcement Learning and other related fields. Reinforcemen
 relaxes this constraint allowing the notion of sequential decision-making.
 This sense of interaction with an environment sets Reinforcement Learning apart. In later lessons,
 we will continue losing constraints and presenting more abstract topics related to Reinforcement
-Learning. After this lesson, we will explore deterministic and stochastic transitions, know
+Learning. After this lesson, we will explore deterministic and stochastic transitions, known
 and unknown environments, discrete and continuous states, discrete and continuous actions,
 observable and partially observable states, single and multiple agents, cooperative and
 adversarial agents, and finally, we will put everything in the perspective of human
